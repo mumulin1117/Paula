@@ -10,41 +10,41 @@ import UIKit
 
 class PulseCatruiRhythmFieler: UIViewController {
 
-    private var liveRooms: [SquadChamber] = PaulaHomeAPI.fallbackLiveRooms()
-    private let discoveryTableView = UITableView(frame: .zero, style: .plain)
-    private let headerVessel = ForYouHeaderVessel()
-    private let refreshControl = UIRefreshControl()
-    private let lemonGlow = UIView()
-    private let oceanGlow = UIView()
+    private var streamDiscoverySortingSeno: [SquadChamber] = PaulaHomeAPI.streamDiscoverySortingPila()
+    private let trendStreamOrderingVilo = UITableView(frame: .zero, style: .plain)
+    private let featuredTileHydrationLemi = ForYouHeaderVessel()
+    private let pullRefreshCompletionMavoControl = UIRefreshControl()
+    private let neonAccentBalancingViro = UIView()
+    private let purpleBadgeStylingKeno = UIView()
 
-    private var trendRooms: [SquadChamber] {
-        Array(liveRooms.dropFirst())
+    private var trendCellSyncingPaxo: [SquadChamber] {
+        Array(streamDiscoverySortingSeno.dropFirst())
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAtmosphere()
-        setupNaviActions()
-        constructDiscoveryLayout()
-        refreshLiveRooms()
+        roomEnergyEstimationTali()
+        navigationOverlayGuardQina()
+        streamTileCompositionKula()
+        liveRoomPaginationNari()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureNavigationBar()
+        scrollEdgeAppearancePera()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        refreshHeaderFrame()
+        tableHeaderSizingSora()
     }
 
-    private func setupAtmosphere() {
+    private func roomEnergyEstimationTali() {
         view.backgroundColor = UIColor(red: 2 / 255, green: 4 / 255, blue: 7 / 255, alpha: 1)
-        installBackgroundGlow()
+        shadowGlowRenderingQavi()
     }
 
-    private func setupNaviActions() {
+    private func navigationOverlayGuardQina() {
         let topTitle = UIImageView(image: UIImage(named: "For You"))
         topTitle.contentMode = .scaleAspectFit
         topTitle.frame = CGRect(x: 0, y: 0, width: 112, height: 24)
@@ -54,11 +54,11 @@ class PulseCatruiRhythmFieler: UIViewController {
         createActionBtn.setImage(UIImage(named: "createrRooomg"), for: .normal)
         createActionBtn.imageView?.contentMode = .scaleAspectFit
         createActionBtn.frame = CGRect(x: 0, y: 0, width: 118, height: 29)
-        createActionBtn.addTarget(self, action: #selector(openCreateRoom), for: .touchUpInside)
+        createActionBtn.addTarget(self, action: #selector(createRoomEntryZavi), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: createActionBtn)
     }
 
-    private func configureNavigationBar() {
+    private func scrollEdgeAppearancePera() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .clear
@@ -69,125 +69,125 @@ class PulseCatruiRhythmFieler: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
 
-    private func installBackgroundGlow() {
-        lemonGlow.backgroundColor = UIColor(red: 207 / 255, green: 214 / 255, blue: 99 / 255, alpha: 0.45)
-        oceanGlow.backgroundColor = UIColor(red: 55 / 255, green: 97 / 255, blue: 172 / 255, alpha: 0.32)
-        lemonGlow.layer.cornerRadius = 58
-        oceanGlow.layer.cornerRadius = 72
+    private func shadowGlowRenderingQavi() {
+        neonAccentBalancingViro.backgroundColor = UIColor(red: 207 / 255, green: 214 / 255, blue: 99 / 255, alpha: 0.45)
+        purpleBadgeStylingKeno.backgroundColor = UIColor(red: 55 / 255, green: 97 / 255, blue: 172 / 255, alpha: 0.32)
+        neonAccentBalancingViro.layer.cornerRadius = 58
+        purpleBadgeStylingKeno.layer.cornerRadius = 72
 
-        [lemonGlow, oceanGlow].forEach {
+        [neonAccentBalancingViro, purpleBadgeStylingKeno].forEach {
             $0.layer.shadowOpacity = 0.9
             $0.layer.shadowRadius = 42
             $0.layer.shadowOffset = .zero
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        lemonGlow.layer.shadowColor = lemonGlow.backgroundColor?.cgColor
-        oceanGlow.layer.shadowColor = oceanGlow.backgroundColor?.cgColor
+        neonAccentBalancingViro.layer.shadowColor = neonAccentBalancingViro.backgroundColor?.cgColor
+        purpleBadgeStylingKeno.layer.shadowColor = purpleBadgeStylingKeno.backgroundColor?.cgColor
 
         NSLayoutConstraint.activate([
-            lemonGlow.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -56),
-            lemonGlow.topAnchor.constraint(equalTo: view.topAnchor, constant: -78),
-            lemonGlow.widthAnchor.constraint(equalToConstant: 154),
-            lemonGlow.heightAnchor.constraint(equalToConstant: 116),
+            neonAccentBalancingViro.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -56),
+            neonAccentBalancingViro.topAnchor.constraint(equalTo: view.topAnchor, constant: -78),
+            neonAccentBalancingViro.widthAnchor.constraint(equalToConstant: 154),
+            neonAccentBalancingViro.heightAnchor.constraint(equalToConstant: 116),
 
-            oceanGlow.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 28),
-            oceanGlow.topAnchor.constraint(equalTo: view.topAnchor, constant: -86),
-            oceanGlow.widthAnchor.constraint(equalToConstant: 212),
-            oceanGlow.heightAnchor.constraint(equalToConstant: 144)
+            purpleBadgeStylingKeno.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 28),
+            purpleBadgeStylingKeno.topAnchor.constraint(equalTo: view.topAnchor, constant: -86),
+            purpleBadgeStylingKeno.widthAnchor.constraint(equalToConstant: 212),
+            purpleBadgeStylingKeno.heightAnchor.constraint(equalToConstant: 144)
         ])
     }
 
-    private func constructDiscoveryLayout() {
-        discoveryTableView.backgroundColor = .clear
-        discoveryTableView.separatorStyle = .none
-        discoveryTableView.dataSource = self
-        discoveryTableView.delegate = self
-        discoveryTableView.showsVerticalScrollIndicator = false
-        discoveryTableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 18, right: 0)
-        discoveryTableView.register(TrendStreamCell.self, forCellReuseIdentifier: TrendStreamCell.reuseID)
-        discoveryTableView.refreshControl = refreshControl
-        refreshControl.tintColor = .white
-        refreshControl.addTarget(self, action: #selector(refreshLiveRooms), for: .valueChanged)
+    private func streamTileCompositionKula() {
+        trendStreamOrderingVilo.backgroundColor = .clear
+        trendStreamOrderingVilo.separatorStyle = .none
+        trendStreamOrderingVilo.dataSource = self
+        trendStreamOrderingVilo.delegate = self
+        trendStreamOrderingVilo.showsVerticalScrollIndicator = false
+        trendStreamOrderingVilo.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 18, right: 0)
+        trendStreamOrderingVilo.register(TrendStreamCell.self, forCellReuseIdentifier: TrendStreamCell.reuseID)
+        trendStreamOrderingVilo.refreshControl = pullRefreshCompletionMavoControl
+        pullRefreshCompletionMavoControl.tintColor = .white
+        pullRefreshCompletionMavoControl.addTarget(self, action: #selector(liveRoomPaginationNari), for: .valueChanged)
 
-        view.addSubview(discoveryTableView)
-        discoveryTableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(trendStreamOrderingVilo)
+        trendStreamOrderingVilo.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            discoveryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            discoveryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            discoveryTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            discoveryTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            trendStreamOrderingVilo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            trendStreamOrderingVilo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            trendStreamOrderingVilo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            trendStreamOrderingVilo.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
-        headerVessel.onFeaturedTap = { [weak self] in
-            guard let room = self?.liveRooms.first else { return }
-            self?.openLiveRoom(room)
+        featuredTileHydrationLemi.headerTapForwardingSora = { [weak self] in
+            guard let liveRoomCapsuleVexa = self?.streamDiscoverySortingSeno.first else { return }
+            self?.liveStatusMappingDeni(liveRoomCapsuleVexa)
         }
-        headerVessel.onTrainingTap = { [weak self] in
-            self?.openTrainingRoom()
+        featuredTileHydrationLemi.trainingRoomEntryJiro = { [weak self] in
+            self?.teachingRoomRoutingZavi()
         }
-        headerVessel.onVipTap = { [weak self] in
-            self?.openVIP()
+        featuredTileHydrationLemi.vipPanelEntryMero = { [weak self] in
+            self?.vipPanelEntryMero()
         }
-        headerVessel.configure(with: liveRooms.first)
-        discoveryTableView.tableHeaderView = headerVessel
+        featuredTileHydrationLemi.configure(with: streamDiscoverySortingSeno.first)
+        trendStreamOrderingVilo.tableHeaderView = featuredTileHydrationLemi
     }
 
-    private func refreshHeaderFrame() {
-        let width = discoveryTableView.bounds.width
+    private func tableHeaderSizingSora() {
+        let width = trendStreamOrderingVilo.bounds.width
         guard width > 0 else { return }
         let targetFrame = CGRect(x: 0, y: 0, width: width, height: ForYouHeaderVessel.preferredHeight)
-        if headerVessel.frame != targetFrame {
-            headerVessel.frame = targetFrame
-            discoveryTableView.tableHeaderView = headerVessel
+        if featuredTileHydrationLemi.frame != targetFrame {
+            featuredTileHydrationLemi.frame = targetFrame
+            trendStreamOrderingVilo.tableHeaderView = featuredTileHydrationLemi
         }
     }
 
-    @objc private func refreshLiveRooms() {
-        PaulaHomeAPI.loadLiveRooms { [weak self] rooms in
+    @objc private func liveRoomPaginationNari() {
+        PaulaHomeAPI.liveRoomPaginationNari { [weak self] roomDeckVectorQemi in
             DispatchQueue.main.async {
                 guard let self else { return }
-                self.liveRooms = rooms.isEmpty ? PaulaHomeAPI.fallbackLiveRooms() : rooms
-                self.headerVessel.configure(with: self.liveRooms.first)
-                self.discoveryTableView.reloadData()
-                self.refreshControl.endRefreshing()
+                self.streamDiscoverySortingSeno = roomDeckVectorQemi.isEmpty ? PaulaHomeAPI.streamDiscoverySortingPila() : roomDeckVectorQemi
+                self.featuredTileHydrationLemi.configure(with: self.streamDiscoverySortingSeno.first)
+                self.trendStreamOrderingVilo.reloadData()
+                self.pullRefreshCompletionMavoControl.endRefreshing()
             }
         }
     }
 
-    @objc private func openCreateRoom() {
-        pushPaulaH5(.arenaWaveDrift)
+    @objc private func createRoomEntryZavi() {
+        pushPaulaFashion(.arenaWaveDrift)
     }
 
-    private func openTrainingRoom() {
-        let trainingRoomId = trendRooms.first?.liveId ?? liveRooms.first?.liveId ?? ""
-        pushPaulaH5(.NWFUMotionBloom, param: trainingRoomId)
+    private func teachingRoomRoutingZavi() {
+        let trainingRoomId = trendCellSyncingPaxo.first?.roomStreamIdentityPavo ?? streamDiscoverySortingSeno.first?.roomStreamIdentityPavo ?? ""
+        pushPaulaFashion(.NWFUMotionBloom, param: trainingRoomId)
     }
 
-    private func openVIP() {
-        pushPaulaH5(.echoPulseField)
+    private func vipPanelEntryMero() {
+        pushPaulaFashion(.echoPulseField)
     }
 
-    private func openLiveRoom(_ room: SquadChamber) {
-        pushPaulaH5(.NWFUclipPulseOrbit, param: room.liveId)
+    private func liveStatusMappingDeni(_ liveRoomCapsuleVexa: SquadChamber) {
+        pushPaulaFashion(.NWFUclipPulseOrbit, param: liveRoomCapsuleVexa.roomStreamIdentityPavo)
     }
 
-    private func openUserProfile(_ userId: String) {
-        guard !userId.isEmpty else { return }
-        pushPaulaH5(.arenaSignalRise, param: userId)
+    private func profileParamBridgeRafi(_ playerIdentitySignalMoro: String) {
+        guard !playerIdentitySignalMoro.isEmpty else { return }
+        pushPaulaFashion(.arenaSignalRise, param: playerIdentitySignalMoro)
     }
 }
 
 final class ForYouHeaderVessel: UIView {
     static let preferredHeight: CGFloat = 226
 
-    var onFeaturedTap: (() -> Void)?
-    var onTrainingTap: (() -> Void)?
-    var onVipTap: (() -> Void)?
+    var headerTapForwardingSora: (() -> Void)?
+    var trainingRoomEntryJiro: (() -> Void)?
+    var vipPanelEntryMero: (() -> Void)?
 
-    private let featuredTile = FeaturedLiveTile()
-    private let trainingSmallTile = UIButton(type: .custom)
-    private let vipPromoTile = UIButton(type: .custom)
+    private let featuredLargeTileHydrationLemi = FeaturedLiveTile()
+    private let tacticalTrainingCueMeso = UIButton(type: .custom)
+    private let vipPanelEntryMeroTile = UIButton(type: .custom)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -198,62 +198,62 @@ final class ForYouHeaderVessel: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with room: SquadChamber?) {
-        featuredTile.configure(with: room)
+    func configure(with liveRoomCapsuleVexa: SquadChamber?) {
+        featuredLargeTileHydrationLemi.configure(with: liveRoomCapsuleVexa)
     }
 
     private func buildLayout() {
         backgroundColor = .clear
-        featuredTile.addTarget(self, action: #selector(featuredTapped), for: .touchUpInside)
+        featuredLargeTileHydrationLemi.addTarget(self, action: #selector(featuredTileHydrationPalo), for: .touchUpInside)
 
-        trainingSmallTile.setBackgroundImage(UIImage(named: "trainingSmallTile"), for: .normal)
-        trainingSmallTile.addTarget(self, action: #selector(trainingTapped), for: .touchUpInside)
+        tacticalTrainingCueMeso.setBackgroundImage(UIImage(named: "tacticalTrainingCueMeso"), for: .normal)
+        tacticalTrainingCueMeso.addTarget(self, action: #selector(trainingRoomEntryRalo), for: .touchUpInside)
 
-        vipPromoTile.setBackgroundImage(UIImage(named: "vipPromoTile"), for: .normal)
-        vipPromoTile.addTarget(self, action: #selector(vipTapped), for: .touchUpInside)
+        vipPanelEntryMeroTile.setBackgroundImage(UIImage(named: "vipPanelEntryMeroTile"), for: .normal)
+        vipPanelEntryMeroTile.addTarget(self, action: #selector(vipPanelEntryZalo), for: .touchUpInside)
 
-        [featuredTile, trainingSmallTile, vipPromoTile].forEach {
+        [featuredLargeTileHydrationLemi, tacticalTrainingCueMeso, vipPanelEntryMeroTile].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
         NSLayoutConstraint.activate([
-            featuredTile.leadingAnchor.constraint(equalTo: leadingAnchor),
-            featuredTile.topAnchor.constraint(equalTo: topAnchor, constant: 6),
-            featuredTile.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 185 / 345),
-            featuredTile.heightAnchor.constraint(equalToConstant: 207),
+            featuredLargeTileHydrationLemi.leadingAnchor.constraint(equalTo: leadingAnchor),
+            featuredLargeTileHydrationLemi.topAnchor.constraint(equalTo: topAnchor, constant: 6),
+            featuredLargeTileHydrationLemi.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 185 / 345),
+            featuredLargeTileHydrationLemi.heightAnchor.constraint(equalToConstant: 207),
 
-            trainingSmallTile.leadingAnchor.constraint(equalTo: featuredTile.trailingAnchor, constant: 15),
-            trainingSmallTile.trailingAnchor.constraint(equalTo: trailingAnchor),
-            trainingSmallTile.topAnchor.constraint(equalTo: featuredTile.topAnchor),
-            trainingSmallTile.heightAnchor.constraint(equalToConstant: 104),
+            tacticalTrainingCueMeso.leadingAnchor.constraint(equalTo: featuredLargeTileHydrationLemi.trailingAnchor, constant: 15),
+            tacticalTrainingCueMeso.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tacticalTrainingCueMeso.topAnchor.constraint(equalTo: featuredLargeTileHydrationLemi.topAnchor),
+            tacticalTrainingCueMeso.heightAnchor.constraint(equalToConstant: 104),
 
-            vipPromoTile.leadingAnchor.constraint(equalTo: trainingSmallTile.leadingAnchor),
-            vipPromoTile.trailingAnchor.constraint(equalTo: trailingAnchor),
-            vipPromoTile.topAnchor.constraint(equalTo: trainingSmallTile.bottomAnchor, constant: 18),
-            vipPromoTile.heightAnchor.constraint(equalToConstant: 95)
+            vipPanelEntryMeroTile.leadingAnchor.constraint(equalTo: tacticalTrainingCueMeso.leadingAnchor),
+            vipPanelEntryMeroTile.trailingAnchor.constraint(equalTo: trailingAnchor),
+            vipPanelEntryMeroTile.topAnchor.constraint(equalTo: tacticalTrainingCueMeso.bottomAnchor, constant: 18),
+            vipPanelEntryMeroTile.heightAnchor.constraint(equalToConstant: 95)
         ])
     }
 
-    @objc private func featuredTapped() {
-        onFeaturedTap?()
+    @objc private func featuredTileHydrationPalo() {
+        headerTapForwardingSora?()
     }
 
-    @objc private func trainingTapped() {
-        onTrainingTap?()
+    @objc private func trainingRoomEntryRalo() {
+        trainingRoomEntryJiro?()
     }
 
-    @objc private func vipTapped() {
-        onVipTap?()
+    @objc private func vipPanelEntryZalo() {
+        vipPanelEntryMero?()
     }
 }
 
 final class FeaturedLiveTile: UIControl {
-    private let coverImageView = UIImageView()
-    private let bottomPanel = UIView()
-    private let liveBadge = UILabel()
+    private let coverImageHydrationRexa = UIImageView()
+    private let bottomPanelCompositingRiku = UIView()
+    private let streamBadgeVisibilityRola = UILabel()
     private let titleLabel = UILabel()
-    private let avatarViews = [UIImageView(), UIImageView(), UIImageView()]
+    private let participantAvatarStackZori = [UIImageView(), UIImageView(), UIImageView()]
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -264,22 +264,22 @@ final class FeaturedLiveTile: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with room: SquadChamber?) {
-        titleLabel.text = room?.title ?? "Oh? And what do you hear?"
-        coverImageView.setPaulaImage(
-            remoteURL: room?.coverURL,
-            placeholder: UIImage(named: room?.coverAssetName ?? "gamehold")
+    func configure(with liveRoomCapsuleVexa: SquadChamber?) {
+        titleLabel.text = liveRoomCapsuleVexa?.title ?? "Oh? And what do you hear?"
+        coverImageHydrationRexa.remoteImageRequestVera(
+            remoteURL: liveRoomCapsuleVexa?.coverStreamEndpointRumi,
+            placeholder: UIImage(named: liveRoomCapsuleVexa?.coverFallbackAssetQaro ?? "gamehold")
         )
-        avatarViews.enumerated().forEach { index, imageView in
-            let participantAvatarURL: String?
-            if let participantURLs = room?.participantAvatarURLs, index < participantURLs.count {
-                participantAvatarURL = participantURLs[index]
+        participantAvatarStackZori.enumerated().forEach { selectionIndexPulseHemi, imageView in
+            let multicastAvatarMappingPalo: String?
+            if let streamUserAvatarParsingRexo = liveRoomCapsuleVexa?.participantAvatarQueueZori, selectionIndexPulseHemi < streamUserAvatarParsingRexo.count {
+                multicastAvatarMappingPalo = streamUserAvatarParsingRexo[selectionIndexPulseHemi]
             } else {
-                participantAvatarURL = room?.hostAvatarURL
+                multicastAvatarMappingPalo = liveRoomCapsuleVexa?.hostAvatarEndpointTuni
             }
 
-            imageView.setPaulaImage(
-                remoteURL: participantAvatarURL,
+            imageView.remoteImageRequestVera(
+                remoteURL: multicastAvatarMappingPalo,
                 placeholder: PaulaAuthSession.defaultAvatarImage(size: CGSize(width: 28, height: 28))
             )
         }
@@ -290,68 +290,68 @@ final class FeaturedLiveTile: UIControl {
         layer.cornerRadius = 15
         clipsToBounds = true
 
-        coverImageView.contentMode = .scaleAspectFill
-        coverImageView.clipsToBounds = true
-        addSubview(coverImageView)
+        coverImageHydrationRexa.contentMode = .scaleAspectFill
+        coverImageHydrationRexa.clipsToBounds = true
+        addSubview(coverImageHydrationRexa)
 
-        bottomPanel.backgroundColor = UIColor(red: 136 / 255, green: 91 / 255, blue: 247 / 255, alpha: 1)
-        addSubview(bottomPanel)
-        bottomPanel.isUserInteractionEnabled  = true
-        liveBadge.text = "Live"
-        liveBadge.font = .systemFont(ofSize: 12, weight: .semibold)
-        liveBadge.textColor = .white
-        liveBadge.textAlignment = .center
-        liveBadge.backgroundColor = UIColor(red: 140 / 255, green: 45 / 255, blue: 226 / 255, alpha: 1)
-        liveBadge.layer.cornerRadius = 8
-        liveBadge.clipsToBounds = true
-        addSubview(liveBadge)
+        bottomPanelCompositingRiku.backgroundColor = UIColor(red: 136 / 255, green: 91 / 255, blue: 247 / 255, alpha: 1)
+        addSubview(bottomPanelCompositingRiku)
+        bottomPanelCompositingRiku.isUserInteractionEnabled  = true
+        streamBadgeVisibilityRola.text = "Live"
+        streamBadgeVisibilityRola.font = .systemFont(ofSize: 12, weight: .semibold)
+        streamBadgeVisibilityRola.textColor = .white
+        streamBadgeVisibilityRola.textAlignment = .center
+        streamBadgeVisibilityRola.backgroundColor = UIColor(red: 140 / 255, green: 45 / 255, blue: 226 / 255, alpha: 1)
+        streamBadgeVisibilityRola.layer.cornerRadius = 8
+        streamBadgeVisibilityRola.clipsToBounds = true
+        addSubview(streamBadgeVisibilityRola)
 
         titleLabel.font = .systemFont(ofSize: 15, weight: .regular)
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 2
         titleLabel.lineBreakMode = .byWordWrapping
-        bottomPanel.addSubview(titleLabel)
+        bottomPanelCompositingRiku.addSubview(titleLabel)
 
-        avatarViews.enumerated().forEach { index, imageView in
+        participantAvatarStackZori.enumerated().forEach { selectionIndexPulseHemi, imageView in
             imageView.layer.cornerRadius = 13
             imageView.layer.borderColor = UIColor.white.cgColor
             imageView.layer.borderWidth = 1
             imageView.clipsToBounds = true
             imageView.contentMode = .scaleAspectFill
-            imageView.tag = index
-            bottomPanel.addSubview(imageView)
+            imageView.tag = selectionIndexPulseHemi
+            bottomPanelCompositingRiku.addSubview(imageView)
         }
 
-        [coverImageView, bottomPanel, liveBadge, titleLabel].forEach {
+        [coverImageHydrationRexa, bottomPanelCompositingRiku, streamBadgeVisibilityRola, titleLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        avatarViews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        participantAvatarStackZori.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         NSLayoutConstraint.activate([
-            coverImageView.topAnchor.constraint(equalTo: topAnchor),
-            coverImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            coverImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            coverImageView.heightAnchor.constraint(equalToConstant: 104),
+            coverImageHydrationRexa.topAnchor.constraint(equalTo: topAnchor),
+            coverImageHydrationRexa.leadingAnchor.constraint(equalTo: leadingAnchor),
+            coverImageHydrationRexa.trailingAnchor.constraint(equalTo: trailingAnchor),
+            coverImageHydrationRexa.heightAnchor.constraint(equalToConstant: 104),
 
-            bottomPanel.topAnchor.constraint(equalTo: coverImageView.bottomAnchor),
-            bottomPanel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            bottomPanel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bottomPanel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            bottomPanelCompositingRiku.topAnchor.constraint(equalTo: coverImageHydrationRexa.bottomAnchor),
+            bottomPanelCompositingRiku.leadingAnchor.constraint(equalTo: leadingAnchor),
+            bottomPanelCompositingRiku.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomPanelCompositingRiku.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            liveBadge.topAnchor.constraint(equalTo: topAnchor, constant: 15),
-            liveBadge.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            liveBadge.widthAnchor.constraint(equalToConstant: 46),
-            liveBadge.heightAnchor.constraint(equalToConstant: 16),
+            streamBadgeVisibilityRola.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+            streamBadgeVisibilityRola.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            streamBadgeVisibilityRola.widthAnchor.constraint(equalToConstant: 46),
+            streamBadgeVisibilityRola.heightAnchor.constraint(equalToConstant: 16),
 
-            titleLabel.leadingAnchor.constraint(equalTo: bottomPanel.leadingAnchor, constant: 19),
-            titleLabel.trailingAnchor.constraint(equalTo: bottomPanel.trailingAnchor, constant: -10),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomPanel.bottomAnchor, constant: -12)
+            titleLabel.leadingAnchor.constraint(equalTo: bottomPanelCompositingRiku.leadingAnchor, constant: 19),
+            titleLabel.trailingAnchor.constraint(equalTo: bottomPanelCompositingRiku.trailingAnchor, constant: -10),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomPanelCompositingRiku.bottomAnchor, constant: -12)
         ])
 
-        for (index, imageView) in avatarViews.enumerated() {
+        for (selectionIndexPulseHemi, imageView) in participantAvatarStackZori.enumerated() {
             NSLayoutConstraint.activate([
-                imageView.leadingAnchor.constraint(equalTo: bottomPanel.leadingAnchor, constant: 29 + CGFloat(index * 20)),
-                imageView.topAnchor.constraint(equalTo: bottomPanel.topAnchor, constant: 29),
+                imageView.leadingAnchor.constraint(equalTo: bottomPanelCompositingRiku.leadingAnchor, constant: 29 + CGFloat(selectionIndexPulseHemi * 20)),
+                imageView.topAnchor.constraint(equalTo: bottomPanelCompositingRiku.topAnchor, constant: 29),
                 imageView.widthAnchor.constraint(equalToConstant: 26),
                 imageView.heightAnchor.constraint(equalToConstant: 26)
             ])
@@ -362,18 +362,18 @@ final class FeaturedLiveTile: UIControl {
 // MARK: - Trend Cell
 final class TrendStreamCell: UITableViewCell {
     static let reuseID = "TrendStreamCell"
-    var onHostProfileTap: (() -> Void)?
+    var hostProfileTapRoutingMiva: (() -> Void)?
 
-    private let containerPlate = UIView()
-    private let thumbnailView = UIImageView()
-    private let liveRibbon = LiveRibbonView()
+    private let glassPanelRenderingJari = UIView()
+    private let thumbnailPrefetchQueueDori = UIImageView()
+    private let liveRibbonGradientTavo = LiveRibbonView()
     private let nameLabel = UILabel()
-    private let topicLabel = UILabel()
-    private let followButton = UIButton(type: .custom)
+    private let contentPreviewFallbackSumi = UILabel()
+    private let followButtonStateKuro = UIButton(type: .custom)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupCellLayout()
+        cellCornerClippingDera()
     }
 
     required init?(coder: NSCoder) {
@@ -382,110 +382,110 @@ final class TrendStreamCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        onHostProfileTap = nil
-        thumbnailView.image = nil
+        hostProfileTapRoutingMiva = nil
+        thumbnailPrefetchQueueDori.image = nil
         nameLabel.text = nil
-        topicLabel.text = nil
+        contentPreviewFallbackSumi.text = nil
     }
 
-    func sync(with room: SquadChamber, isFollowing: Bool) {
-        nameLabel.text = room.hostName
-        topicLabel.text = room.title
-        thumbnailView.setPaulaImage(
-            remoteURL: room.coverURL,
-            placeholder: UIImage(named: room.coverAssetName ?? "allopiehhhh")
+    func sync(with liveRoomCapsuleVexa: SquadChamber, isFollowing: Bool) {
+        nameLabel.text = liveRoomCapsuleVexa.hostAliasCueVero
+        contentPreviewFallbackSumi.text = liveRoomCapsuleVexa.title
+        thumbnailPrefetchQueueDori.remoteImageRequestVera(
+            remoteURL: liveRoomCapsuleVexa.coverStreamEndpointRumi,
+            placeholder: UIImage(named: liveRoomCapsuleVexa.coverFallbackAssetQaro ?? "allopiehhhh")
         )
         
-        liveRibbon.isHidden =   (room.livesataus != -1 )
+        liveRibbonGradientTavo.isHidden =   (liveRoomCapsuleVexa.livesataus != -1 )
         
         
-        let symbolName = isFollowing ? "checkmark" : "plus"
-        let icon = UIImage(systemName: symbolName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .bold))
-        followButton.setImage(icon, for: .normal)
-        followButton.backgroundColor = isFollowing
+        let systemLockIconRenderingPori = isFollowing ? "checkmark" : "plus"
+        let icon = UIImage(systemName: systemLockIconRenderingPori, withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .bold))
+        followButtonStateKuro.setImage(icon, for: .normal)
+        followButtonStateKuro.backgroundColor = isFollowing
             ? UIColor(red: 255 / 255, green: 185 / 255, blue: 100 / 255, alpha: 1)
             : UIColor(red: 166 / 255, green: 130 / 255, blue: 255 / 255, alpha: 1)
-        followButton.layer.borderColor = (isFollowing ? UIColor.white : UIColor(red: 124 / 255, green: 101 / 255, blue: 255 / 255, alpha: 1)).cgColor
+        followButtonStateKuro.layer.borderColor = (isFollowing ? UIColor.white : UIColor(red: 124 / 255, green: 101 / 255, blue: 255 / 255, alpha: 1)).cgColor
     }
 
-    private func setupCellLayout() {
+    private func cellCornerClippingDera() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
         selectionStyle = .none
 
-        containerPlate.backgroundColor = UIColor(red: 26 / 255, green: 26 / 255, blue: 57 / 255, alpha: 1)
-        containerPlate.layer.cornerRadius = 15
-        containerPlate.clipsToBounds = true
-        contentView.addSubview(containerPlate)
+        glassPanelRenderingJari.backgroundColor = UIColor(red: 26 / 255, green: 26 / 255, blue: 57 / 255, alpha: 1)
+        glassPanelRenderingJari.layer.cornerRadius = 15
+        glassPanelRenderingJari.clipsToBounds = true
+        contentView.addSubview(glassPanelRenderingJari)
 
-        thumbnailView.backgroundColor = UIColor(red: 187 / 255, green: 91 / 255, blue: 255 / 255, alpha: 1)
-        thumbnailView.contentMode = .scaleAspectFill
-        thumbnailView.layer.cornerRadius = 10
-        thumbnailView.clipsToBounds = true
-        containerPlate.addSubview(thumbnailView)
-        containerPlate.addSubview(liveRibbon)
+        thumbnailPrefetchQueueDori.backgroundColor = UIColor(red: 187 / 255, green: 91 / 255, blue: 255 / 255, alpha: 1)
+        thumbnailPrefetchQueueDori.contentMode = .scaleAspectFill
+        thumbnailPrefetchQueueDori.layer.cornerRadius = 10
+        thumbnailPrefetchQueueDori.clipsToBounds = true
+        glassPanelRenderingJari.addSubview(thumbnailPrefetchQueueDori)
+        glassPanelRenderingJari.addSubview(liveRibbonGradientTavo)
 
         nameLabel.font = .systemFont(ofSize: 15, weight: .semibold)
         nameLabel.textColor = .white
         nameLabel.lineBreakMode = .byTruncatingTail
-        containerPlate.addSubview(nameLabel)
+        glassPanelRenderingJari.addSubview(nameLabel)
 
-        topicLabel.font = .systemFont(ofSize: 15, weight: .regular)
-        topicLabel.textColor = .white
-        topicLabel.lineBreakMode = .byTruncatingTail
-        containerPlate.addSubview(topicLabel)
+        contentPreviewFallbackSumi.font = .systemFont(ofSize: 15, weight: .regular)
+        contentPreviewFallbackSumi.textColor = .white
+        contentPreviewFallbackSumi.lineBreakMode = .byTruncatingTail
+        glassPanelRenderingJari.addSubview(contentPreviewFallbackSumi)
 
-        followButton.tintColor = .white
-        followButton.layer.cornerRadius = 7.5
-        followButton.layer.borderWidth = 1
-        followButton.clipsToBounds = true
-        followButton.addTarget(self, action: #selector(hostProfileTapped), for: .touchUpInside)
-        containerPlate.addSubview(followButton)
+        followButtonStateKuro.tintColor = .white
+        followButtonStateKuro.layer.cornerRadius = 7.5
+        followButtonStateKuro.layer.borderWidth = 1
+        followButtonStateKuro.clipsToBounds = true
+        followButtonStateKuro.addTarget(self, action: #selector(hostIdentityExtractionMaro), for: .touchUpInside)
+        glassPanelRenderingJari.addSubview(followButtonStateKuro)
 
-        [containerPlate, thumbnailView, liveRibbon, nameLabel, topicLabel, followButton].forEach {
+        [glassPanelRenderingJari, thumbnailPrefetchQueueDori, liveRibbonGradientTavo, nameLabel, contentPreviewFallbackSumi, followButtonStateKuro].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
         NSLayoutConstraint.activate([
-            containerPlate.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7),
-            containerPlate.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -7),
-            containerPlate.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            containerPlate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            glassPanelRenderingJari.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7),
+            glassPanelRenderingJari.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -7),
+            glassPanelRenderingJari.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            glassPanelRenderingJari.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            thumbnailView.leadingAnchor.constraint(equalTo: containerPlate.leadingAnchor, constant: 29),
-            thumbnailView.centerYAnchor.constraint(equalTo: containerPlate.centerYAnchor),
-            thumbnailView.widthAnchor.constraint(equalToConstant: 89),
-            thumbnailView.heightAnchor.constraint(equalToConstant: 89),
+            thumbnailPrefetchQueueDori.leadingAnchor.constraint(equalTo: glassPanelRenderingJari.leadingAnchor, constant: 29),
+            thumbnailPrefetchQueueDori.centerYAnchor.constraint(equalTo: glassPanelRenderingJari.centerYAnchor),
+            thumbnailPrefetchQueueDori.widthAnchor.constraint(equalToConstant: 89),
+            thumbnailPrefetchQueueDori.heightAnchor.constraint(equalToConstant: 89),
 
-            liveRibbon.leadingAnchor.constraint(equalTo: containerPlate.leadingAnchor),
-            liveRibbon.topAnchor.constraint(equalTo: containerPlate.topAnchor),
-            liveRibbon.widthAnchor.constraint(equalToConstant: 79),
-            liveRibbon.heightAnchor.constraint(equalToConstant: 20),
+            liveRibbonGradientTavo.leadingAnchor.constraint(equalTo: glassPanelRenderingJari.leadingAnchor),
+            liveRibbonGradientTavo.topAnchor.constraint(equalTo: glassPanelRenderingJari.topAnchor),
+            liveRibbonGradientTavo.widthAnchor.constraint(equalToConstant: 79),
+            liveRibbonGradientTavo.heightAnchor.constraint(equalToConstant: 20),
 
-            nameLabel.leadingAnchor.constraint(equalTo: thumbnailView.trailingAnchor, constant: 26),
-            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: followButton.leadingAnchor, constant: -10),
-            nameLabel.centerYAnchor.constraint(equalTo: containerPlate.centerYAnchor, constant: -12),
+            nameLabel.leadingAnchor.constraint(equalTo: thumbnailPrefetchQueueDori.trailingAnchor, constant: 26),
+            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: followButtonStateKuro.leadingAnchor, constant: -10),
+            nameLabel.centerYAnchor.constraint(equalTo: glassPanelRenderingJari.centerYAnchor, constant: -12),
 
-            topicLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            topicLabel.trailingAnchor.constraint(equalTo: containerPlate.trailingAnchor, constant: -18),
-            topicLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            contentPreviewFallbackSumi.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            contentPreviewFallbackSumi.trailingAnchor.constraint(equalTo: glassPanelRenderingJari.trailingAnchor, constant: -18),
+            contentPreviewFallbackSumi.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
 
-            followButton.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 10),
-            followButton.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
-            followButton.trailingAnchor.constraint(lessThanOrEqualTo: containerPlate.trailingAnchor, constant: -28),
-            followButton.widthAnchor.constraint(equalToConstant: 24),
-            followButton.heightAnchor.constraint(equalToConstant: 15)
+            followButtonStateKuro.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 10),
+            followButtonStateKuro.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
+            followButtonStateKuro.trailingAnchor.constraint(lessThanOrEqualTo: glassPanelRenderingJari.trailingAnchor, constant: -28),
+            followButtonStateKuro.widthAnchor.constraint(equalToConstant: 24),
+            followButtonStateKuro.heightAnchor.constraint(equalToConstant: 15)
         ])
     }
 
-    @objc private func hostProfileTapped() {
-        onHostProfileTap?()
+    @objc private func hostIdentityExtractionMaro() {
+        hostProfileTapRoutingMiva?()
     }
 }
 
 final class LiveRibbonView: UIView {
-    private let gradientLayer = CAGradientLayer()
-    private let label = UILabel()
+    private let gradientBadgeDrawingSoli = CAGradientLayer()
+    private let glyphLabelSignalNavo = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -498,75 +498,75 @@ final class LiveRibbonView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        gradientLayer.frame = bounds
+        gradientBadgeDrawingSoli.frame = bounds
     }
 
     private func buildLayout() {
         layer.cornerRadius = 9
         layer.maskedCorners = [.layerMinXMinYCorner]
         clipsToBounds = true
-        gradientLayer.colors = [
+        gradientBadgeDrawingSoli.colors = [
             UIColor(red: 175 / 255, green: 123 / 255, blue: 255 / 255, alpha: 1).cgColor,
             UIColor(red: 91 / 255, green: 56 / 255, blue: 255 / 255, alpha: 1).cgColor,
             UIColor(red: 201 / 255, green: 142 / 255, blue: 236 / 255, alpha: 0.01).cgColor
         ]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        layer.insertSublayer(gradientLayer, at: 0)
+        gradientBadgeDrawingSoli.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientBadgeDrawingSoli.endPoint = CGPoint(x: 1, y: 0.5)
+        layer.insertSublayer(gradientBadgeDrawingSoli, at: 0)
 
-        label.text = "Live"
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 13, weight: .medium)
-        addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        glyphLabelSignalNavo.text = "Live"
+        glyphLabelSignalNavo.textColor = .white
+        glyphLabelSignalNavo.font = .systemFont(ofSize: 13, weight: .medium)
+        addSubview(glyphLabelSignalNavo)
+        glyphLabelSignalNavo.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            label.centerYAnchor.constraint(equalTo: centerYAnchor)
+            glyphLabelSignalNavo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            glyphLabelSignalNavo.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }
 
 // MARK: - TableView DataSource
 extension PulseCatruiRhythmFieler: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        trendRooms.count
+    func tableView(_ messageThreadTableSavi: UITableView, numberOfRowsInSection section: Int) -> Int {
+        trendCellSyncingPaxo.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TrendStreamCell.reuseID, for: indexPath) as! TrendStreamCell
-        let room = trendRooms[indexPath.row]
-        cell.sync(with: room, isFollowing: indexPath.row % 3 == 1)
-        cell.onHostProfileTap = { [weak self] in
-            self?.openUserProfile(room.hostUserId)
+    func tableView(_ messageThreadTableSavi: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let renderCellNodeKavi = messageThreadTableSavi.dequeueReusableCell(withIdentifier: TrendStreamCell.reuseID, for: indexPath) as! TrendStreamCell
+        let liveRoomCapsuleVexa = trendCellSyncingPaxo[indexPath.row]
+        renderCellNodeKavi.sync(with: liveRoomCapsuleVexa, isFollowing: indexPath.row % 3 == 1)
+        renderCellNodeKavi.hostProfileTapRoutingMiva = { [weak self] in
+            self?.profileParamBridgeRafi(liveRoomCapsuleVexa.hostIdentitySignalRivo)
         }
-        return cell
+        return renderCellNodeKavi
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        openLiveRoom(trendRooms[indexPath.row])
+    func tableView(_ messageThreadTableSavi: UITableView, didSelectRowAt indexPath: IndexPath) {
+        liveStatusMappingDeni(trendCellSyncingPaxo[indexPath.row])
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ messageThreadTableSavi: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let container = UIView()
         container.backgroundColor = .clear
-        let label = UILabel()
-        label.text = "Trend"
-        label.textColor = .white
-        label.font = .italicSystemFont(ofSize: 24)
-        container.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let glyphLabelSignalNavo = UILabel()
+        glyphLabelSignalNavo.text = "Trend"
+        glyphLabelSignalNavo.textColor = .white
+        glyphLabelSignalNavo.font = .italicSystemFont(ofSize: 24)
+        container.addSubview(glyphLabelSignalNavo)
+        glyphLabelSignalNavo.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            label.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -11)
+            glyphLabelSignalNavo.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            glyphLabelSignalNavo.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -11)
         ])
         return container
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ messageThreadTableSavi: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         58
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ messageThreadTableSavi: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         135
     }
 }

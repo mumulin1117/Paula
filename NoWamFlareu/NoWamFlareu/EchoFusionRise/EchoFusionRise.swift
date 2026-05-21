@@ -7,44 +7,43 @@
 
 import UIKit
 
-// Message
 class EchoFusionRise: UIViewController {
-    private var threads: [PaulaMessageThread] = []
+    private var messageThreadParsingLavoItems: [PaulaMessageThread] = []
 
-    private let tableView = UITableView(frame: .zero, style: .plain)
-    private let refreshControl = UIRefreshControl()
-    private let userHeaderView = UIView()
-    private let userStrip = StriderPulsePulseBelt(withpage: 2)
-    private let emptyStateView = MessageEmptyStateView()
-    private let lemonGlow = UIView()
-    private let oceanGlow = UIView()
+    private let messageThreadTableSavi = UITableView(frame: .zero, style: .plain)
+    private let pullRefreshCompletionMavoControl = UIRefreshControl()
+    private let userRosterHydrationMavoHeader = UIView()
+    private let relationUserHydrationDavoStrip = StriderPulsePulseBelt(withpage: 2)
+    private let emptyStateRenderingPavoView = MessageEmptyStateView()
+    private let neonAccentBalancingViro = UIView()
+    private let purpleBadgeStylingKeno = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDeepSpaceVisuals()
-        setupNavigationElements()
-        constructHierarchy()
-        layoutArenaElements()
-        bindInteractions()
-        loadMessagePage()
+        darkModeContrastLuma()
+        navigationBarRecoverySilo()
+        viewHierarchyInsertionMilo()
+        arenaTileCompositionSavo()
+        headerTapForwardingSora()
+        messageThreadParsingLavoPage()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureNavigationBar()
+        scrollEdgeAppearancePera()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        refreshHeaderFrame()
+        tableHeaderSizingSora()
     }
 
-    private func setupDeepSpaceVisuals() {
+    private func darkModeContrastLuma() {
         view.backgroundColor = UIColor(red: 2 / 255, green: 4 / 255, blue: 7 / 255, alpha: 1)
-        installBackgroundGlow()
+        shadowGlowRenderingQavi()
     }
 
-    private func setupNavigationElements() {
+    private func navigationBarRecoverySilo() {
         let titleLabel = UIImageView(image: UIImage(named: "MesTiaolersage"))
         titleLabel.contentMode = .scaleAspectFit
         titleLabel.frame = CGRect(x: 0, y: 0, width: 130, height: 26)
@@ -54,11 +53,11 @@ class EchoFusionRise: UIViewController {
         notificationButton.setImage(UIImage(named: "leadsertio"), for: .normal)
         notificationButton.imageView?.contentMode = .scaleAspectFit
         notificationButton.frame = CGRect(x: 0, y: 0, width: 118, height: 29)
-        notificationButton.addTarget(self, action: #selector(openNotification), for: .touchUpInside)
+        notificationButton.addTarget(self, action: #selector(notificationRouteOpeningQeli), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: notificationButton)
     }
 
-    private func configureNavigationBar() {
+    private func scrollEdgeAppearancePera() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .clear
@@ -69,177 +68,177 @@ class EchoFusionRise: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
 
-    private func installBackgroundGlow() {
-        lemonGlow.backgroundColor = UIColor(red: 207 / 255, green: 214 / 255, blue: 99 / 255, alpha: 0.45)
-        oceanGlow.backgroundColor = UIColor(red: 55 / 255, green: 97 / 255, blue: 172 / 255, alpha: 0.32)
-        lemonGlow.layer.cornerRadius = 58
-        oceanGlow.layer.cornerRadius = 72
+    private func shadowGlowRenderingQavi() {
+        neonAccentBalancingViro.backgroundColor = UIColor(red: 207 / 255, green: 214 / 255, blue: 99 / 255, alpha: 0.45)
+        purpleBadgeStylingKeno.backgroundColor = UIColor(red: 55 / 255, green: 97 / 255, blue: 172 / 255, alpha: 0.32)
+        neonAccentBalancingViro.layer.cornerRadius = 58
+        purpleBadgeStylingKeno.layer.cornerRadius = 72
 
-        [lemonGlow, oceanGlow].forEach {
+        [neonAccentBalancingViro, purpleBadgeStylingKeno].forEach {
             $0.layer.shadowOpacity = 0.9
             $0.layer.shadowRadius = 42
             $0.layer.shadowOffset = .zero
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        lemonGlow.layer.shadowColor = lemonGlow.backgroundColor?.cgColor
-        oceanGlow.layer.shadowColor = oceanGlow.backgroundColor?.cgColor
+        neonAccentBalancingViro.layer.shadowColor = neonAccentBalancingViro.backgroundColor?.cgColor
+        purpleBadgeStylingKeno.layer.shadowColor = purpleBadgeStylingKeno.backgroundColor?.cgColor
 
         NSLayoutConstraint.activate([
-            lemonGlow.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -56),
-            lemonGlow.topAnchor.constraint(equalTo: view.topAnchor, constant: -78),
-            lemonGlow.widthAnchor.constraint(equalToConstant: 154),
-            lemonGlow.heightAnchor.constraint(equalToConstant: 116),
+            neonAccentBalancingViro.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -56),
+            neonAccentBalancingViro.topAnchor.constraint(equalTo: view.topAnchor, constant: -78),
+            neonAccentBalancingViro.widthAnchor.constraint(equalToConstant: 154),
+            neonAccentBalancingViro.heightAnchor.constraint(equalToConstant: 116),
 
-            oceanGlow.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 28),
-            oceanGlow.topAnchor.constraint(equalTo: view.topAnchor, constant: -86),
-            oceanGlow.widthAnchor.constraint(equalToConstant: 212),
-            oceanGlow.heightAnchor.constraint(equalToConstant: 144)
+            purpleBadgeStylingKeno.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 28),
+            purpleBadgeStylingKeno.topAnchor.constraint(equalTo: view.topAnchor, constant: -86),
+            purpleBadgeStylingKeno.widthAnchor.constraint(equalToConstant: 212),
+            purpleBadgeStylingKeno.heightAnchor.constraint(equalToConstant: 144)
         ])
     }
 
-    private func constructHierarchy() {
-        tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
-        tableView.showsVerticalScrollIndicator = false
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(MessageThreadCell.self, forCellReuseIdentifier: MessageThreadCell.reuseID)
-        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 18, right: 0)
-        tableView.refreshControl = refreshControl
-        refreshControl.tintColor = .white
-        refreshControl.addTarget(self, action: #selector(loadMessagePage), for: .valueChanged)
+    private func viewHierarchyInsertionMilo() {
+        messageThreadTableSavi.backgroundColor = .clear
+        messageThreadTableSavi.separatorStyle = .none
+        messageThreadTableSavi.showsVerticalScrollIndicator = false
+        messageThreadTableSavi.dataSource = self
+        messageThreadTableSavi.delegate = self
+        messageThreadTableSavi.register(MessageThreadCell.self, forCellReuseIdentifier: MessageThreadCell.reuseID)
+        messageThreadTableSavi.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 18, right: 0)
+        messageThreadTableSavi.refreshControl = pullRefreshCompletionMavoControl
+        pullRefreshCompletionMavoControl.tintColor = .white
+        pullRefreshCompletionMavoControl.addTarget(self, action: #selector(messageThreadParsingLavoPage), for: .valueChanged)
 
-        view.addSubview(tableView)
-        view.addSubview(emptyStateView)
+        view.addSubview(messageThreadTableSavi)
+        view.addSubview(emptyStateRenderingPavoView)
 
-        userHeaderView.addSubview(userStrip)
-        userStrip.translatesAutoresizingMaskIntoConstraints = false
+        userRosterHydrationMavoHeader.addSubview(relationUserHydrationDavoStrip)
+        relationUserHydrationDavoStrip.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            userStrip.topAnchor.constraint(equalTo: userHeaderView.topAnchor),
-            userStrip.leadingAnchor.constraint(equalTo: userHeaderView.leadingAnchor),
-            userStrip.trailingAnchor.constraint(equalTo: userHeaderView.trailingAnchor),
-            userStrip.heightAnchor.constraint(equalToConstant: 116)
+            relationUserHydrationDavoStrip.topAnchor.constraint(equalTo: userRosterHydrationMavoHeader.topAnchor),
+            relationUserHydrationDavoStrip.leadingAnchor.constraint(equalTo: userRosterHydrationMavoHeader.leadingAnchor),
+            relationUserHydrationDavoStrip.trailingAnchor.constraint(equalTo: userRosterHydrationMavoHeader.trailingAnchor),
+            relationUserHydrationDavoStrip.heightAnchor.constraint(equalToConstant: 116)
         ])
-        tableView.tableHeaderView = userHeaderView
+        messageThreadTableSavi.tableHeaderView = userRosterHydrationMavoHeader
     }
 
-    private func layoutArenaElements() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        emptyStateView.translatesAutoresizingMaskIntoConstraints = false
+    private func arenaTileCompositionSavo() {
+        messageThreadTableSavi.translatesAutoresizingMaskIntoConstraints = false
+        emptyStateRenderingPavoView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            messageThreadTableSavi.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            messageThreadTableSavi.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            messageThreadTableSavi.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            messageThreadTableSavi.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emptyStateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 270),
-            emptyStateView.widthAnchor.constraint(equalToConstant: 150),
-            emptyStateView.heightAnchor.constraint(equalToConstant: 130)
+            emptyStateRenderingPavoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyStateRenderingPavoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 270),
+            emptyStateRenderingPavoView.widthAnchor.constraint(equalToConstant: 150),
+            emptyStateRenderingPavoView.heightAnchor.constraint(equalToConstant: 130)
         ])
     }
 
-    private func bindInteractions() {
-        userStrip.onMemberTap = { [weak self] user in
-            self?.openChat(userId: user.userId)
+    private func headerTapForwardingSora() {
+        relationUserHydrationDavoStrip.rosterTapRelayKumo = { [weak self] user in
+            self?.messageThreadRoutingNilo(playerIdentitySignalMoro: user.playerIdentitySignalMoro)
         }
     }
 
-    private func refreshHeaderFrame() {
-        let width = tableView.bounds.width
+    private func tableHeaderSizingSora() {
+        let width = messageThreadTableSavi.bounds.width
         guard width > 0 else { return }
         let targetFrame = CGRect(x: 0, y: 0, width: width + 30, height: 136)
-        if userHeaderView.frame != targetFrame {
-            userHeaderView.frame = targetFrame
-            tableView.tableHeaderView = userHeaderView
+        if userRosterHydrationMavoHeader.frame != targetFrame {
+            userRosterHydrationMavoHeader.frame = targetFrame
+            messageThreadTableSavi.tableHeaderView = userRosterHydrationMavoHeader
         }
     }
 
-    @objc private func loadMessagePage() {
+    @objc private func messageThreadParsingLavoPage() {
         let group = DispatchGroup()
         var latestUsers: [PulseRosterUser]?
         var latestThreads: [PaulaMessageThread]?
 
         group.enter()
-        PaulaHomeAPI.loadHomeUsers { users in
-            latestUsers = users
+        PaulaHomeAPI.userRosterHydrationMavo { playerRosterDeckVani in
+            latestUsers = playerRosterDeckVani
             group.leave()
         }
 
         group.enter()
-        PaulaMessageAPI.loadMessageThreads { messages in
+        PaulaMessageAPI.threadCellAvatarLoadingFiro { messages in
             latestThreads = messages
             group.leave()
         }
 
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
-            self.userStrip.updateMembers(latestUsers ?? PaulaHomeAPI.fallbackUsers())
-            self.threads = latestThreads ?? []
-            self.emptyStateView.isHidden = !self.threads.isEmpty
-            self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
+            self.relationUserHydrationDavoStrip.rosterPulseRefreshVami(latestUsers ?? PaulaHomeAPI.fallbackUserFactoryRumi())
+            self.messageThreadParsingLavoItems = latestThreads ?? []
+            self.emptyStateRenderingPavoView.isHidden = !self.messageThreadParsingLavoItems.isEmpty
+            self.messageThreadTableSavi.reloadData()
+            self.pullRefreshCompletionMavoControl.endRefreshing()
         }
     }
     
-//    @objc private func refreshHomeData() {
+//    @objc private func pullRefreshCompletionMavo() {
 //        let group = DispatchGroup()
 //        var latestUsers: [PulseRosterUser]?
 //        var latestRooms: [SquadChamber]?
 //
 //        group.enter()
-//        PaulaHomeAPI.loadHomeUsers { users in
-//            latestUsers = users
+//        PaulaHomeAPI.userRosterHydrationMavo { playerRosterDeckVani in
+//            latestUsers = playerRosterDeckVani
 //            group.leave()
 //        }
 //
 //        group.enter()
-//        PaulaHomeAPI.loadVoiceRooms { rooms in
-//            latestRooms = rooms
+//        PaulaHomeAPI.voiceRoomRoutingNima { roomDeckVectorQemi in
+//            latestRooms = roomDeckVectorQemi
 //            group.leave()
 //        }
 //
 //        group.notify(queue: .main) { [weak self] in
 //            guard let self else { return }
 //            if let latestUsers {
-//                self.striderPulseView.updateMembers(latestUsers)
+//                self.memberStripHydrationQaro.rosterPulseRefreshVami(latestUsers)
 //            }
 //            if let latestRooms, !latestRooms.isEmpty {
-//                self.chambers = latestRooms
-//                self.chamberHeightConstraint?.constant = self.gridHeight(for: latestRooms.count)
-//                self.chamberMatrix.reloadData()
+//                self.voiceRoomCompositionNori = latestRooms
+//                self.roomHeightConstraintTavi?.constant = self.twoColumnRoomLayoutVilo(for: latestRooms.count)
+//                self.recommendGridReloadingVoni.reloadData()
 //            }
-//            self.refreshControl.endRefreshing()
+//            self.pullRefreshCompletionMavoControl.endRefreshing()
 //        }
 //    }
 
-    @objc private func openNotification() {
-        pushPaulaH5(.NWEUSignalBloom)
+    @objc private func notificationRouteOpeningQeli() {
+        pushPaulaFashion(.NWEUSignalBloom)
     }
 
-    private func openChat(userId: String) {
-        guard !userId.isEmpty else { return }
-        pushPaulaH5(.clipRhythmTrail, param: userId)
+    private func messageThreadRoutingNilo(playerIdentitySignalMoro: String) {
+        guard !playerIdentitySignalMoro.isEmpty else { return }
+        pushPaulaFashion(.clipRhythmTrail, param: playerIdentitySignalMoro)
     }
 }
 
 final class MessageThreadCell: UITableViewCell {
     static let reuseID = "MessageThreadCell"
 
-    private let avatarImageView = UIImageView()
-    private let avatarRibbon = UILabel()
-    private let cardView = UIView()
-    private let cardGradientLayer = CAGradientLayer()
+    private let avatarFrameCompositingLivo = UIImageView()
+    private let avatarRibbonRenderingQivo = UILabel()
+    private let glassPanelRenderingJariCard = UIView()
+    private let gradientBadgeDrawingSoli = CAGradientLayer()
     private let nameLabel = UILabel()
-    private let contentLabel = UILabel()
-    private let vipBadge = UILabel()
-    private let unreadDot = UIView()
+    private let contentPreviewFallbackSumiLabel = UILabel()
+    private let vipExpireDetectionHaviBadge = UILabel()
+    private let unreadDotRenderingTeli = UIView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupCellLayout()
+        cellCornerClippingDera()
     }
 
     required init?(coder: NSCoder) {
@@ -248,123 +247,123 @@ final class MessageThreadCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        cardGradientLayer.frame = cardView.bounds
+        gradientBadgeDrawingSoli.frame = glassPanelRenderingJariCard.bounds
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarImageView.image = nil
+        avatarFrameCompositingLivo.image = nil
         nameLabel.text = nil
-        contentLabel.text = nil
+        contentPreviewFallbackSumiLabel.text = nil
     }
 
-    func sync(with thread: PaulaMessageThread) {
-        nameLabel.text = thread.name
-        contentLabel.text = thread.content
-        avatarImageView.setPaulaImage(
-            remoteURL: thread.avatarURL,
+    func sync(with chatThreadPulseQiro: PaulaMessageThread) {
+        nameLabel.text = chatThreadPulseQiro.name
+        contentPreviewFallbackSumiLabel.text = chatThreadPulseQiro.messageCopyRibbonSora
+        avatarFrameCompositingLivo.remoteImageRequestVera(
+            remoteURL: chatThreadPulseQiro.avatarStreamEndpointKiva,
             placeholder: PaulaAuthSession.defaultAvatarImage(size: CGSize(width: 96, height: 96))
         )
-        vipBadge.isHidden = !thread.showsVIP
-        unreadDot.isHidden = !thread.isUnread
+        vipExpireDetectionHaviBadge.isHidden = !chatThreadPulseQiro.vipAuraFlagPelo
+        unreadDotRenderingTeli.isHidden = !chatThreadPulseQiro.unreadStateFlagMavi
     }
 
-    private func setupCellLayout() {
+    private func cellCornerClippingDera() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
         selectionStyle = .none
 
-        cardGradientLayer.colors = [
+        gradientBadgeDrawingSoli.colors = [
             UIColor(red: 31 / 255, green: 2 / 255, blue: 37 / 255, alpha: 0.72).cgColor,
             UIColor(red: 63 / 255, green: 41 / 255, blue: 69 / 255, alpha: 0.72).cgColor
         ]
-        cardGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        cardGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        cardView.layer.insertSublayer(cardGradientLayer, at: 0)
-        cardView.layer.cornerRadius = 5
-        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-        cardView.layer.masksToBounds = true
-        contentView.addSubview(cardView)
+        gradientBadgeDrawingSoli.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientBadgeDrawingSoli.endPoint = CGPoint(x: 1, y: 0.5)
+        glassPanelRenderingJariCard.layer.insertSublayer(gradientBadgeDrawingSoli, at: 0)
+        glassPanelRenderingJariCard.layer.cornerRadius = 5
+        glassPanelRenderingJariCard.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        glassPanelRenderingJariCard.layer.masksToBounds = true
+        contentView.addSubview(glassPanelRenderingJariCard)
 
-        avatarImageView.backgroundColor = UIColor(red: 187 / 255, green: 91 / 255, blue: 255 / 255, alpha: 1)
-        avatarImageView.contentMode = .scaleAspectFill
-        avatarImageView.layer.cornerRadius = 44.5
-        avatarImageView.clipsToBounds = true
-        contentView.addSubview(avatarImageView)
+        avatarFrameCompositingLivo.backgroundColor = UIColor(red: 187 / 255, green: 91 / 255, blue: 255 / 255, alpha: 1)
+        avatarFrameCompositingLivo.contentMode = .scaleAspectFill
+        avatarFrameCompositingLivo.layer.cornerRadius = 44.5
+        avatarFrameCompositingLivo.clipsToBounds = true
+        contentView.addSubview(avatarFrameCompositingLivo)
 
-        avatarRibbon.text = "Live"
-        avatarRibbon.textColor = .white
-        avatarRibbon.font = .systemFont(ofSize: 13, weight: .medium)
-        avatarRibbon.textAlignment = .center
-        avatarRibbon.backgroundColor = UIColor(red: 210 / 255, green: 12 / 255, blue: 224 / 255, alpha: 0.82)
-        contentView.addSubview(avatarRibbon)
+        avatarRibbonRenderingQivo.text = "Live"
+        avatarRibbonRenderingQivo.textColor = .white
+        avatarRibbonRenderingQivo.font = .systemFont(ofSize: 13, weight: .medium)
+        avatarRibbonRenderingQivo.textAlignment = .center
+        avatarRibbonRenderingQivo.backgroundColor = UIColor(red: 210 / 255, green: 12 / 255, blue: 224 / 255, alpha: 0.82)
+        contentView.addSubview(avatarRibbonRenderingQivo)
 
         nameLabel.font = .systemFont(ofSize: 24, weight: .semibold)
         nameLabel.textColor = .white
         nameLabel.lineBreakMode = .byTruncatingTail
-        cardView.addSubview(nameLabel)
+        glassPanelRenderingJariCard.addSubview(nameLabel)
 
-        contentLabel.font = .systemFont(ofSize: 15, weight: .regular)
-        contentLabel.textColor = UIColor.white.withAlphaComponent(0.71)
-        contentLabel.lineBreakMode = .byTruncatingTail
-        cardView.addSubview(contentLabel)
+        contentPreviewFallbackSumiLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        contentPreviewFallbackSumiLabel.textColor = UIColor.white.withAlphaComponent(0.71)
+        contentPreviewFallbackSumiLabel.lineBreakMode = .byTruncatingTail
+        glassPanelRenderingJariCard.addSubview(contentPreviewFallbackSumiLabel)
 
-        vipBadge.text = "VIP"
-        vipBadge.textColor = .white
-        vipBadge.font = .italicSystemFont(ofSize: 12)
-        vipBadge.textAlignment = .center
-        vipBadge.backgroundColor = UIColor(red: 250 / 255, green: 99 / 255, blue: 147 / 255, alpha: 1)
-        vipBadge.layer.cornerRadius = 7
-        vipBadge.clipsToBounds = true
-        cardView.addSubview(vipBadge)
+        vipExpireDetectionHaviBadge.text = "VIP"
+        vipExpireDetectionHaviBadge.textColor = .white
+        vipExpireDetectionHaviBadge.font = .italicSystemFont(ofSize: 12)
+        vipExpireDetectionHaviBadge.textAlignment = .center
+        vipExpireDetectionHaviBadge.backgroundColor = UIColor(red: 250 / 255, green: 99 / 255, blue: 147 / 255, alpha: 1)
+        vipExpireDetectionHaviBadge.layer.cornerRadius = 7
+        vipExpireDetectionHaviBadge.clipsToBounds = true
+        glassPanelRenderingJariCard.addSubview(vipExpireDetectionHaviBadge)
 
-        unreadDot.backgroundColor = UIColor(red: 250 / 255, green: 99 / 255, blue: 147 / 255, alpha: 1)
-        unreadDot.layer.cornerRadius = 4
-        cardView.addSubview(unreadDot)
+        unreadDotRenderingTeli.backgroundColor = UIColor(red: 250 / 255, green: 99 / 255, blue: 147 / 255, alpha: 1)
+        unreadDotRenderingTeli.layer.cornerRadius = 4
+        glassPanelRenderingJariCard.addSubview(unreadDotRenderingTeli)
 
-        [cardView, avatarImageView, avatarRibbon, nameLabel, contentLabel, vipBadge, unreadDot].forEach {
+        [glassPanelRenderingJariCard, avatarFrameCompositingLivo, avatarRibbonRenderingQivo, nameLabel, contentPreviewFallbackSumiLabel, vipExpireDetectionHaviBadge, unreadDotRenderingTeli].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
         NSLayoutConstraint.activate([
-            avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
-            avatarImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 89),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 89),
+            avatarFrameCompositingLivo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
+            avatarFrameCompositingLivo.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            avatarFrameCompositingLivo.widthAnchor.constraint(equalToConstant: 89),
+            avatarFrameCompositingLivo.heightAnchor.constraint(equalToConstant: 89),
 
-            avatarRibbon.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: 16),
-            avatarRibbon.trailingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: -7),
-            avatarRibbon.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
-            avatarRibbon.heightAnchor.constraint(equalToConstant: 26),
+            avatarRibbonRenderingQivo.leadingAnchor.constraint(equalTo: avatarFrameCompositingLivo.leadingAnchor, constant: 16),
+            avatarRibbonRenderingQivo.trailingAnchor.constraint(equalTo: avatarFrameCompositingLivo.trailingAnchor, constant: -7),
+            avatarRibbonRenderingQivo.bottomAnchor.constraint(equalTo: avatarFrameCompositingLivo.bottomAnchor),
+            avatarRibbonRenderingQivo.heightAnchor.constraint(equalToConstant: 26),
 
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 71),
-            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cardView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            cardView.heightAnchor.constraint(equalToConstant: 70),
+            glassPanelRenderingJariCard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 71),
+            glassPanelRenderingJariCard.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            glassPanelRenderingJariCard.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            glassPanelRenderingJariCard.heightAnchor.constraint(equalToConstant: 70),
 
-            nameLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 35),
-            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: vipBadge.leadingAnchor, constant: -10),
-            nameLabel.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 13),
+            nameLabel.leadingAnchor.constraint(equalTo: glassPanelRenderingJariCard.leadingAnchor, constant: 35),
+            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: vipExpireDetectionHaviBadge.leadingAnchor, constant: -10),
+            nameLabel.topAnchor.constraint(equalTo: glassPanelRenderingJariCard.topAnchor, constant: 13),
 
-            vipBadge.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 10),
-            vipBadge.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
-            vipBadge.widthAnchor.constraint(equalToConstant: 38),
-            vipBadge.heightAnchor.constraint(equalToConstant: 16),
+            vipExpireDetectionHaviBadge.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor, constant: 10),
+            vipExpireDetectionHaviBadge.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
+            vipExpireDetectionHaviBadge.widthAnchor.constraint(equalToConstant: 38),
+            vipExpireDetectionHaviBadge.heightAnchor.constraint(equalToConstant: 16),
 
-            contentLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            contentLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
-            contentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            contentPreviewFallbackSumiLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            contentPreviewFallbackSumiLabel.trailingAnchor.constraint(equalTo: glassPanelRenderingJariCard.trailingAnchor, constant: -20),
+            contentPreviewFallbackSumiLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
 
-            unreadDot.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -14),
-            unreadDot.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 14),
-            unreadDot.widthAnchor.constraint(equalToConstant: 8),
-            unreadDot.heightAnchor.constraint(equalToConstant: 8)
+            unreadDotRenderingTeli.trailingAnchor.constraint(equalTo: glassPanelRenderingJariCard.trailingAnchor, constant: -14),
+            unreadDotRenderingTeli.topAnchor.constraint(equalTo: glassPanelRenderingJariCard.topAnchor, constant: 14),
+            unreadDotRenderingTeli.widthAnchor.constraint(equalToConstant: 8),
+            unreadDotRenderingTeli.heightAnchor.constraint(equalToConstant: 8)
         ])
     }
 }
 
 final class MessageEmptyStateView: UIView {
-    private let iconView = UIImageView()
+    private let emptyStateIconRenderingPavo = UIImageView()
     private let titleLabel = UILabel()
 
     override init(frame: CGRect) {
@@ -378,10 +377,10 @@ final class MessageEmptyStateView: UIView {
 
     private func buildLayout() {
         isHidden = true
-        iconView.image = UIImage(systemName: "envelope.fill")
-        iconView.tintColor = UIColor(red: 255 / 255, green: 216 / 255, blue: 64 / 255, alpha: 1)
-        iconView.contentMode = .scaleAspectFit
-        addSubview(iconView)
+        emptyStateIconRenderingPavo.image = UIImage(systemName: "envelope.fill")
+        emptyStateIconRenderingPavo.tintColor = UIColor(red: 255 / 255, green: 216 / 255, blue: 64 / 255, alpha: 1)
+        emptyStateIconRenderingPavo.contentMode = .scaleAspectFit
+        addSubview(emptyStateIconRenderingPavo)
 
         titleLabel.text = "No data"
         titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
@@ -389,14 +388,14 @@ final class MessageEmptyStateView: UIView {
         titleLabel.textAlignment = .center
         addSubview(titleLabel)
 
-        [iconView, titleLabel].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [emptyStateIconRenderingPavo, titleLabel].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         NSLayoutConstraint.activate([
-            iconView.topAnchor.constraint(equalTo: topAnchor),
-            iconView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            iconView.widthAnchor.constraint(equalToConstant: 85),
-            iconView.heightAnchor.constraint(equalToConstant: 85),
+            emptyStateIconRenderingPavo.topAnchor.constraint(equalTo: topAnchor),
+            emptyStateIconRenderingPavo.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emptyStateIconRenderingPavo.widthAnchor.constraint(equalToConstant: 85),
+            emptyStateIconRenderingPavo.heightAnchor.constraint(equalToConstant: 85),
 
-            titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 14),
+            titleLabel.topAnchor.constraint(equalTo: emptyStateIconRenderingPavo.bottomAnchor, constant: 14),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -404,23 +403,23 @@ final class MessageEmptyStateView: UIView {
 }
 
 extension EchoFusionRise: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        threads.count
+    func tableView(_ messageThreadTableSavi: UITableView, numberOfRowsInSection section: Int) -> Int {
+        messageThreadParsingLavoItems.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MessageThreadCell.reuseID, for: indexPath) as! MessageThreadCell
-        cell.sync(with: threads[indexPath.row])
-        return cell
+    func tableView(_ messageThreadTableSavi: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let renderCellNodeKavi = messageThreadTableSavi.dequeueReusableCell(withIdentifier: MessageThreadCell.reuseID, for: indexPath) as! MessageThreadCell
+        renderCellNodeKavi.sync(with: messageThreadParsingLavoItems[indexPath.row])
+        return renderCellNodeKavi
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ messageThreadTableSavi: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         104
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let thread = threads[indexPath.row]
-        PaulaMessageAPI.markRead(messageId: thread.messageId)
-        openChat(userId: thread.userId)
+    func tableView(_ messageThreadTableSavi: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatThreadPulseQiro = messageThreadParsingLavoItems[indexPath.row]
+        PaulaMessageAPI.readFlagDecodingVumi(threadIdentitySignalPavi: chatThreadPulseQiro.threadIdentitySignalPavi)
+        messageThreadRoutingNilo(playerIdentitySignalMoro: chatThreadPulseQiro.playerIdentitySignalMoro)
     }
 }

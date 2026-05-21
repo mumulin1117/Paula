@@ -8,45 +8,41 @@
 import UIKit
 
 class CatruiIdentityAuthPortal: UIViewController {
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    private let emailInput = PaulaRoundTextField(symbolName: "envelope.fill", placeholder: "Enter your email")
-    private let passwordInput = PaulaRoundTextField(symbolName: "lock.fill", placeholder: "Enter password")
-    private let actionPulseBtn = PaulaPrimaryButton(title: "Login")
-    private let registerSwitchBtn = PaulaPrimaryButton(title: "Create New Account", outlined: true)
-    private let termsCheck = PaulaCheckboxButton()
-    private let loadingView = UIActivityIndicatorView(style: .large)
+    private let scrollFrameBudgetingLiroView = UIScrollView()
+    private let contentStackHydrationRivoView = UIView()
+    private let emailAuthParsingRivoInput = PaulaRoundTextField(systemLockIconRenderingPori: "envelope.fill", placeholder: "Enter your email")
+    private let passwordGatePromptingZaliInput = PaulaRoundTextField(systemLockIconRenderingPori: "lock.fill", placeholder: "Enter password")
+    private let authSessionPersistenceKumiButton = PaulaPrimaryButton(title: "Login")
+    private let signupDraftStorageTaloButton = PaulaPrimaryButton(title: "Create New Account", outlined: true)
+    private let ageGateVerificationMaroCheck = PaulaCheckboxButton()
+    private let loadingStateRenderingQavi = UIActivityIndicatorView(style: .large)
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupVisualAtmosphere()
-        constructPortalHierarchy()
+        darkModeContrastLuma()
+        identityPortalLaunchQariLayout()
     }
 
-    private func setupVisualAtmosphere() {
+    private func darkModeContrastLuma() {
         installPastelGradient()
         navigationController?.isNavigationBarHidden = true
     }
 
-    private func constructPortalHierarchy() {
-//        let closeButton = UIButton(type: .system)
-//        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-//        closeButton.tintColor = .black
-//        closeButton.addTarget(self, action: #selector(closePortal), for: .touchUpInside)
+    private func identityPortalLaunchQariLayout() {
 
         let eulaButton = UIButton()
         eulaButton.setImage(UIImage.init(named: "eulaButton"), for: .normal)
-        eulaButton.addTarget(self, action: #selector(openEULA), for: .touchUpInside)
+        eulaButton.addTarget(self, action: #selector(agreementRouteMappingTeni), for: .touchUpInside)
 
      
         let titleLabel = UIImageView(image: UIImage.init(named: "Log Tiaoln"))
        
 
-        passwordInput.isSecureTextEntry = true
-        emailInput.keyboardType = .emailAddress
+        passwordGatePromptingZaliInput.isSecureTextEntry = true
+        emailAuthParsingRivoInput.keyboardType = .emailAddress
 
         let orLabel = UILabel()
         orLabel.text = "Or"
@@ -66,170 +62,170 @@ class CatruiIdentityAuthPortal: UIViewController {
         termsLabel.font = .systemFont(ofSize: 14, weight: .regular)
         termsLabel.numberOfLines = 0
 
-        termsCheck.isChecked = true
-        loadingView.color = .white
-        loadingView.hidesWhenStopped = true
+        ageGateVerificationMaroCheck.isChecked = true
+        loadingStateRenderingQavi.color = .white
+        loadingStateRenderingQavi.hidesWhenStopped = true
 
-        actionPulseBtn.addTarget(self, action: #selector(handleAuthPulse), for: .touchUpInside)
-        registerSwitchBtn.addTarget(self, action: #selector(openRegisterFlow), for: .touchUpInside)
+        authSessionPersistenceKumiButton.addTarget(self, action: #selector(authSessionPersistenceKumi), for: .touchUpInside)
+        signupDraftStorageTaloButton.addTarget(self, action: #selector(signupDraftStorageTalo), for: .touchUpInside)
 
-        scrollView.alwaysBounceVertical = true
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.keyboardDismissMode = .interactive
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        scrollFrameBudgetingLiroView.alwaysBounceVertical = true
+        scrollFrameBudgetingLiroView.showsVerticalScrollIndicator = false
+        scrollFrameBudgetingLiroView.keyboardDismissMode = .interactive
+        view.addSubview(scrollFrameBudgetingLiroView)
+        scrollFrameBudgetingLiroView.addSubview(contentStackHydrationRivoView)
+        scrollFrameBudgetingLiroView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackHydrationRivoView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollFrameBudgetingLiroView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollFrameBudgetingLiroView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollFrameBudgetingLiroView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollFrameBudgetingLiroView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
-            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.heightAnchor)
+            contentStackHydrationRivoView.topAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.contentLayoutGuide.topAnchor),
+            contentStackHydrationRivoView.leadingAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.contentLayoutGuide.leadingAnchor),
+            contentStackHydrationRivoView.trailingAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.contentLayoutGuide.trailingAnchor),
+            contentStackHydrationRivoView.bottomAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.contentLayoutGuide.bottomAnchor),
+            contentStackHydrationRivoView.widthAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.frameLayoutGuide.widthAnchor),
+            contentStackHydrationRivoView.heightAnchor.constraint(greaterThanOrEqualTo: scrollFrameBudgetingLiroView.frameLayoutGuide.heightAnchor)
         ])
 
         [
-//            closeButton,
+//            closeButtonOverlayMavi,
             eulaButton,
          
             titleLabel,
-            emailInput,
-            passwordInput,
-            actionPulseBtn,
+            emailAuthParsingRivoInput,
+            passwordGatePromptingZaliInput,
+            authSessionPersistenceKumiButton,
             leftLine,
             orLabel,
             rightLine,
-            registerSwitchBtn,
-            termsCheck,
+            signupDraftStorageTaloButton,
+            ageGateVerificationMaroCheck,
             termsLabel
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            contentView.addSubview($0)
+            contentStackHydrationRivoView.addSubview($0)
         }
 
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(loadingView)
+        loadingStateRenderingQavi.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(loadingStateRenderingQavi)
 
         NSLayoutConstraint.activate([
-//            closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 24),
-//            closeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-//            closeButton.widthAnchor.constraint(equalToConstant: 34),
-//            closeButton.heightAnchor.constraint(equalToConstant: 34),
+//            closeButtonOverlayMavi.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 24),
+//            closeButtonOverlayMavi.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 24),
+//            closeButtonOverlayMavi.widthAnchor.constraint(equalToConstant: 34),
+//            closeButtonOverlayMavi.heightAnchor.constraint(equalToConstant: 34),
 
-            eulaButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 22),
-            eulaButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            eulaButton.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 22),
+            eulaButton.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -30),
             eulaButton.widthAnchor.constraint(equalToConstant: 82),
             eulaButton.heightAnchor.constraint(equalToConstant: 44),
 
-//            blueEmoji.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -56),
-//            blueEmoji.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 64),
+//            blueEmoji.topAnchor.constraint(equalTo: contentStackHydrationRivoView.topAnchor, constant: -56),
+//            blueEmoji.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: 64),
 //            blueEmoji.widthAnchor.constraint(equalToConstant: 236),
 //            blueEmoji.heightAnchor.constraint(equalToConstant: 236),
 //
-//            pinkEmoji.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 114),
-//            pinkEmoji.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -96),
+//            pinkEmoji.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 114),
+//            pinkEmoji.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: -96),
 //            pinkEmoji.widthAnchor.constraint(equalToConstant: 250),
 //            pinkEmoji.heightAnchor.constraint(equalToConstant: 250),
 
-            titleLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 270),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -46),
+            titleLabel.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 270),
+            titleLabel.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -46),
 
-            emailInput.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 88),
-            emailInput.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            emailInput.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            emailInput.heightAnchor.constraint(equalToConstant: 50),
+            emailAuthParsingRivoInput.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 88),
+            emailAuthParsingRivoInput.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 40),
+            emailAuthParsingRivoInput.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -40),
+            emailAuthParsingRivoInput.heightAnchor.constraint(equalToConstant: 50),
 
-            passwordInput.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 22),
-            passwordInput.leadingAnchor.constraint(equalTo: emailInput.leadingAnchor),
-            passwordInput.trailingAnchor.constraint(equalTo: emailInput.trailingAnchor),
-            passwordInput.heightAnchor.constraint(equalToConstant: 50),
+            passwordGatePromptingZaliInput.topAnchor.constraint(equalTo: emailAuthParsingRivoInput.bottomAnchor, constant: 22),
+            passwordGatePromptingZaliInput.leadingAnchor.constraint(equalTo: emailAuthParsingRivoInput.leadingAnchor),
+            passwordGatePromptingZaliInput.trailingAnchor.constraint(equalTo: emailAuthParsingRivoInput.trailingAnchor),
+            passwordGatePromptingZaliInput.heightAnchor.constraint(equalToConstant: 50),
 
-            actionPulseBtn.topAnchor.constraint(equalTo: passwordInput.bottomAnchor, constant: 34),
-            actionPulseBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
-            actionPulseBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
-            actionPulseBtn.heightAnchor.constraint(equalToConstant: 56),
+            authSessionPersistenceKumiButton.topAnchor.constraint(equalTo: passwordGatePromptingZaliInput.bottomAnchor, constant: 34),
+            authSessionPersistenceKumiButton.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 30),
+            authSessionPersistenceKumiButton.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -30),
+            authSessionPersistenceKumiButton.heightAnchor.constraint(equalToConstant: 56),
 
-            orLabel.topAnchor.constraint(equalTo: actionPulseBtn.bottomAnchor, constant: 22),
-            orLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            orLabel.topAnchor.constraint(equalTo: authSessionPersistenceKumiButton.bottomAnchor, constant: 22),
+            orLabel.centerXAnchor.constraint(equalTo: contentStackHydrationRivoView.centerXAnchor),
             orLabel.widthAnchor.constraint(equalToConstant: 44),
 
             leftLine.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
-            leftLine.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 52),
+            leftLine.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 52),
             leftLine.trailingAnchor.constraint(equalTo: orLabel.leadingAnchor, constant: -8),
             leftLine.heightAnchor.constraint(equalToConstant: 1),
 
             rightLine.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
             rightLine.leadingAnchor.constraint(equalTo: orLabel.trailingAnchor, constant: 8),
-            rightLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -52),
+            rightLine.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -52),
             rightLine.heightAnchor.constraint(equalToConstant: 1),
 
-            registerSwitchBtn.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 22),
-            registerSwitchBtn.leadingAnchor.constraint(equalTo: actionPulseBtn.leadingAnchor),
-            registerSwitchBtn.trailingAnchor.constraint(equalTo: actionPulseBtn.trailingAnchor),
-            registerSwitchBtn.heightAnchor.constraint(equalToConstant: 56),
+            signupDraftStorageTaloButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 22),
+            signupDraftStorageTaloButton.leadingAnchor.constraint(equalTo: authSessionPersistenceKumiButton.leadingAnchor),
+            signupDraftStorageTaloButton.trailingAnchor.constraint(equalTo: authSessionPersistenceKumiButton.trailingAnchor),
+            signupDraftStorageTaloButton.heightAnchor.constraint(equalToConstant: 56),
 
-            termsCheck.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 44),
-            termsCheck.topAnchor.constraint(equalTo: registerSwitchBtn.bottomAnchor, constant: 34),
-            termsCheck.widthAnchor.constraint(equalToConstant: 28),
-            termsCheck.heightAnchor.constraint(equalToConstant: 28),
+            ageGateVerificationMaroCheck.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 44),
+            ageGateVerificationMaroCheck.topAnchor.constraint(equalTo: signupDraftStorageTaloButton.bottomAnchor, constant: 34),
+            ageGateVerificationMaroCheck.widthAnchor.constraint(equalToConstant: 28),
+            ageGateVerificationMaroCheck.heightAnchor.constraint(equalToConstant: 28),
 
-            termsLabel.leadingAnchor.constraint(equalTo: termsCheck.trailingAnchor, constant: 12),
-            termsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -34),
-            termsLabel.centerYAnchor.constraint(equalTo: termsCheck.centerYAnchor, constant: 9),
-            termsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44),
+            termsLabel.leadingAnchor.constraint(equalTo: ageGateVerificationMaroCheck.trailingAnchor, constant: 12),
+            termsLabel.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -34),
+            termsLabel.centerYAnchor.constraint(equalTo: ageGateVerificationMaroCheck.centerYAnchor, constant: 9),
+            termsLabel.bottomAnchor.constraint(equalTo: contentStackHydrationRivoView.bottomAnchor, constant: -44),
 
-            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            loadingStateRenderingQavi.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingStateRenderingQavi.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 
-    @objc private func handleAuthPulse() {
-        guard termsCheck.isChecked else {
+    @objc private func authSessionPersistenceKumi() {
+        guard ageGateVerificationMaroCheck.isChecked else {
             showAlert("Please accept the terms first.")
             return
         }
-        let email = (emailInput.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        let password = passwordInput.text ?? ""
-        guard email.contains("@"), email.contains(".") else {
+        let loginAddressCueMavo = (emailAuthParsingRivoInput.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let passcodeRelayTokenDori = passwordGatePromptingZaliInput.text ?? ""
+        guard loginAddressCueMavo.contains("@"), loginAddressCueMavo.contains(".") else {
             showAlert("Please enter a valid email.")
             return
         }
-        guard !password.isEmpty else {
+        guard !passcodeRelayTokenDori.isEmpty else {
             showAlert("Please enter your password.")
             return
         }
 
         view.isUserInteractionEnabled = false
-        loadingView.startAnimating()
-        PaulaAuthAPI.emailLogin(email: email, password: password, type: "1") { [weak self] result in
-            self?.loadingView.stopAnimating()
+        loadingStateRenderingQavi.startAnimating()
+        PaulaAuthAPI.emailLogin(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, type: "1") { [weak self] requestOutcomeFluxTavi in
+            self?.loadingStateRenderingQavi.stopAnimating()
             self?.view.isUserInteractionEnabled = true
-            switch result {
-            case .success(let profile):
-                PaulaAuthSession.save(profile)
-                CatruiPulseOrchestrator.shared.launchMainConsole()
+            switch requestOutcomeFluxTavi {
+            case .success(let playerProfileCacheNero):
+                PaulaAuthSession.save(playerProfileCacheNero)
+                CatruiPulseOrchestrator.shared.mainConsoleLaunchViro()
             case .failure:
                 self?.showAlert("Login failed. Please try again.")
             }
         }
     }
 
-    @objc private func openRegisterFlow() {
-        guard termsCheck.isChecked else {
+    @objc private func signupDraftStorageTalo() {
+        guard ageGateVerificationMaroCheck.isChecked else {
             showAlert("Please accept the terms first.")
             return
         }
         navigationController?.pushViewController(PaulaSignupProfileController(), animated: true)
     }
 
-    @objc private func closePortal() {
+    @objc private func rootPortalLaunchKeno() {
         if let navigationController, navigationController.viewControllers.count > 1 {
             navigationController.popViewController(animated: true)
         } else {
@@ -237,7 +233,7 @@ class CatruiIdentityAuthPortal: UIViewController {
         }
     }
 
-    @objc private func openEULA() {
+    @objc private func agreementRouteMappingTeni() {
         let url = NWFUclipFusionOrbit.arenaCascadeField.voiceHarborMist(MotionTrail: "3")
         navigationController?.pushViewController(ZoiceDriftZone(streamAuraShift: url), animated: true)
     }

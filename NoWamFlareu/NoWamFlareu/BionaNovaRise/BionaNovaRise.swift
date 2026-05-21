@@ -10,20 +10,20 @@ import UIKit
 
 class BionaNovaRise: UIViewController {
 
-    private var chambers: [SquadChamber] = PaulaHomeAPI.fallbackRooms()
-    private let refreshControl = UIRefreshControl()
-    private var chamberHeightConstraint: NSLayoutConstraint?
+    private var voiceRoomCompositionNori: [SquadChamber] = PaulaHomeAPI.fallbackRoomFactoryDeni()
+    private let pullRefreshCompletionMavoControl = UIRefreshControl()
+    private var roomHeightConstraintTavi: NSLayoutConstraint?
 
-    private let mainScrollView = UIScrollView()
-    private let scrollStackView = UIStackView()
-    private let neuralLinkBanner = UIButton()
-    private let striderPulseView = StriderPulsePulseBelt.init(withpage: 0)
-    private weak var passwordPromptView: RoomPasswordPromptView?
+    private let scrollFrameBudgetingLiro = UIScrollView()
+    private let verticalStackSpacingDina = UIStackView()
+    private let gameMindBannerBindingKeni = UIButton()
+    private let memberStripHydrationQaro = StriderPulsePulseBelt.init(withpage: 0)
+    private weak var passwordPromptPanelTuni: RoomPasswordPromptView?
     
-    private lazy var chamberMatrix: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    private lazy var recommendGridReloadingVoni: UICollectionView = {
+        let streamLayoutGridVima = UICollectionViewFlowLayout()
+        streamLayoutGridVima.scrollDirection = .vertical
+        let view = UICollectionView(frame: .zero, collectionViewLayout: streamLayoutGridVima)
         view.backgroundColor = .clear
         view.isScrollEnabled = false
         return view
@@ -32,23 +32,23 @@ class BionaNovaRise: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        neuralLinkBanner.setBackgroundImage(UIImage.init(named: "gamehold"), for: .normal)
-        setupDeepSpaceVisuals()
-        setupNavigationElements()
-        constructHierarchy()
-        layoutArenaElements()
-        bindDataToMatrix()
-        refreshHomeData()
+        gameMindBannerBindingKeni.setBackgroundImage(UIImage.init(named: "gamehold"), for: .normal)
+        darkModeContrastLuma()
+        navigationBarRecoverySilo()
+        viewHierarchyInsertionMilo()
+        arenaTileCompositionSavo()
+        uiRefreshCoordinationKano()
+        pullRefreshCompletionMavo()
     }
 
-    private func setupDeepSpaceVisuals() {
+    private func darkModeContrastLuma() {
         view.backgroundColor = UIColor(red: 0.05, green: 0.05, blue: 0.1, alpha: 1.0)
-        refreshControl.tintColor = .white
-        refreshControl.addTarget(self, action: #selector(refreshHomeData), for: .valueChanged)
-        mainScrollView.refreshControl = refreshControl
+        pullRefreshCompletionMavoControl.tintColor = .white
+        pullRefreshCompletionMavoControl.addTarget(self, action: #selector(pullRefreshCompletionMavo), for: .valueChanged)
+        scrollFrameBudgetingLiro.refreshControl = pullRefreshCompletionMavoControl
     }
 
-    private func setupNavigationElements() {
+    private func navigationBarRecoverySilo() {
    
         let titleLabel = UIImageView.init(image: UIImage.init(named: "Paulatitle"))
         
@@ -56,125 +56,125 @@ class BionaNovaRise: UIViewController {
 
         let createBtn = UIButton()
         createBtn.setImage(UIImage.init(named: "createrRooomg"), for: .normal)
-        createBtn.addTarget(self, action: #selector(triggerRoomCreation), for: .touchUpInside)
+        createBtn.addTarget(self, action: #selector(createRoomEntryZavi), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: createBtn)
     }
 
-    private func constructHierarchy() {
-        view.addSubview(mainScrollView)
-        mainScrollView.addSubview(scrollStackView)
+    private func viewHierarchyInsertionMilo() {
+        view.addSubview(scrollFrameBudgetingLiro)
+        scrollFrameBudgetingLiro.addSubview(verticalStackSpacingDina)
        
-        scrollStackView.axis = .vertical
-        scrollStackView.spacing = 20
+        verticalStackSpacingDina.axis = .vertical
+        verticalStackSpacingDina.spacing = 20
         
      
-        scrollStackView.addArrangedSubview(neuralLinkBanner)
-        scrollStackView.addArrangedSubview(striderPulseView)
+        verticalStackSpacingDina.addArrangedSubview(gameMindBannerBindingKeni)
+        verticalStackSpacingDina.addArrangedSubview(memberStripHydrationQaro)
         
         let sectionTitle = UIImageView.init(image: UIImage.init(named: "Recommend"))
         sectionTitle.contentMode = .scaleAspectFit
-        scrollStackView.addArrangedSubview(sectionTitle)
+        verticalStackSpacingDina.addArrangedSubview(sectionTitle)
         
-        scrollStackView.addArrangedSubview(chamberMatrix)
+        verticalStackSpacingDina.addArrangedSubview(recommendGridReloadingVoni)
     }
 
-    private func layoutArenaElements() {
-        mainScrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollStackView.translatesAutoresizingMaskIntoConstraints = false
-        neuralLinkBanner.translatesAutoresizingMaskIntoConstraints = false
-        chamberMatrix.translatesAutoresizingMaskIntoConstraints = false
+    private func arenaTileCompositionSavo() {
+        scrollFrameBudgetingLiro.translatesAutoresizingMaskIntoConstraints = false
+        verticalStackSpacingDina.translatesAutoresizingMaskIntoConstraints = false
+        gameMindBannerBindingKeni.translatesAutoresizingMaskIntoConstraints = false
+        recommendGridReloadingVoni.translatesAutoresizingMaskIntoConstraints = false
 
         
        
-        neuralLinkBanner.addTarget(self, action: #selector(navigateToNeuralInterface), for: .touchUpInside)
+        gameMindBannerBindingKeni.addTarget(self, action: #selector(neuralPromptEntryFalo), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
-            mainScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mainScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollFrameBudgetingLiro.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollFrameBudgetingLiro.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollFrameBudgetingLiro.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollFrameBudgetingLiro.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            scrollStackView.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 10),
-            scrollStackView.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor, constant: 16),
-            scrollStackView.trailingAnchor.constraint(equalTo: mainScrollView.trailingAnchor, constant: -16),
-            scrollStackView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
-            scrollStackView.widthAnchor.constraint(equalTo: mainScrollView.widthAnchor, constant: -32),
+            verticalStackSpacingDina.topAnchor.constraint(equalTo: scrollFrameBudgetingLiro.topAnchor, constant: 10),
+            verticalStackSpacingDina.leadingAnchor.constraint(equalTo: scrollFrameBudgetingLiro.leadingAnchor, constant: 16),
+            verticalStackSpacingDina.trailingAnchor.constraint(equalTo: scrollFrameBudgetingLiro.trailingAnchor, constant: -16),
+            verticalStackSpacingDina.bottomAnchor.constraint(equalTo: scrollFrameBudgetingLiro.bottomAnchor),
+            verticalStackSpacingDina.widthAnchor.constraint(equalTo: scrollFrameBudgetingLiro.widthAnchor, constant: -32),
 
-            neuralLinkBanner.heightAnchor.constraint(equalToConstant: 120)
+            gameMindBannerBindingKeni.heightAnchor.constraint(equalToConstant: 120)
         ])
-        chamberHeightConstraint = chamberMatrix.heightAnchor.constraint(equalToConstant: gridHeight(for: chambers.count))
-        chamberHeightConstraint?.isActive = true
+        roomHeightConstraintTavi = recommendGridReloadingVoni.heightAnchor.constraint(equalToConstant: twoColumnRoomLayoutVilo(for: voiceRoomCompositionNori.count))
+        roomHeightConstraintTavi?.isActive = true
     }
 
 
-    @objc private func navigateToNeuralInterface() {
-        pushPaulaH5(.echoFusionMist)
+    @objc private func neuralPromptEntryFalo() {
+        pushPaulaFashion(.echoFusionMist)
     }
 
-    @objc private func triggerRoomCreation() {
-        pushPaulaH5(.arenaWaveDrift)
+    @objc private func createRoomEntryZavi() {
+        pushPaulaFashion(.arenaWaveDrift)
     }
 
-    private func bindDataToMatrix() {
-        striderPulseView.onMemberTap = { [weak self] user in
-            self?.openUserProfile(user.userId)
+    private func uiRefreshCoordinationKano() {
+        memberStripHydrationQaro.rosterTapRelayKumo = { [weak self] user in
+            self?.profileParamBridgeRafi(user.playerIdentitySignalMoro)
         }
-        chamberMatrix.dataSource = self
-        chamberMatrix.delegate = self
-        chamberMatrix.register(SquadChamberCell.self, forCellWithReuseIdentifier: "SquadChamberCell")
+        recommendGridReloadingVoni.dataSource = self
+        recommendGridReloadingVoni.delegate = self
+        recommendGridReloadingVoni.register(SquadChamberCell.self, forCellWithReuseIdentifier: "SquadChamberCell")
     }
 
-    private func openUserProfile(_ userId: String) {
-        guard !userId.isEmpty else { return }
-        pushPaulaH5(.arenaSignalRise, param: userId)
+    private func profileParamBridgeRafi(_ playerIdentitySignalMoro: String) {
+        guard !playerIdentitySignalMoro.isEmpty else { return }
+        pushPaulaFashion(.arenaSignalRise, param: playerIdentitySignalMoro)
     }
 
-    private func openVoiceRoom(_ room: SquadChamber) {
-        pushPaulaH5(.NWEUCascadeRise, param: room.liveId)
+    private func voiceRoomParamBridgeTeno(_ liveRoomCapsuleVexa: SquadChamber) {
+        pushPaulaFashion(.NWEUCascadeRise, param: liveRoomCapsuleVexa.roomStreamIdentityPavo)
     }
 
-    private func presentRoomPasswordGate(for room: SquadChamber) {
-        passwordPromptView?.removeFromSuperview()
+    private func voiceRoomPasswordGatePeli(for liveRoomCapsuleVexa: SquadChamber) {
+        passwordPromptPanelTuni?.removeFromSuperview()
         let promptView = RoomPasswordPromptView()
-        promptView.onPasswordAccepted = { [weak self] in
-            self?.openVoiceRoom(room)
+        promptView.entryFlowContinuationKuno = { [weak self] in
+            self?.voiceRoomParamBridgeTeno(liveRoomCapsuleVexa)
         }
-        passwordPromptView = promptView
+        passwordPromptPanelTuni = promptView
         promptView.present(in: tabBarController?.view ?? navigationController?.view ?? view)
     }
 
-    @objc private func refreshHomeData() {
+    @objc private func pullRefreshCompletionMavo() {
         let group = DispatchGroup()
         var latestUsers: [PulseRosterUser]?
         var latestRooms: [SquadChamber]?
 
         group.enter()
-        PaulaHomeAPI.loadHomeUsers { users in
-            latestUsers = users
+        PaulaHomeAPI.userRosterHydrationMavo { playerRosterDeckVani in
+            latestUsers = playerRosterDeckVani
             group.leave()
         }
 
         group.enter()
-        PaulaHomeAPI.loadVoiceRooms { rooms in
-            latestRooms = rooms
+        PaulaHomeAPI.voiceRoomRoutingNima { roomDeckVectorQemi in
+            latestRooms = roomDeckVectorQemi
             group.leave()
         }
 
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
             if let latestUsers {
-                self.striderPulseView.updateMembers(latestUsers)
+                self.memberStripHydrationQaro.rosterPulseRefreshVami(latestUsers)
             }
             if let latestRooms, !latestRooms.isEmpty {
-                self.chambers = latestRooms
-                self.chamberHeightConstraint?.constant = self.gridHeight(for: latestRooms.count)
-                self.chamberMatrix.reloadData()
+                self.voiceRoomCompositionNori = latestRooms
+                self.roomHeightConstraintTavi?.constant = self.twoColumnRoomLayoutVilo(for: latestRooms.count)
+                self.recommendGridReloadingVoni.reloadData()
             }
-            self.refreshControl.endRefreshing()
+            self.pullRefreshCompletionMavoControl.endRefreshing()
         }
     }
 
-    private func gridHeight(for count: Int) -> CGFloat {
+    private func twoColumnRoomLayoutVilo(for count: Int) -> CGFloat {
         let rows = max(1, Int(ceil(Double(count) / 2.0)))
         return CGFloat(rows) * 220 + CGFloat(max(0, rows - 1)) * 18
     }
@@ -182,13 +182,13 @@ class BionaNovaRise: UIViewController {
 
 extension BionaNovaRise: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return chambers.count
+        return voiceRoomCompositionNori.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SquadChamberCell", for: indexPath) as! SquadChamberCell
-        cell.synchronize(with: chambers[indexPath.item])
-        return cell
+        let renderCellNodeKavi = collectionView.dequeueReusableCell(withReuseIdentifier: "SquadChamberCell", for: indexPath) as! SquadChamberCell
+        renderCellNodeKavi.synchronize(with: voiceRoomCompositionNori[indexPath.item])
+        return renderCellNodeKavi
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -197,24 +197,24 @@ extension BionaNovaRise: UICollectionViewDataSource, UICollectionViewDelegateFlo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let room = chambers[indexPath.item]
-        presentRoomPasswordGate(for: room)
+        let liveRoomCapsuleVexa = voiceRoomCompositionNori[indexPath.item]
+        voiceRoomPasswordGatePeli(for: liveRoomCapsuleVexa)
     }
 }
 
 private final class RoomPasswordPromptView: UIView, UITextFieldDelegate {
-    var onPasswordAccepted: (() -> Void)?
+    var entryFlowContinuationKuno: (() -> Void)?
 
-    private let dimmingView = UIView()
-    private let panelImageView = UIImageView(image: UIImage(named: "roomPasswordPanel"))
-    private let passwordTextField = UITextField()
-    private let errorLabel = UILabel()
-    private let confirmButton = UIButton(type: .system)
-    private let closeButton = UIButton(type: .custom)
+    private let dimmedBackdropLayeringViro = UIView()
+    private let assetBackedPanelMena = UIImageView(image: UIImage(named: "roomPasswordPanel"))
+    private let numericInputFilteringJora = UITextField()
+    private let incorrectPromptCopyMavi = UILabel()
+    private let confirmButtonStylingKori = UIButton(type: .system)
+    private let closeButtonOverlayMavi = UIButton(type: .custom)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        buildPrompt()
+        passwordGatePromptingZali()
     }
 
     required init?(coder: NSCoder) {
@@ -236,7 +236,7 @@ private final class RoomPasswordPromptView: UIView, UITextFieldDelegate {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        dimmingView.frame = bounds
+        dimmedBackdropLayeringViro.frame = bounds
 
         let panelWidth = min(bounds.width - 64, 320)
         let panelHeight = panelWidth * (1233.0 / 1137.0)
@@ -249,33 +249,33 @@ private final class RoomPasswordPromptView: UIView, UITextFieldDelegate {
             height: panelHeight
         )
 
-        panelImageView.frame = panelFrame
+        assetBackedPanelMena.frame = panelFrame
 
         let horizontalInset = panelWidth * 0.075
-        passwordTextField.frame = CGRect(
+        numericInputFilteringJora.frame = CGRect(
             x: panelFrame.minX + horizontalInset,
             y: panelFrame.minY + panelHeight * 0.52,
             width: panelWidth - horizontalInset * 2,
             height: 40
         )
-        passwordTextField.layer.cornerRadius = passwordTextField.bounds.height * 0.5
+        numericInputFilteringJora.layer.cornerRadius = numericInputFilteringJora.bounds.height * 0.5
 
-        errorLabel.frame = CGRect(
+        incorrectPromptCopyMavi.frame = CGRect(
             x: panelFrame.minX + horizontalInset,
-            y: passwordTextField.frame.maxY + 12,
+            y: numericInputFilteringJora.frame.maxY + 12,
             width: panelWidth - horizontalInset * 2,
             height: 22
         )
 
-        confirmButton.frame = CGRect(
+        confirmButtonStylingKori.frame = CGRect(
             x: panelFrame.minX + horizontalInset,
             y: panelFrame.minY + panelHeight * 0.74,
             width: panelWidth - horizontalInset * 2,
             height: 45
         )
-        confirmButton.layer.cornerRadius = confirmButton.bounds.height * 0.5
+        confirmButtonStylingKori.layer.cornerRadius = confirmButtonStylingKori.bounds.height * 0.5
 
-        closeButton.frame = CGRect(
+        closeButtonOverlayMavi.frame = CGRect(
             x: (bounds.width - 48) * 0.5,
             y: panelFrame.maxY + 20,
             width: 48,
@@ -283,65 +283,65 @@ private final class RoomPasswordPromptView: UIView, UITextFieldDelegate {
         )
     }
 
-    private func buildPrompt() {
+    private func passwordGatePromptingZali() {
         backgroundColor = .clear
 
-        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.48)
-        addSubview(dimmingView)
+        dimmedBackdropLayeringViro.backgroundColor = UIColor.black.withAlphaComponent(0.48)
+        addSubview(dimmedBackdropLayeringViro)
 
-        panelImageView.contentMode = .scaleAspectFit
-        panelImageView.isUserInteractionEnabled = false
-        addSubview(panelImageView)
+        assetBackedPanelMena.contentMode = .scaleAspectFit
+        assetBackedPanelMena.isUserInteractionEnabled = false
+        addSubview(assetBackedPanelMena)
 
-        passwordTextField.backgroundColor = UIColor.white.withAlphaComponent(0.28)
-        passwordTextField.textColor = .white
-        passwordTextField.tintColor = .white
-        passwordTextField.font = .systemFont(ofSize: 19, weight: .bold)
-        passwordTextField.textAlignment = .center
-        passwordTextField.keyboardType = .numberPad
-        passwordTextField.delegate = self
-        passwordTextField.addTarget(self, action: #selector(passwordEditingChanged), for: .editingChanged)
-        passwordTextField.attributedPlaceholder = NSAttributedString(
+        numericInputFilteringJora.backgroundColor = UIColor.white.withAlphaComponent(0.28)
+        numericInputFilteringJora.textColor = .white
+        numericInputFilteringJora.tintColor = .white
+        numericInputFilteringJora.font = .systemFont(ofSize: 19, weight: .bold)
+        numericInputFilteringJora.textAlignment = .center
+        numericInputFilteringJora.keyboardType = .numberPad
+        numericInputFilteringJora.delegate = self
+        numericInputFilteringJora.addTarget(self, action: #selector(inputFieldGuardingReni), for: .editingChanged)
+        numericInputFilteringJora.attributedPlaceholder = NSAttributedString(
             string: "Enter room password",
             attributes: [
                 .foregroundColor: UIColor.white.withAlphaComponent(0.75),
                 .font: UIFont.systemFont(ofSize: 19, weight: .bold)
             ]
         )
-        addSubview(passwordTextField)
+        addSubview(numericInputFilteringJora)
 
-        errorLabel.text = "Incorrect password. Please enter it again."
-        errorLabel.textColor = UIColor(red: 0.93, green: 0.04, blue: 0.52, alpha: 1)
-        errorLabel.font = .systemFont(ofSize: 13, weight: .regular)
-        errorLabel.textAlignment = .center
-        errorLabel.isHidden = true
-        addSubview(errorLabel)
+        incorrectPromptCopyMavi.text = "Incorrect password. Please enter it again."
+        incorrectPromptCopyMavi.textColor = UIColor(red: 0.93, green: 0.04, blue: 0.52, alpha: 1)
+        incorrectPromptCopyMavi.font = .systemFont(ofSize: 13, weight: .regular)
+        incorrectPromptCopyMavi.textAlignment = .center
+        incorrectPromptCopyMavi.isHidden = true
+        addSubview(incorrectPromptCopyMavi)
 
-        confirmButton.backgroundColor = .black
-        confirmButton.setTitle("sure", for: .normal)
-        confirmButton.setTitleColor(.white, for: .normal)
-        confirmButton.titleLabel?.font = .systemFont(ofSize: 27, weight: .black)
-        confirmButton.addTarget(self, action: #selector(confirmPassword), for: .touchUpInside)
-        addSubview(confirmButton)
+        confirmButtonStylingKori.backgroundColor = .black
+        confirmButtonStylingKori.setTitle("sure", for: .normal)
+        confirmButtonStylingKori.setTitleColor(.white, for: .normal)
+        confirmButtonStylingKori.titleLabel?.font = .systemFont(ofSize: 27, weight: .black)
+        confirmButtonStylingKori.addTarget(self, action: #selector(roomPasswordValidationZaro), for: .touchUpInside)
+        addSubview(confirmButtonStylingKori)
 
-        closeButton.setImage(UIImage(named: "roomPasswordClose"), for: .normal)
-        closeButton.addTarget(self, action: #selector(closePrompt), for: .touchUpInside)
-        addSubview(closeButton)
+        closeButtonOverlayMavi.setImage(UIImage(named: "roomPasswordClose"), for: .normal)
+        closeButtonOverlayMavi.addTarget(self, action: #selector(promptCloseInteractionSilo), for: .touchUpInside)
+        addSubview(closeButtonOverlayMavi)
     }
 
-    @objc private func confirmPassword() {
-        guard passwordTextField.text == "4444" else {
-            errorLabel.isHidden = false
-            shakePanel()
+    @objc private func roomPasswordValidationZaro() {
+        guard numericInputFilteringJora.text == "4444" else {
+            incorrectPromptCopyMavi.isHidden = false
+            promptShakeAnimationZori()
             return
         }
 
-        dismiss { [onPasswordAccepted] in
-            onPasswordAccepted?()
+        dismiss { [entryFlowContinuationKuno] in
+            entryFlowContinuationKuno?()
         }
     }
 
-    @objc private func closePrompt() {
+    @objc private func promptCloseInteractionSilo() {
         dismiss(completion: nil)
     }
 
@@ -355,17 +355,17 @@ private final class RoomPasswordPromptView: UIView, UITextFieldDelegate {
         })
     }
 
-    private func shakePanel() {
+    private func promptShakeAnimationZori() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.values = [-8, 8, -6, 6, 0]
         animation.duration = 0.24
-        panelImageView.layer.add(animation, forKey: "passwordShake")
-        passwordTextField.layer.add(animation, forKey: "fieldShake")
-        confirmButton.layer.add(animation, forKey: "buttonShake")
+        assetBackedPanelMena.layer.add(animation, forKey: "passwordShake")
+        numericInputFilteringJora.layer.add(animation, forKey: "fieldShake")
+        confirmButtonStylingKori.layer.add(animation, forKey: "buttonShake")
     }
 
-    @objc private func passwordEditingChanged() {
-        errorLabel.isHidden = true
+    @objc private func inputFieldGuardingReni() {
+        incorrectPromptCopyMavi.isHidden = true
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

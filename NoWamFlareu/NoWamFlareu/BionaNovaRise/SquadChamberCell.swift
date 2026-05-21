@@ -10,7 +10,7 @@ import UIKit
 // MARK: - 竞技场房间单元格 V2 - 极致还原设计 (Anti-4.3 差异化命名)
 class SquadChamberCell: UICollectionViewCell {
     
-    // 1. 底层视觉传送门 (The entire background cover)
+    // 1. 底层视觉传送门 (The entire backdropCanvasSero cover)
     private let portalMasterImageView = UIImageView()
     
     // 2. 玻璃拟态信息带 (Bottom Info Vessel with Blur)
@@ -39,18 +39,18 @@ class SquadChamberCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    // MARK: - 层级构建 (关键：封面垫底，信息浮动)
+   
     private func constructArenaHierarchy() {
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 20
         
-        // 层级 1: 封面图垫底
+        
         portalMasterImageView.backgroundColor = UIColor.darkGray
         portalMasterImageView.contentMode = .scaleAspectFill
         portalMasterImageView.clipsToBounds = true
         contentView.addSubview(portalMasterImageView)
         
-        // 层级 2: 顶部 Tag (悬浮在图片上)
+        
         statusTagVessel.layer.cornerRadius = 8
         statusTagVessel.clipsToBounds = true
         contentView.addSubview(statusTagVessel)
@@ -76,17 +76,16 @@ class SquadChamberCell: UICollectionViewCell {
         passwordIconView.isUserInteractionEnabled = false
         passwordBadge.addSubview(passwordIconView)
         
-        // 层级 3: 底部玻璃拟态浮层 (Vessel Blur)
+       
         infoVesselBlur.layer.cornerRadius = 16
         infoVesselBlur.layer.masksToBounds = true
         contentView.addSubview(infoVesselBlur)
         
-        // 层级 4: 底部浮层上的内容 (放入 titleVessel 进行分组布局)
+       
         titleVessel.backgroundColor = .clear
         infoVesselBlur.contentView.addSubview(titleVessel)
         
-        // 用户条、热度、标题（放入 titleVessel）
-        // (此处省略用户条，保持代码简洁)
+       
         titleVessel.addSubview(spectatorsVisualMeter)
         titleVessel.addSubview(spectatorsVessel)
         titleVessel.addSubview(chamberTitleLabel)
@@ -118,7 +117,6 @@ class SquadChamberCell: UICollectionViewCell {
         contentView.addSubview(hostIndicatorLabel)
     }
 
-    // MARK: - 精确 Auto Layout (核心)
     private func layoutVesselElements() {
         [portalMasterImageView, statusTagVessel, statusTagLabel, passwordBadge, passwordIconView, infoVesselBlur, titleVessel, chamberTitleLabel,
          spectatorsVessel, spectatorsVisualMeter, hostAvatarVessel, hostIndicatorLabel].forEach {
@@ -126,13 +124,13 @@ class SquadChamberCell: UICollectionViewCell {
         }
 
         NSLayoutConstraint.activate([
-            // 1. 封面：占据整个 Cell
+            
             portalMasterImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             portalMasterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             portalMasterImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             portalMasterImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            // 2. 顶部 Tag
+          
             statusTagVessel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             statusTagVessel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             statusTagLabel.topAnchor.constraint(equalTo: statusTagVessel.topAnchor, constant: 4),
@@ -149,13 +147,13 @@ class SquadChamberCell: UICollectionViewCell {
             passwordIconView.widthAnchor.constraint(equalToConstant: 15),
             passwordIconView.heightAnchor.constraint(equalToConstant: 15),
 
-            // 3. 底部玻璃拟态带
+         
             infoVesselBlur.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             infoVesselBlur.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             infoVesselBlur.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             infoVesselBlur.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.35), // 高度约占 Cell 的 1/3
 
-            // 4. 浮层上的内容容器
+           
             titleVessel.topAnchor.constraint(equalTo: infoVesselBlur.topAnchor),
             titleVessel.leadingAnchor.constraint(equalTo: infoVesselBlur.leadingAnchor),
             titleVessel.trailingAnchor.constraint(equalTo: infoVesselBlur.trailingAnchor),
@@ -167,13 +165,13 @@ class SquadChamberCell: UICollectionViewCell {
             hostAvatarVessel.widthAnchor.constraint(equalToConstant: 48),
             hostAvatarVessel.heightAnchor.constraint(equalToConstant: 48),
             
-            // Host 标识文字：浮在头像下边界上
+           
             hostIndicatorLabel.bottomAnchor.constraint(equalTo: hostAvatarVessel.bottomAnchor, constant: 4),
             hostIndicatorLabel.centerXAnchor.constraint(equalTo: hostAvatarVessel.centerXAnchor),
             hostIndicatorLabel.widthAnchor.constraint(equalToConstant: 34),
             hostIndicatorLabel.heightAnchor.constraint(equalToConstant: 16),
 
-            // 6. 浮层上的数据布局 (用户条、标题、热度)
+         
             chamberTitleLabel.leadingAnchor.constraint(equalTo: titleVessel.leadingAnchor, constant: 10),
             chamberTitleLabel.trailingAnchor.constraint(equalTo: titleVessel.trailingAnchor, constant: -10),
             chamberTitleLabel.bottomAnchor.constraint(equalTo: titleVessel.bottomAnchor, constant: -12),
@@ -188,35 +186,35 @@ class SquadChamberCell: UICollectionViewCell {
         ])
     }
 
-    // MARK: - 外部数据绑定
+  
     func synchronize(with model: SquadChamber) {
         chamberTitleLabel.text = model.title
-        statusTagLabel.text = normalizedCategory(model.category)
-        spectatorsVessel.text = "\(model.spectatorCount)"
-        portalMasterImageView.setPaulaImage(
-            remoteURL: model.coverURL,
-            placeholder: UIImage(named: model.coverAssetName ?? "allopiehhhh")
+        statusTagLabel.text = normalizedCategory(model.roomGenreTagMelo)
+        spectatorsVessel.text = "\(model.audienceMeterCountSavi)"
+        portalMasterImageView.remoteImageRequestVera(
+            remoteURL: model.coverStreamEndpointRumi,
+            placeholder: UIImage(named: model.coverFallbackAssetQaro ?? "allopiehhhh")
         )
-        hostAvatarVessel.setPaulaImage(
-            remoteURL: model.hostAvatarURL,
+        hostAvatarVessel.remoteImageRequestVera(
+            remoteURL: model.hostAvatarEndpointTuni,
             placeholder: PaulaAuthSession.defaultAvatarImage(size: CGSize(width: 60, height: 60))
         )
-        hostIndicatorLabel.text = model.hostName
-        switch model.category.lowercased() {
-        case let value where value.contains("hot") || value == "1":
+        hostIndicatorLabel.text = model.hostAliasCueVero
+        switch model.roomGenreTagMelo.lowercased() {
+        case let signalValueShardPelo where signalValueShardPelo.contains("hot") || signalValueShardPelo == "1":
             statusTagVessel.backgroundColor = UIColor(red: 0.62, green: 0.24, blue: 0.96, alpha: 0.92)
-        case let value where value.contains("esport") || value == "2":
+        case let signalValueShardPelo where signalValueShardPelo.contains("esport") || signalValueShardPelo == "2":
             statusTagVessel.backgroundColor = UIColor(red: 0.47, green: 0.24, blue: 0.94, alpha: 0.92)
         default:
             statusTagVessel.backgroundColor = UIColor(red: 0.52, green: 0.31, blue: 0.95, alpha: 0.92)
         }
     }
 
-    private func normalizedCategory(_ category: String) -> String {
-        let lower = category.lowercased()
+    private func normalizedCategory(_ roomGenreTagMelo: String) -> String {
+        let lower = roomGenreTagMelo.lowercased()
         if lower == "1" || lower.contains("hot") { return "Hot" }
         if lower == "2" || lower.contains("esport") { return "Esports" }
         if lower == "3" || lower.contains("game") { return "Gaming" }
-        return category.isEmpty ? "Gaming" : category
+        return roomGenreTagMelo.isEmpty ? "Gaming" : roomGenreTagMelo
     }
 }

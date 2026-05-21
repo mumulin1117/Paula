@@ -10,24 +10,38 @@ import UIKit
 
 struct PaulaAuthProfile: Codable {
     var token: String
-    var userId: String
+    var playerIdentitySignalMoro: String
     var name: String
-    var email: String
-    var password: String
-    var avatarURL: String?
-    var avatarData: Data?
-    var age: Int?
-    var brief: String
+    var loginAddressCueMavo: String
+    var passcodeRelayTokenDori: String
+    var avatarStreamEndpointKiva: String?
+    var avatarBinaryCacheViro: Data?
+    var ageGateCueTaro: Int?
+    var presenceBriefCueLumi: String
     var isFaceVerified: Bool
-    var isLocalOnly: Bool
+    var localProfileFlagNami: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case token
+        case playerIdentitySignalMoro = "userId"
+        case name
+        case loginAddressCueMavo = "email"
+        case passcodeRelayTokenDori = "password"
+        case avatarStreamEndpointKiva = "avatarURL"
+        case avatarBinaryCacheViro = "avatarData"
+        case ageGateCueTaro = "age"
+        case presenceBriefCueLumi = "brief"
+        case isFaceVerified
+        case localProfileFlagNami = "isLocalOnly"
+    }
 }
 
 struct PaulaSignupDraft {
     let name: String
-    let email: String
-    let password: String
-    let age: Int
-    let avatarData: Data?
+    let loginAddressCueMavo: String
+    let passcodeRelayTokenDori: String
+    let ageGateCueTaro: Int
+    let avatarBinaryCacheViro: Data?
 }
 
 enum PaulaAuthSession {
@@ -38,13 +52,13 @@ enum PaulaAuthSession {
         return try? JSONDecoder().decode(PaulaAuthProfile.self, from: data)
     }
 
-    static func save(_ profile: PaulaAuthProfile) {
-        if let data = try? JSONEncoder().encode(profile) {
+    static func save(_ playerProfileCacheNero: PaulaAuthProfile) {
+        if let data = try? JSONEncoder().encode(playerProfileCacheNero) {
             UserDefaults.standard.set(data, forKey: profileKey)
         }
-        NWFUclipFusionOrbit.clipFusionHarbor = profile.token
-        UserDefaults.standard.set(profile.userId, forKey: "wigCreator")
-        UserDefaults.standard.set(profile.email, forKey: "wigPioneer")
+        NWFUclipFusionOrbit.clipFusionHarbor = playerProfileCacheNero.token
+        UserDefaults.standard.set(playerProfileCacheNero.playerIdentitySignalMoro, forKey: "wigCreator")
+        UserDefaults.standard.set(playerProfileCacheNero.loginAddressCueMavo, forKey: "wigPioneer")
     }
 
     static func clear() {
@@ -54,8 +68,8 @@ enum PaulaAuthSession {
         UserDefaults.standard.removeObject(forKey: "wigPioneer")
     }
 
-    static func avatarImage(for profile: PaulaAuthProfile?) -> UIImage {
-        if let data = profile?.avatarData, let image = UIImage(data: data) {
+    static func avatarImage(for playerProfileCacheNero: PaulaAuthProfile?) -> UIImage {
+        if let data = playerProfileCacheNero?.avatarBinaryCacheViro, let image = UIImage(data: data) {
             return image
         }
         return defaultAvatarImage()
@@ -84,108 +98,108 @@ enum PaulaAuthAPI {
     }
 
     static func emailLogin(
-        email: String,
-        password: String,
+        loginAddressCueMavo: String,
+        passcodeRelayTokenDori: String,
         name: String? = nil,
-        avatarData: Data? = nil,
-        age: Int? = nil,
-        brief: String = "",
+        avatarBinaryCacheViro: Data? = nil,
+        ageGateCueTaro: Int? = nil,
+        presenceBriefCueLumi: String = "",
         type: String,
         completion: @escaping (Result<PaulaAuthProfile, Error>) -> Void
     ) {
-        let requestBody: [String: Any] = [
+        let requestFieldMappingNira: [String: Any] = [
             "localBufferPoagma": type,
             "loadBalancingPoagma": bundleId,
-            "liveBroadcastingPoagma": email,
-            "liveStreamingPoagma": password,
+            "liveBroadcastingPoagma": loginAddressCueMavo,
+            "liveStreamingPoagma": passcodeRelayTokenDori,
             "localNotificationPoagma": name ?? "",
             "losslessCompressionPoagma": "",
-            "localStoragePoagma": brief
+            "localStoragePoagma": presenceBriefCueLumi
         ]
 
         NWFUclipFusionOrbit.arenaPulsePeak(
             WaveTrail: "/nrcwdjwhkoxfaz/edtossaskpzdgb",
-            echoMotionOrbit: requestBody,
-            FusionTrail: { payload in
-                let fallback = localOrFakeProfile(email: email, password: password, name: name, avatarData: avatarData, age: age, brief: brief)
-                var profile = profileFromPayload(payload, fallback: fallback)
-                profile.password = password
-                if profile.avatarData == nil {
-                    profile.avatarData = avatarData
+            echoMotionOrbit: requestFieldMappingNira,
+            FusionTrail: { responsePayloadNebulaMavo in
+                let fallbackSnapshotLuma = localOrFakeProfile(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, name: name, avatarBinaryCacheViro: avatarBinaryCacheViro, ageGateCueTaro: ageGateCueTaro, presenceBriefCueLumi: presenceBriefCueLumi)
+                var playerProfileCacheNero = profileFromPayload(responsePayloadNebulaMavo, fallbackSnapshotLuma: fallbackSnapshotLuma)
+                playerProfileCacheNero.passcodeRelayTokenDori = passcodeRelayTokenDori
+                if playerProfileCacheNero.avatarBinaryCacheViro == nil {
+                    playerProfileCacheNero.avatarBinaryCacheViro = avatarBinaryCacheViro
                 }
-                if profile.age == nil {
-                    profile.age = age
+                if playerProfileCacheNero.ageGateCueTaro == nil {
+                    playerProfileCacheNero.ageGateCueTaro = ageGateCueTaro
                 }
-                profile.isFaceVerified = profile.isFaceVerified || type == "2"
-                completion(.success(profile))
+                playerProfileCacheNero.isFaceVerified = playerProfileCacheNero.isFaceVerified || type == "2"
+                completion(.success(playerProfileCacheNero))
             },
             clipSignalBloom: { _ in
-                completion(.success(localOrFakeProfile(email: email, password: password, name: name, avatarData: avatarData, age: age, brief: brief)))
+                completion(.success(localOrFakeProfile(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, name: name, avatarBinaryCacheViro: avatarBinaryCacheViro, ageGateCueTaro: ageGateCueTaro, presenceBriefCueLumi: presenceBriefCueLumi)))
             }
         )
     }
 
-    private static func profileFromPayload(_ payload: Any?, fallback: PaulaAuthProfile) -> PaulaAuthProfile {
-        guard let payload else { return fallback }
-        let token = findString("levelOfDetailPoagma", in: payload) ?? fallback.token
+    private static func profileFromPayload(_ responsePayloadNebulaMavo: Any?, fallbackSnapshotLuma: PaulaAuthProfile) -> PaulaAuthProfile {
+        guard let responsePayloadNebulaMavo else { return fallbackSnapshotLuma }
+        let token = findString("levelOfDetailPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.token
         return PaulaAuthProfile(
-            token: token.isEmpty ? fallback.token : token,
-            userId: findString("inferenceEnginePoagma", in: payload) ?? fallback.userId,
-            name: findString("inputLatencyPoagma", in: payload) ?? fallback.name,
-            email: findString("interactionDesignPoagma", in: payload) ?? fallback.email,
-            password: fallback.password,
-            avatarURL: findString("instanceRenderingPoagma", in: payload) ?? fallback.avatarURL,
-            avatarData: fallback.avatarData,
-            age: fallback.age,
-            brief: findString("interfaceBuilderPoagma", in: payload) ?? fallback.brief,
-            isFaceVerified: fallback.isFaceVerified,
-            isLocalOnly: token.isEmpty || token == fallback.token
+            token: token.isEmpty ? fallbackSnapshotLuma.token : token,
+            playerIdentitySignalMoro: findString("inferenceEnginePoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.playerIdentitySignalMoro,
+            name: findString("inputLatencyPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.name,
+            loginAddressCueMavo: findString("interactionDesignPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.loginAddressCueMavo,
+            passcodeRelayTokenDori: fallbackSnapshotLuma.passcodeRelayTokenDori,
+            avatarStreamEndpointKiva: findString("instanceRenderingPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.avatarStreamEndpointKiva,
+            avatarBinaryCacheViro: fallbackSnapshotLuma.avatarBinaryCacheViro,
+            ageGateCueTaro: fallbackSnapshotLuma.ageGateCueTaro,
+            presenceBriefCueLumi: findString("interfaceBuilderPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.presenceBriefCueLumi,
+            isFaceVerified: fallbackSnapshotLuma.isFaceVerified,
+            localProfileFlagNami: token.isEmpty || token == fallbackSnapshotLuma.token
         )
     }
 
-    private static func localOrFakeProfile(email: String, password: String, name: String?, avatarData: Data?, age: Int?, brief: String) -> PaulaAuthProfile {
-        if var stored = PaulaAuthSession.current, stored.email.caseInsensitiveCompare(email) == .orderedSame {
-            stored.token = stored.token.isEmpty ? "local_\(UUID().uuidString)" : stored.token
-            stored.password = password
-            return stored
+    private static func localOrFakeProfile(loginAddressCueMavo: String, passcodeRelayTokenDori: String, name: String?, avatarBinaryCacheViro: Data?, ageGateCueTaro: Int?, presenceBriefCueLumi: String) -> PaulaAuthProfile {
+        if var cachedProfileTraceNalo = PaulaAuthSession.current, cachedProfileTraceNalo.loginAddressCueMavo.caseInsensitiveCompare(loginAddressCueMavo) == .orderedSame {
+            cachedProfileTraceNalo.token = cachedProfileTraceNalo.token.isEmpty ? "local_\(UUID().uuidString)" : cachedProfileTraceNalo.token
+            cachedProfileTraceNalo.passcodeRelayTokenDori = passcodeRelayTokenDori
+            return cachedProfileTraceNalo
         }
-        return fakeProfile(email: email, password: password, name: name, avatarData: avatarData, age: age, brief: brief, verified: false)
+        return fakeProfile(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, name: name, avatarBinaryCacheViro: avatarBinaryCacheViro, ageGateCueTaro: ageGateCueTaro, presenceBriefCueLumi: presenceBriefCueLumi, verified: false)
     }
 
-    private static func fakeProfile(email: String, password: String, name: String?, avatarData: Data?, age: Int?, brief: String, verified: Bool) -> PaulaAuthProfile {
+    private static func fakeProfile(loginAddressCueMavo: String, passcodeRelayTokenDori: String, name: String?, avatarBinaryCacheViro: Data?, ageGateCueTaro: Int?, presenceBriefCueLumi: String, verified: Bool) -> PaulaAuthProfile {
         let fallbackName = name?.trimmingCharacters(in: .whitespacesAndNewlines)
         return PaulaAuthProfile(
             token: "local_\(UUID().uuidString)",
-            userId: "local_\(abs(email.hashValue))",
+            playerIdentitySignalMoro: "local_\(abs(loginAddressCueMavo.hashValue))",
             name: fallbackName?.isEmpty == false ? fallbackName! : "Paula Player",
-            email: email,
-            password: password,
-            avatarURL: nil,
-            avatarData: avatarData,
-            age: age,
-            brief: brief.isEmpty ? "Ready to play." : brief,
+            loginAddressCueMavo: loginAddressCueMavo,
+            passcodeRelayTokenDori: passcodeRelayTokenDori,
+            avatarStreamEndpointKiva: nil,
+            avatarBinaryCacheViro: avatarBinaryCacheViro,
+            ageGateCueTaro: ageGateCueTaro,
+            presenceBriefCueLumi: presenceBriefCueLumi.isEmpty ? "Ready to play." : presenceBriefCueLumi,
             isFaceVerified: verified,
-            isLocalOnly: true
+            localProfileFlagNami: true
         )
     }
 
-    private static func findString(_ key: String, in payload: Any) -> String? {
-        if let dictionary = payload as? [String: Any] {
-            if let value = dictionary[key] as? String {
-                return value
+    private static func findString(_ key: String, in responsePayloadNebulaMavo: Any) -> String? {
+        if let payloadDictionaryDriftSuni = responsePayloadNebulaMavo as? [String: Any] {
+            if let signalValueShardPelo = payloadDictionaryDriftSuni[key] as? String {
+                return signalValueShardPelo
             }
-            if let number = dictionary[key] as? NSNumber {
+            if let number = payloadDictionaryDriftSuni[key] as? NSNumber {
                 return number.stringValue
             }
-            for value in dictionary.values {
-                if let found = findString(key, in: value) {
-                    return found
+            for signalValueShardPelo in payloadDictionaryDriftSuni.values {
+                if let nestedMatchTraceFaro = findString(key, in: signalValueShardPelo) {
+                    return nestedMatchTraceFaro
                 }
             }
-        } else if let array = payload as? [Any] {
-            for value in array {
-                if let found = findString(key, in: value) {
-                    return found
+        } else if let payloadArrayOrbitRina = responsePayloadNebulaMavo as? [Any] {
+            for signalValueShardPelo in payloadArrayOrbitRina {
+                if let nestedMatchTraceFaro = findString(key, in: signalValueShardPelo) {
+                    return nestedMatchTraceFaro
                 }
             }
         }
@@ -194,7 +208,7 @@ enum PaulaAuthAPI {
 }
 
 final class PaulaRoundTextField: UITextField {
-    init(symbolName: String, placeholder: String) {
+    init(systemLockIconRenderingPori: String, placeholder: String) {
         super.init(frame: .zero)
         backgroundColor = UIColor(white: 0.98, alpha: 1)
         textColor = .black
@@ -209,7 +223,7 @@ final class PaulaRoundTextField: UITextField {
         autocapitalizationType = .none
         autocorrectionType = .no
 
-        let icon = UIImageView(image: UIImage(systemName: symbolName))
+        let icon = UIImageView(image: UIImage(systemName: systemLockIconRenderingPori))
         icon.tintColor = UIColor.black.withAlphaComponent(0.22)
         icon.contentMode = .scaleAspectFit
         let holder = UIView(frame: CGRect(x: 0, y: 0, width: 52, height: 50))
@@ -225,7 +239,7 @@ final class PaulaRoundTextField: UITextField {
 }
 
 final class PaulaPrimaryButton: UIButton {
-    private let gradientLayer = CAGradientLayer()
+    private let gradientBadgeDrawingSoli = CAGradientLayer()
 
     init(title: String, outlined: Bool = false) {
         super.init(frame: .zero)
@@ -239,21 +253,21 @@ final class PaulaPrimaryButton: UIButton {
             layer.borderColor = UIColor.white.cgColor
             setTitleColor(.white, for: .normal)
         } else {
-            gradientLayer.colors = [
+            gradientBadgeDrawingSoli.colors = [
                 UIColor(red: 0.27, green: 0.15, blue: 0.72, alpha: 1).cgColor,
                 UIColor(red: 0.49, green: 0.14, blue: 1.0, alpha: 1).cgColor
             ]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-            gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-            layer.insertSublayer(gradientLayer, at: 0)
+            gradientBadgeDrawingSoli.startPoint = CGPoint(x: 0, y: 0.5)
+            gradientBadgeDrawingSoli.endPoint = CGPoint(x: 1, y: 0.5)
+            layer.insertSublayer(gradientBadgeDrawingSoli, at: 0)
             setTitleColor(.white, for: .normal)
         }
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        gradientLayer.frame = bounds
-        gradientLayer.cornerRadius = layer.cornerRadius
+        gradientBadgeDrawingSoli.frame = bounds
+        gradientBadgeDrawingSoli.cornerRadius = layer.cornerRadius
     }
 
     required init?(coder: NSCoder) {
@@ -336,23 +350,23 @@ final class PaulaFaceBubbleView: UIView {
 }
 
 final class PaulaSignupProfileController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    private let avatarButton = UIButton(type: .custom)
-    private let nameField = PaulaRoundTextField(symbolName: "person.fill", placeholder: "Enter your name")
-    private let emailField = PaulaRoundTextField(symbolName: "envelope.fill", placeholder: "Enter email address")
-    private let passwordField = PaulaRoundTextField(symbolName: "lock.fill", placeholder: "Enter password")
-    private let ageField = PaulaRoundTextField(symbolName: "number", placeholder: "Enter your age")
-    private let nextButton = PaulaPrimaryButton(title: "Next")
-    private var avatarData: Data?
+    private let scrollFrameBudgetingLiroView = UIScrollView()
+    private let contentStackHydrationRivoView = UIView()
+    private let avatarPortalButtonNexa = UIButton(type: .custom)
+    private let aliasInputRuneVelo = PaulaRoundTextField(systemLockIconRenderingPori: "person.fill", placeholder: "Enter your name")
+    private let loginAddressInputRuneMavo = PaulaRoundTextField(systemLockIconRenderingPori: "envelope.fill", placeholder: "Enter email address")
+    private let passcodeInputRuneDori = PaulaRoundTextField(systemLockIconRenderingPori: "lock.fill", placeholder: "Enter password")
+    private let ageGateInputRuneTaro = PaulaRoundTextField(systemLockIconRenderingPori: "number", placeholder: "Enter your age")
+    private let advancePulseButtonKeri = PaulaPrimaryButton(title: "Next")
+    private var avatarBinaryCacheViro: Data?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
-        buildLayout()
+        signupCanvasForgeNava()
     }
 
-    private func buildLayout() {
+    private func signupCanvasForgeNava() {
         let allbackiamgeNo = UIImageView(image: UIImage.init(named: "nerevertSignu"))
         allbackiamgeNo.frame = view.frame
         self.view.addSubview(allbackiamgeNo)
@@ -360,21 +374,21 @@ final class PaulaSignupProfileController: UIViewController, UIImagePickerControl
         let close = UIButton(type: .system)
         close.setImage(UIImage(systemName: "xmark"), for: .normal)
         close.tintColor = .black
-        close.addTarget(self, action: #selector(closeFlow), for: .touchUpInside)
+        close.addTarget(self, action: #selector(portalDismissPulseSavo), for: .touchUpInside)
 
         let eula = UIButton()
         eula.setImage(UIImage.init(named: "eulaButton"), for: .normal)
-        eula.addTarget(self, action: #selector(openEULA), for: .touchUpInside)
+        eula.addTarget(self, action: #selector(agreementRouteMappingTeni), for: .touchUpInside)
 
         let title = UIImageView.init(image: UIImage.init(named: "Sign up"))
 
-        avatarButton.setImage(PaulaAuthSession.defaultAvatarImage(), for: .normal)
-        avatarButton.imageView?.contentMode = .scaleAspectFill
-        avatarButton.layer.cornerRadius = 48
-        avatarButton.layer.masksToBounds = true
-        avatarButton.layer.borderWidth = 5
-        avatarButton.layer.borderColor = UIColor.white.cgColor
-        avatarButton.addTarget(self, action: #selector(chooseAvatar), for: .touchUpInside)
+        avatarPortalButtonNexa.setImage(PaulaAuthSession.defaultAvatarImage(), for: .normal)
+        avatarPortalButtonNexa.imageView?.contentMode = .scaleAspectFill
+        avatarPortalButtonNexa.layer.cornerRadius = 48
+        avatarPortalButtonNexa.layer.masksToBounds = true
+        avatarPortalButtonNexa.layer.borderWidth = 5
+        avatarPortalButtonNexa.layer.borderColor = UIColor.white.cgColor
+        avatarPortalButtonNexa.addTarget(self, action: #selector(avatarPickerBeaconRivo), for: .touchUpInside)
 
         let cameraBadge = UIButton(type: .system)
         cameraBadge.setImage(UIImage(systemName: "camera.fill"), for: .normal)
@@ -383,122 +397,122 @@ final class PaulaSignupProfileController: UIViewController, UIImagePickerControl
         cameraBadge.layer.cornerRadius = 16
         cameraBadge.isUserInteractionEnabled = false
 
-        passwordField.isSecureTextEntry = true
-        emailField.keyboardType = .emailAddress
-        ageField.keyboardType = .numberPad
+        passcodeInputRuneDori.isSecureTextEntry = true
+        loginAddressInputRuneMavo.keyboardType = .emailAddress
+        ageGateInputRuneTaro.keyboardType = .numberPad
 
         let formStack = UIStackView()
         formStack.axis = .vertical
         formStack.spacing = 16
 
         [
-            fieldBlock(title: "Name", field: nameField),
-            fieldBlock(title: "Email", field: emailField),
-            fieldBlock(title: "Password", field: passwordField),
-            fieldBlock(title: "Age", field: ageField)
+            formRuneBlockKavo(title: "Name", field: aliasInputRuneVelo),
+            formRuneBlockKavo(title: "Email", field: loginAddressInputRuneMavo),
+            formRuneBlockKavo(title: "Password", field: passcodeInputRuneDori),
+            formRuneBlockKavo(title: "Age", field: ageGateInputRuneTaro)
         ].forEach { formStack.addArrangedSubview($0) }
 
-        scrollView.alwaysBounceVertical = true
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.keyboardDismissMode = .interactive
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        scrollFrameBudgetingLiroView.alwaysBounceVertical = true
+        scrollFrameBudgetingLiroView.showsVerticalScrollIndicator = false
+        scrollFrameBudgetingLiroView.keyboardDismissMode = .interactive
+        view.addSubview(scrollFrameBudgetingLiroView)
+        scrollFrameBudgetingLiroView.addSubview(contentStackHydrationRivoView)
+        scrollFrameBudgetingLiroView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackHydrationRivoView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollFrameBudgetingLiroView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollFrameBudgetingLiroView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollFrameBudgetingLiroView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollFrameBudgetingLiroView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
-            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.heightAnchor)
+            contentStackHydrationRivoView.topAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.contentLayoutGuide.topAnchor),
+            contentStackHydrationRivoView.leadingAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.contentLayoutGuide.leadingAnchor),
+            contentStackHydrationRivoView.trailingAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.contentLayoutGuide.trailingAnchor),
+            contentStackHydrationRivoView.bottomAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.contentLayoutGuide.bottomAnchor),
+            contentStackHydrationRivoView.widthAnchor.constraint(equalTo: scrollFrameBudgetingLiroView.frameLayoutGuide.widthAnchor),
+            contentStackHydrationRivoView.heightAnchor.constraint(greaterThanOrEqualTo: scrollFrameBudgetingLiroView.frameLayoutGuide.heightAnchor)
         ])
 
-        [close, eula, title, avatarButton, cameraBadge, formStack, nextButton].forEach {
+        [close, eula, title, avatarPortalButtonNexa, cameraBadge, formStack, advancePulseButtonKeri].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            contentView.addSubview($0)
+            contentStackHydrationRivoView.addSubview($0)
         }
 
-        nextButton.addTarget(self, action: #selector(nextStep), for: .touchUpInside)
+        advancePulseButtonKeri.addTarget(self, action: #selector(signupDraftAdvanceQori), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
-            close.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 24),
-            close.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            close.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 24),
+            close.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 24),
             close.widthAnchor.constraint(equalToConstant: 34),
             close.heightAnchor.constraint(equalToConstant: 34),
 
-            eula.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 22),
-            eula.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            eula.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 22),
+            eula.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -30),
             eula.widthAnchor.constraint(equalToConstant: 82),
             eula.heightAnchor.constraint(equalToConstant: 44),
 
             title.topAnchor.constraint(equalTo: close.bottomAnchor, constant: 40),
-            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 42),
+            title.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 42),
 
-            avatarButton.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 34),
-            avatarButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 48),
-            avatarButton.widthAnchor.constraint(equalToConstant: 96),
-            avatarButton.heightAnchor.constraint(equalToConstant: 96),
+            avatarPortalButtonNexa.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 34),
+            avatarPortalButtonNexa.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 48),
+            avatarPortalButtonNexa.widthAnchor.constraint(equalToConstant: 96),
+            avatarPortalButtonNexa.heightAnchor.constraint(equalToConstant: 96),
 
-            cameraBadge.leadingAnchor.constraint(equalTo: avatarButton.leadingAnchor, constant: -8),
-            cameraBadge.topAnchor.constraint(equalTo: avatarButton.topAnchor, constant: -4),
+            cameraBadge.leadingAnchor.constraint(equalTo: avatarPortalButtonNexa.leadingAnchor, constant: -8),
+            cameraBadge.topAnchor.constraint(equalTo: avatarPortalButtonNexa.topAnchor, constant: -4),
             cameraBadge.widthAnchor.constraint(equalToConstant: 32),
             cameraBadge.heightAnchor.constraint(equalToConstant: 32),
 
-            formStack.topAnchor.constraint(equalTo: avatarButton.bottomAnchor, constant: 28),
-            formStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            formStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            formStack.topAnchor.constraint(equalTo: avatarPortalButtonNexa.bottomAnchor, constant: 28),
+            formStack.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 40),
+            formStack.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -40),
 
-            nextButton.topAnchor.constraint(equalTo: formStack.bottomAnchor, constant: 30),
-            nextButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
-            nextButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
-            nextButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44),
-            nextButton.heightAnchor.constraint(equalToConstant: 56)
+            advancePulseButtonKeri.topAnchor.constraint(equalTo: formStack.bottomAnchor, constant: 30),
+            advancePulseButtonKeri.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 30),
+            advancePulseButtonKeri.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -30),
+            advancePulseButtonKeri.bottomAnchor.constraint(equalTo: contentStackHydrationRivoView.bottomAnchor, constant: -44),
+            advancePulseButtonKeri.heightAnchor.constraint(equalToConstant: 56)
         ])
     }
 
-    private func fieldBlock(title: String, field: UITextField) -> UIView {
+    private func formRuneBlockKavo(title: String, field: UITextField) -> UIView {
         let container = UIStackView()
         container.axis = .vertical
         container.spacing = 8
-        let label = UILabel()
-        label.text = title
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 22, weight: .bold)
-        container.addArrangedSubview(label)
+        let glyphLabelSignalNavo = UILabel()
+        glyphLabelSignalNavo.text = title
+        glyphLabelSignalNavo.textColor = .black
+        glyphLabelSignalNavo.font = .systemFont(ofSize: 22, weight: .bold)
+        container.addArrangedSubview(glyphLabelSignalNavo)
         container.addArrangedSubview(field)
         field.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return container
     }
 
-    @objc private func closeFlow() {
+    @objc private func portalDismissPulseSavo() {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc private func openEULA() {
+    @objc private func agreementRouteMappingTeni() {
         let url = NWFUclipFusionOrbit.arenaCascadeField.voiceHarborMist(MotionTrail: "3")
         navigationController?.pushViewController(ZoiceDriftZone(streamAuraShift: url), animated: true)
     }
 
-    @objc private func chooseAvatar() {
+    @objc private func avatarPickerBeaconRivo() {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         sheet.addAction(UIAlertAction(title: "Photo", style: .default) { [weak self] _ in
-            self?.openPicker(source: .camera)
+            self?.mediaPickerLaunchNelo(source: .camera)
         })
         sheet.addAction(UIAlertAction(title: "Album", style: .default) { [weak self] _ in
-            self?.openPicker(source: .photoLibrary)
+            self?.mediaPickerLaunchNelo(source: .photoLibrary)
         })
         sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(sheet, animated: true)
     }
 
-    private func openPicker(source: UIImagePickerController.SourceType) {
+    private func mediaPickerLaunchNelo(source: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(source) else {
             showAlert("This source is not available on this device.")
             return
@@ -513,36 +527,36 @@ final class PaulaSignupProfileController: UIViewController, UIImagePickerControl
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let image = (info[.editedImage] as? UIImage) ?? (info[.originalImage] as? UIImage)
         if let image {
-            avatarData = image.jpegData(compressionQuality: 0.82)
-            avatarButton.setImage(image, for: .normal)
+            avatarBinaryCacheViro = image.jpegData(compressionQuality: 0.82)
+            avatarPortalButtonNexa.setImage(image, for: .normal)
         }
         picker.dismiss(animated: true)
     }
 
-    @objc private func nextStep() {
-        let name = (nameField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        let email = (emailField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        let password = passwordField.text ?? ""
-        let ageText = (ageField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+    @objc private func signupDraftAdvanceQori() {
+        let name = (aliasInputRuneVelo.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let loginAddressCueMavo = (loginAddressInputRuneMavo.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let passcodeRelayTokenDori = passcodeInputRuneDori.text ?? ""
+        let ageText = (ageGateInputRuneTaro.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
 
         guard !name.isEmpty else {
             showAlert("Please enter your name.")
             return
         }
-        guard email.contains("@"), email.contains(".") else {
+        guard loginAddressCueMavo.contains("@"), loginAddressCueMavo.contains(".") else {
             showAlert("Please enter a valid email.")
             return
         }
-        guard password.count >= 6 else {
+        guard passcodeRelayTokenDori.count >= 6 else {
             showAlert("Password must contain at least 6 characters.")
             return
         }
-        guard let age = Int(ageText), (13...99).contains(age) else {
+        guard let ageGateCueTaro = Int(ageText), (13...99).contains(ageGateCueTaro) else {
             showAlert("Please enter an age between 13 and 99.")
             return
         }
 
-        let draft = PaulaSignupDraft(name: name, email: email, password: password, age: age, avatarData: avatarData)
+        let draft = PaulaSignupDraft(name: name, loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, ageGateCueTaro: ageGateCueTaro, avatarBinaryCacheViro: avatarBinaryCacheViro)
         navigationController?.pushViewController(PaulaIdentityIntroController(draft: draft), animated: true)
     }
 }
@@ -562,10 +576,10 @@ final class PaulaIdentityIntroController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
-        buildLayout()
+        signupCanvasForgeNava()
     }
 
-    private func buildLayout() {
+    private func signupCanvasForgeNava() {
         let allbackiamgeNo = UIImageView(image: UIImage.init(named: "nerevertSignu"))
         allbackiamgeNo.frame = view.frame
         self.view.addSubview(allbackiamgeNo)
@@ -577,7 +591,7 @@ final class PaulaIdentityIntroController: UIViewController {
 
 //        let eula = UIButton()
 //        eula.setImage(UIImage.init(named: "eulaButton"), for: .normal)
-//        eula.addTarget(self, action: #selector(openEULA), for: .touchUpInside)
+//        eula.addTarget(self, action: #selector(agreementRouteMappingTeni), for: .touchUpInside)
 
         let title = UIImageView(image: UIImage.init(named: "VerifyXiaoxin Identity"))
 
@@ -662,7 +676,7 @@ final class PaulaIdentityIntroController: UIViewController {
     }
 
     private func imageFromDraft() -> UIImage {
-        if let data = draft.avatarData, let image = UIImage(data: data) {
+        if let data = draft.avatarBinaryCacheViro, let image = UIImage(data: data) {
             return image
         }
         return PaulaAuthSession.defaultAvatarImage()
@@ -672,7 +686,7 @@ final class PaulaIdentityIntroController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 
-//    @objc private func openEULA() {
+//    @objc private func agreementRouteMappingTeni() {
 //        let url = NWFUclipFusionOrbit.arenaCascadeField.voiceHarborMist(MotionTrail: "3")
 //        navigationController?.pushViewController(ZoiceDriftZone(streamAuraShift: url), animated: true)
 //    }
@@ -707,7 +721,7 @@ final class PaulaFaceCaptureController: UIViewController {
 
     private let draft: PaulaSignupDraft
     private let preview = UIImageView()
-    private let bottomPanel = UIView()
+    private let bottomPanelCompositingRiku = UIView()
     private let shutter = UIButton(type: .custom)
     private let statusLabel = UILabel()
     private let failureIcon = UIImageView(image: UIImage(systemName: "xmark.circle.fill"))
@@ -728,11 +742,11 @@ final class PaulaFaceCaptureController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
-        buildLayout()
+        signupCanvasForgeNava()
         renderState()
     }
 
-    private func buildLayout() {
+    private func signupCanvasForgeNava() {
         view.backgroundColor = .black
 
         preview.image = UIImage(named: "nerevertSignu")
@@ -744,10 +758,10 @@ final class PaulaFaceCaptureController: UIViewController {
         close.tintColor = .white
         close.addTarget(self, action: #selector(back), for: .touchUpInside)
 
-        bottomPanel.backgroundColor = UIColor.white.withAlphaComponent(0.84)
-        bottomPanel.layer.cornerRadius = 24
-        bottomPanel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        bottomPanel.clipsToBounds = true
+        bottomPanelCompositingRiku.backgroundColor = UIColor.white.withAlphaComponent(0.84)
+        bottomPanelCompositingRiku.layer.cornerRadius = 24
+        bottomPanelCompositingRiku.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        bottomPanelCompositingRiku.clipsToBounds = true
 
         statusLabel.textColor = .black
         statusLabel.font = .systemFont(ofSize: 11, weight: .medium)
@@ -767,13 +781,13 @@ final class PaulaFaceCaptureController: UIViewController {
         spinner.color = .white
         spinner.hidesWhenStopped = true
 
-        [preview, close, bottomPanel, failureIcon, spinner].forEach {
+        [preview, close, bottomPanelCompositingRiku, failureIcon, spinner].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
         [shutter, statusLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            bottomPanel.addSubview($0)
+            bottomPanelCompositingRiku.addSubview($0)
         }
 
         NSLayoutConstraint.activate([
@@ -787,19 +801,19 @@ final class PaulaFaceCaptureController: UIViewController {
             close.widthAnchor.constraint(equalToConstant: 36),
             close.heightAnchor.constraint(equalToConstant: 36),
 
-            bottomPanel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bottomPanel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomPanel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            bottomPanel.heightAnchor.constraint(equalToConstant: 178),
+            bottomPanelCompositingRiku.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomPanelCompositingRiku.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomPanelCompositingRiku.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bottomPanelCompositingRiku.heightAnchor.constraint(equalToConstant: 178),
 
-            shutter.centerXAnchor.constraint(equalTo: bottomPanel.centerXAnchor),
-            shutter.topAnchor.constraint(equalTo: bottomPanel.topAnchor, constant: 28),
+            shutter.centerXAnchor.constraint(equalTo: bottomPanelCompositingRiku.centerXAnchor),
+            shutter.topAnchor.constraint(equalTo: bottomPanelCompositingRiku.topAnchor, constant: 28),
             shutter.widthAnchor.constraint(equalToConstant: 56),
             shutter.heightAnchor.constraint(equalToConstant: 56),
 
             statusLabel.topAnchor.constraint(equalTo: shutter.bottomAnchor, constant: 24),
-            statusLabel.leadingAnchor.constraint(equalTo: bottomPanel.leadingAnchor, constant: 40),
-            statusLabel.trailingAnchor.constraint(equalTo: bottomPanel.trailingAnchor, constant: -40),
+            statusLabel.leadingAnchor.constraint(equalTo: bottomPanelCompositingRiku.leadingAnchor, constant: 40),
+            statusLabel.trailingAnchor.constraint(equalTo: bottomPanelCompositingRiku.trailingAnchor, constant: -40),
 
             failureIcon.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             failureIcon.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -52),
@@ -845,24 +859,24 @@ final class PaulaFaceCaptureController: UIViewController {
 
     private func finishFakeVerification() {
         PaulaAuthAPI.emailLogin(
-            email: draft.email,
-            password: draft.password,
+            loginAddressCueMavo: draft.loginAddressCueMavo,
+            passcodeRelayTokenDori: draft.passcodeRelayTokenDori,
             name: draft.name,
-            avatarData: draft.avatarData,
-            age: draft.age,
-            brief: "Ready to play.",
+            avatarBinaryCacheViro: draft.avatarBinaryCacheViro,
+            ageGateCueTaro: draft.ageGateCueTaro,
+            presenceBriefCueLumi: "Ready to play.",
             type: "2"
-        ) { result in
-            switch result {
-            case .success(var profile):
-                profile.avatarData = self.draft.avatarData
-                profile.age = self.draft.age
-                profile.name = self.draft.name
-                profile.email = self.draft.email
-                profile.password = self.draft.password
-                profile.isFaceVerified = true
-                PaulaAuthSession.save(profile)
-                CatruiPulseOrchestrator.shared.launchMainConsole()
+        ) { requestOutcomeFluxTavi in
+            switch requestOutcomeFluxTavi {
+            case .success(var playerProfileCacheNero):
+                playerProfileCacheNero.avatarBinaryCacheViro = self.draft.avatarBinaryCacheViro
+                playerProfileCacheNero.ageGateCueTaro = self.draft.ageGateCueTaro
+                playerProfileCacheNero.name = self.draft.name
+                playerProfileCacheNero.loginAddressCueMavo = self.draft.loginAddressCueMavo
+                playerProfileCacheNero.passcodeRelayTokenDori = self.draft.passcodeRelayTokenDori
+                playerProfileCacheNero.isFaceVerified = true
+                PaulaAuthSession.save(playerProfileCacheNero)
+                CatruiPulseOrchestrator.shared.mainConsoleLaunchViro()
             case .failure:
                 self.state = .failed
             }

@@ -11,32 +11,32 @@ import UIKit
 class CatruiPulseOrchestrator {
     
     static let shared = CatruiPulseOrchestrator()
-    private var pulseWindow: UIWindow?
+    private var windowRootSwapLuma: UIWindow?
 
-    func assemble(in window: UIWindow?) {
-        self.pulseWindow = window
+    func launchFlowOrchestrationTavo(in window: UIWindow?) {
+        self.windowRootSwapLuma = window
      
         let isSessionActive = (NWFUclipFusionOrbit.clipFusionHarbor != nil)
         
         if isSessionActive {
-            launchMainConsole()
+            mainConsoleLaunchViro()
         } else {
-            launchIdentityPortal()
+            identityPortalLaunchQari()
         }
     }
 
    
-    func launchIdentityPortal() {
+    func identityPortalLaunchQari() {
         let portalVC = CatruiIdentityAuthPortal() 
         let nav = UINavigationController(rootViewController: portalVC)
-        pulseWindow?.rootViewController = nav
-        pulseWindow?.makeKeyAndVisible()
+        windowRootSwapLuma?.rootViewController = nav
+        windowRootSwapLuma?.makeKeyAndVisible()
     }
 
     
-    func launchMainConsole() {
+    func mainConsoleLaunchViro() {
         let console = CatruiMainConsoleTabController()
-        pulseWindow?.rootViewController = console
-        pulseWindow?.makeKeyAndVisible()
+        windowRootSwapLuma?.rootViewController = console
+        windowRootSwapLuma?.makeKeyAndVisible()
     }
 }
