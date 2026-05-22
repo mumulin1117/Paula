@@ -10,10 +10,10 @@ import UIKit
 class CatruiIdentityAuthPortal: UIViewController {
     private let scrollFrameBudgetingLiroView = UIScrollView()
     private let contentStackHydrationRivoView = UIView()
-    private let emailAuthParsingRivoInput = PaulaRoundTextField(systemLockIconRenderingPori: "envelope.fill", placeholder: "Enter your email")
-    private let passwordGatePromptingZaliInput = PaulaRoundTextField(systemLockIconRenderingPori: "lock.fill", placeholder: "Enter password")
-    private let authSessionPersistenceKumiButton = PaulaPrimaryButton(title: "Login")
-    private let signupDraftStorageTaloButton = PaulaPrimaryButton(title: "Create New Account", outlined: true)
+    private let emailAuthParsingRivoInput = PaulaRoundTextField(systemLockIconRenderingPori: PaulaVocalCipherRune.echo("c1ZyCgwP3VmQvUm7pmQpwPlkifhwcXuhg4T95Vb6ukCCWV7uZTUDV+c="), placeholder: PaulaVocalCipherRune.echo("Pw1HXAeAgdnuTBY9oEH+gfn1E+11mP+6VdY0VD5/SXU7vF37UO96bnM48eY="))
+    private let passwordGatePromptingZaliInput = PaulaRoundTextField(systemLockIconRenderingPori: PaulaVocalCipherRune.echo("xiJKJwkmFnoJBi81PDEX7sM70n4nd3aDBh/kXKA6kTYdBpJQkQ=="), placeholder: PaulaVocalCipherRune.echo("x5hWkkvV19FC0O2CZdXPubK4bxnKMRm1xkVtS+9LrwtOtjnEOObdgh1t"))
+    private let authSessionPersistenceKumiButton = PaulaPrimaryButton(title: PaulaVocalCipherRune.echo("CyaL8EwPMRRJfJGEG7m3AKmDTXYuGlBsKCXVKsDvtNOH"))
+    private let signupDraftStorageTaloButton = PaulaPrimaryButton(title: PaulaVocalCipherRune.echo("J/JKc3iF24WHJpBDQhhmPjVvlTNdQA9mARxo/vqDvlw1x++HsbRaeTxZhWFgkg=="), outlined: true)
     private let ageGateVerificationMaroCheck = PaulaCheckboxButton()
     private let loadingStateRenderingQavi = UIActivityIndicatorView(style: .large)
 
@@ -34,18 +34,18 @@ class CatruiIdentityAuthPortal: UIViewController {
     private func identityPortalLaunchQariLayout() {
 
         let eulaButton = UIButton()
-        eulaButton.setImage(UIImage.init(named: "eulaButton"), for: .normal)
+        eulaButton.setImage(UIImage.init(named: PaulaVocalCipherRune.echo("VpjHHo4jYbjRasmcZ4z1/vFNmJ7fBtJS8cfPZ9q/RP+60NzY/pY=")), for: .normal)
         eulaButton.addTarget(self, action: #selector(agreementRouteMappingTeni), for: .touchUpInside)
 
      
-        let titleLabel = UIImageView(image: UIImage.init(named: "Log Tiaoln"))
+        let titleLabel = UIImageView(image: UIImage.init(named: PaulaVocalCipherRune.echo("KaPLbCCgy/8IS4SjoJ+m7ZxBZT+g38gjtdmjyqfYPJaTCsgZnZY=")))
        
 
         passwordGatePromptingZaliInput.isSecureTextEntry = true
         emailAuthParsingRivoInput.keyboardType = .emailAddress
 
         let orLabel = UILabel()
-        orLabel.text = "Or"
+        orLabel.text = PaulaVocalCipherRune.echo("019+Ky/Znf6trP97vF4PjB4ckdTnbzrqDCHm+x1k")
         orLabel.textColor = .white
         orLabel.font = .systemFont(ofSize: 17, weight: .bold)
         orLabel.textAlignment = .center
@@ -57,7 +57,7 @@ class CatruiIdentityAuthPortal: UIViewController {
         }
 
         let termsLabel = UILabel()
-        termsLabel.text = "By continuing you agree to our <Terms of Service>\nand <Privacy Policy>."
+        termsLabel.text = PaulaVocalCipherRune.echo("BRtAIGMmMQiN4bcDP2HfU9Ee9f4H+2ZMD5Qs8h0eYxbPvXxjdKBMxVSDii6n+6GZQsy6zpNcJM2mWJn+c6SjIUiMvibDuik94EaRTVuM+wqQeY/hqam+D/eF5cKtrE1MhB0d")
         termsLabel.textColor = UIColor.black.withAlphaComponent(0.45)
         termsLabel.font = .systemFont(ofSize: 14, weight: .regular)
         termsLabel.numberOfLines = 0
@@ -175,23 +175,23 @@ class CatruiIdentityAuthPortal: UIViewController {
 
     @objc private func authSessionPersistenceKumi() {
         guard ageGateVerificationMaroCheck.isChecked else {
-            showAlert("Please accept the terms first.")
+            showAlert(PaulaVocalCipherRune.echo("F6inJKRMMKrwqAOUmv6fbbYfaNH7LZ/tDxftdCIHN5kjxMcaRZLXwW7xKe+aa8D5vxsqDE3rBXB1SQ=="))
             return
         }
-        let loginAddressCueMavo = (emailAuthParsingRivoInput.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        let passcodeRelayTokenDori = passwordGatePromptingZaliInput.text ?? ""
-        guard loginAddressCueMavo.contains("@"), loginAddressCueMavo.contains(".") else {
-            showAlert("Please enter a valid email.")
+        let loginAddressCueMavo = (emailAuthParsingRivoInput.text ?? PaulaVocalCipherRune.echo("vosEQcrVts9CnlySdDxuFx0GMmvJlVMFYjcKOg==")).trimmingCharacters(in: .whitespacesAndNewlines)
+        let passcodeRelayTokenDori = passwordGatePromptingZaliInput.text ?? PaulaVocalCipherRune.echo("j7+FgEa2uLknkwdxx2rJ0FMZr8QiR1j5PT1nHg==")
+        guard loginAddressCueMavo.contains(PaulaVocalCipherRune.echo("eCq+sn2NnznMxiRh8/rmJww3bwMnDMpee2we+K8=")), loginAddressCueMavo.contains(PaulaVocalCipherRune.echo("77p6oTxw30VYDj/zuDjlvCeqdmWnMb3Oc0wZ3X8=")) else {
+            showAlert(PaulaVocalCipherRune.echo("h7Q5WNN71bsqzjsLbtJzoRS7URHy5SMDJR7xo4NM8rEX8A+KFdoLBo9LfFzn6037ef5syMiQlQ=="))
             return
         }
         guard !passcodeRelayTokenDori.isEmpty else {
-            showAlert("Please enter your password.")
+            showAlert(PaulaVocalCipherRune.echo("uWVRwTFMkWzGB/0QyOSef6LFy0oGlOQfxt3XIZWtZU+52QQNACOrvzkqUKfSeyMxvhrP/QweaA=="))
             return
         }
 
         view.isUserInteractionEnabled = false
         loadingStateRenderingQavi.startAnimating()
-        PaulaAuthAPI.emailLogin(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, type: "1") { [weak self] requestOutcomeFluxTavi in
+        PaulaAuthAPI.emailLogin(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, type: PaulaVocalCipherRune.echo("UH9wp+TTKeeMo9KYDli33TGIUQQtoP+muqne0uw=")) { [weak self] requestOutcomeFluxTavi in
             self?.loadingStateRenderingQavi.stopAnimating()
             self?.view.isUserInteractionEnabled = true
             switch requestOutcomeFluxTavi {
@@ -199,14 +199,14 @@ class CatruiIdentityAuthPortal: UIViewController {
                 PaulaAuthSession.save(playerProfileCacheNero)
                 CatruiPulseOrchestrator.shared.mainConsoleLaunchViro()
             case .failure:
-                self?.showAlert("Login failed. Please try again.")
+                self?.showAlert(PaulaVocalCipherRune.echo("nV0Et1b4nGDPIFYxSxFW91AqQmDWPZEGhQfnYVm+kDd11gPYU+t6684Qf2mjyso0xSrrqxHmQ+OTrIs="))
             }
         }
     }
 
     @objc private func signupDraftStorageTalo() {
         guard ageGateVerificationMaroCheck.isChecked else {
-            showAlert("Please accept the terms first.")
+            showAlert(PaulaVocalCipherRune.echo("crYdyx499x5eSYK3B3WQJGz0M2qCWsgD9zonar4GiLfblYBKBoUcuXg+fGatstb1BWeJHR8Cq8/WjA=="))
             return
         }
         navigationController?.pushViewController(PaulaSignupProfileController(), animated: true)
@@ -221,7 +221,7 @@ class CatruiIdentityAuthPortal: UIViewController {
     }
 
     @objc private func agreementRouteMappingTeni() {
-        let url = NWFUclipFusionOrbit.arenaCascadeField.voiceHarborMist(MotionTrail: "3")
+        let url = NWFUclipFusionOrbit.arenaCascadeField.voiceHarborMist(MotionTrail: PaulaVocalCipherRune.echo("sFNiD+vdqNs5WG/ucaQNcpJpx4GE5t4TFBgvyKo="))
         navigationController?.pushViewController(ZoiceDriftZone(streamAuraShift: url), animated: true)
     }
 }

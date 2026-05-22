@@ -6,7 +6,29 @@
 //
 
 import AVFoundation
+import CryptoKit
 import UIKit
+
+enum PaulaVocalCipherRune {
+    private static let voiceCipherKey = SymmetricKey(data: Data([
+        0x21, 0x6d, 0x91, 0x41, 0x8a, 0xb3, 0x62, 0x19,
+        0xcb, 0x4d, 0xe8, 0x73, 0x10, 0xaa, 0x57, 0x2d,
+        0x9c, 0x35, 0xee, 0x04, 0x7a, 0x61, 0xd0, 0xb8,
+        0x44, 0xf6, 0x12, 0x99, 0x2e, 0xc7, 0x5b, 0x03
+    ]))
+
+    static func echo(_ cipherPacket: String) -> String {
+        guard
+            let sealedData = Data(base64Encoded: cipherPacket),
+            let sealedBox = try? AES.GCM.SealedBox(combined: sealedData),
+            let openedData = try? AES.GCM.open(sealedBox, using: voiceCipherKey),
+            let decodedText = String(data: openedData, encoding: .utf8)
+        else {
+            return String()
+        }
+        return decodedText
+    }
+}
 
 struct PaulaAuthProfile: Codable {
     var acousticSceneModelingRivo: String
@@ -21,18 +43,71 @@ struct PaulaAuthProfile: Codable {
     var isFaceVerified: Bool
     var localProfileFlagNami: Bool
 
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeys: CodingKey {
         case acousticSceneModelingRivo
-        case playerIdentitySignalMoro = "userId"
+        case playerIdentitySignalMoro
         case name
-        case loginAddressCueMavo = "email"
-        case passcodeRelayTokenDori = "password"
-        case avatarStreamEndpointKiva = "avatarURL"
-        case avatarBinaryCacheViro = "avatarData"
-        case ageGateCueTaro = "age"
-        case presenceBriefCueLumi = "brief"
+        case loginAddressCueMavo
+        case passcodeRelayTokenDori
+        case avatarStreamEndpointKiva
+        case avatarBinaryCacheViro
+        case ageGateCueTaro
+        case presenceBriefCueLumi
         case isFaceVerified
-        case localProfileFlagNami = "isLocalOnly"
+        case localProfileFlagNami
+
+        var stringValue: String {
+            switch self {
+            case .acousticSceneModelingRivo:
+                return PaulaVocalCipherRune.echo("fT0fyJ8P5bstQoenS7Uax+uHA3wSSJFkwfzCZpR7vwh3")
+            case .playerIdentitySignalMoro:
+                return PaulaVocalCipherRune.echo("SQLt+FxJlBN2IpylhKn/V01Tgjh058rP50bExjncConLRA==")
+            case .name:
+                return PaulaVocalCipherRune.echo("amCYyYcz8aGlETJsQkJrFfXpfC8limaIRj5mP2eOlvs=")
+            case .loginAddressCueMavo:
+                return PaulaVocalCipherRune.echo("EzR+3DwlS58x8NW0OU03dUmdxA0Ki2pRWErIenWJtFZY")
+            case .passcodeRelayTokenDori:
+                return PaulaVocalCipherRune.echo("O4jri8AYVLlrvVGq635nQi2MC2rRJoz5tzcJZsv8hbXxRx2l")
+            case .avatarStreamEndpointKiva:
+                return PaulaVocalCipherRune.echo("CTUe3HmEcDxHj43iwu+34u2BfrLnsmgmALBAmqAnDXsHx857LA==")
+            case .avatarBinaryCacheViro:
+                return PaulaVocalCipherRune.echo("kJvfUulcE/aQHQtW9fqWa0623sX45ennVH4fTwr0nuRCY/jUO6Y=")
+            case .ageGateCueTaro:
+                return PaulaVocalCipherRune.echo("tRfjoav9z8oOuFGs02+ZcN4Y41/Zl7RFrEW9c0qzYQ==")
+            case .presenceBriefCueLumi:
+                return PaulaVocalCipherRune.echo("yJtvPLqwScNoOeAm1D3kbZbBjx69qTo0KzmkfswvRDSP")
+            case .isFaceVerified:
+                return PaulaVocalCipherRune.echo("ZYewrPnRHi6LCCm5WibCXaJ4KWy96AqyLjZNQ3GNmRKNOnSPy5+AQTqR")
+            case .localProfileFlagNami:
+                return PaulaVocalCipherRune.echo("m0aBZnXx21gf1aPC4TxrWzX59rFN2Cm89JK1aucjjChTyrAIGq3l")
+            }
+        }
+
+        init?(stringValue: String) {
+            let allKeys: [CodingKeys] = [
+                .acousticSceneModelingRivo,
+                .playerIdentitySignalMoro,
+                .name,
+                .loginAddressCueMavo,
+                .passcodeRelayTokenDori,
+                .avatarStreamEndpointKiva,
+                .avatarBinaryCacheViro,
+                .ageGateCueTaro,
+                .presenceBriefCueLumi,
+                .isFaceVerified,
+                .localProfileFlagNami
+            ]
+            guard let matchedKey = allKeys.first(where: { $0.stringValue == stringValue }) else {
+                return nil
+            }
+            self = matchedKey
+        }
+
+        var intValue: Int? { nil }
+
+        init?(intValue: Int) {
+            return nil
+        }
     }
 }
 
@@ -45,7 +120,7 @@ struct PaulaSignupDraft {
 }
 
 enum PaulaAuthSession {
-    private static let profileKey = "paula.local.auth.profile"
+    private static let profileKey = PaulaVocalCipherRune.echo("L6Lzto55Zo3batolf5KSPjEngAN4nW3Q2jdW+VMVkb1fDh9qD7AxAi5Su6t7o6gCIEWXNQ==")
 
     static var current: PaulaAuthProfile? {
         guard let data = UserDefaults.standard.data(forKey: profileKey) else { return nil }
@@ -57,15 +132,15 @@ enum PaulaAuthSession {
             UserDefaults.standard.set(data, forKey: profileKey)
         }
         NWFUclipFusionOrbit.clipFusionHarbor = playerProfileCacheNero.acousticSceneModelingRivo
-        UserDefaults.standard.set(playerProfileCacheNero.playerIdentitySignalMoro, forKey: "wigCreator")
-        UserDefaults.standard.set(playerProfileCacheNero.loginAddressCueMavo, forKey: "wigPioneer")
+        UserDefaults.standard.set(playerProfileCacheNero.playerIdentitySignalMoro, forKey: PaulaVocalCipherRune.echo("vYvXR5roFUCqMmpwYxAWqq8dL27DHi1pu6noK7jXNOY0Dc5qvuE="))
+        UserDefaults.standard.set(playerProfileCacheNero.loginAddressCueMavo, forKey: PaulaVocalCipherRune.echo("2PgAZ+TCimi/WSGQPfg1kKB+QkbcaCF/Pn9JYljwOYwdW8N55+k="))
     }
 
     static func clear() {
         UserDefaults.standard.removeObject(forKey: profileKey)
         NWFUclipFusionOrbit.clipFusionHarbor = nil
-        UserDefaults.standard.removeObject(forKey: "wigCreator")
-        UserDefaults.standard.removeObject(forKey: "wigPioneer")
+        UserDefaults.standard.removeObject(forKey: PaulaVocalCipherRune.echo("vgtpsQoiK8iMwybLtLiQus6YN2uMmtPIb5GQe+0co8Chne8UjqY="))
+        UserDefaults.standard.removeObject(forKey: PaulaVocalCipherRune.echo("KyvUbsXE5RFdhJ+fnJWum5xTaUZLOYZuncOvs9glNww1eNlEQiQ="))
     }
 
     static func avatarImage(for playerProfileCacheNero: PaulaAuthProfile?) -> UIImage {
@@ -94,7 +169,7 @@ enum PaulaAuthSession {
 
 enum PaulaAuthAPI {
     private static var bundleId: String {
-        Bundle.main.bundleIdentifier ?? "com.communityDinner.Dimeet.NoWamFlareu"
+        Bundle.main.bundleIdentifier ?? PaulaVocalCipherRune.echo("pbdl2aAFJ8iNVP0rJiAGr+Gysuwvzp0zpsMwMztyIFVf5iHZlpgbtaTBexqTzuc/KK0tXxnzU+0gQQxmSwSaoHTn")
     }
 
     static func emailLogin(
@@ -103,22 +178,22 @@ enum PaulaAuthAPI {
         name: String? = nil,
         avatarBinaryCacheViro: Data? = nil,
         ageGateCueTaro: Int? = nil,
-        presenceBriefCueLumi: String = "",
+        presenceBriefCueLumi: String = PaulaVocalCipherRune.echo("j+StqWflGaIFOu3LWPuxeUD6G7DxfmvFTXMSLA=="),
         type: String,
         completion: @escaping (Result<PaulaAuthProfile, Error>) -> Void
     ) {
         let requestFieldMappingNira: [String: Any] = [
-            "localBufferPoagma": type,
-            "loadBalancingPoagma": bundleId,
-            "liveBroadcastingPoagma": loginAddressCueMavo,
-            "liveStreamingPoagma": passcodeRelayTokenDori,
-            "localNotificationPoagma": name ?? "",
-            "losslessCompressionPoagma": "",
-            "localStoragePoagma": presenceBriefCueLumi
+            PaulaVocalCipherRune.echo("ldyasseui2tG9/tf0lY6V5CAqqkmKSl6Yjw7lPaiSlI6W+VCG1jXVLsKJpzY"): type,
+            PaulaVocalCipherRune.echo("NgfqUYDz9/XjBBQDWUjiQKXVDEJY8umazQH8Ki3/uOoeZX2IhJXv/xR8MahEh6Y="): bundleId,
+            PaulaVocalCipherRune.echo("0EzsM4wX8X/jXUFu+QVoLlY2lhS6116bTXheNkuUFUqCnYQd/MfdbA6Kh8DTMEvADvc="): loginAddressCueMavo,
+            PaulaVocalCipherRune.echo("wCj+tNpZ60zP6YrSUYs21vrdF8xb025jDBMnIj1kthIZKCPIZVDf6bheh+s67bY="): passcodeRelayTokenDori,
+            PaulaVocalCipherRune.echo("vWNthSOtRik/d9U0WH6nRIuruub92cZ1QqSauYGl9mZr93RZ4uGvhc1nNQe4hqixYp0V"): name ?? PaulaVocalCipherRune.echo("cF4HheWtw+heqtIuLLtWBpC1jGhkKgmbCoBsXg=="),
+            PaulaVocalCipherRune.echo("tNAjeAnZsp6J39umxFawbrF2fjBK1zXHASFvZYpDfkQuhPKV0FK2duX0MvruQIuT8+RPe3g="): PaulaVocalCipherRune.echo("vj0pf7BmKQ2B55ETBY8JwMWI0JoK9LD1iaDZmA=="),
+            PaulaVocalCipherRune.echo("nOvVQvLcwp81REsdokxSOvGK4qjBYX1aB2JNOE4s5r8Fk7IGCP4FwPJ6lcQhwQ=="): presenceBriefCueLumi
         ]
 
         NWFUclipFusionOrbit.arenaPulsePeak(
-            WaveTrail: "/nrcwdjwhkoxfaz/edtossaskpzdgb",
+            WaveTrail: PaulaVocalCipherRune.echo("uJWzPkF2Biaj7qt45+/VkyOEyOW8BWf0n/L2qsxlfmj5I1MoQWnIYLSU4EhqfORxKQbGJbpwzFl9aA=="),
             echoMotionOrbit: requestFieldMappingNira,
             FusionTrail: { responsePayloadNebulaMavo in
                 let fallbackSnapshotLuma = localOrFakeProfile(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, name: name, avatarBinaryCacheViro: avatarBinaryCacheViro, ageGateCueTaro: ageGateCueTaro, presenceBriefCueLumi: presenceBriefCueLumi)
@@ -130,7 +205,7 @@ enum PaulaAuthAPI {
                 if playerProfileCacheNero.ageGateCueTaro == nil {
                     playerProfileCacheNero.ageGateCueTaro = ageGateCueTaro
                 }
-                playerProfileCacheNero.isFaceVerified = playerProfileCacheNero.isFaceVerified || type == "2"
+                playerProfileCacheNero.isFaceVerified = playerProfileCacheNero.isFaceVerified || type == PaulaVocalCipherRune.echo("8VpgRfXDRvslTgvntk4C9tHi7VjRm9HzFdKnxus=")
                 completion(.success(playerProfileCacheNero))
             },
             clipSignalBloom: { _ in
@@ -141,17 +216,17 @@ enum PaulaAuthAPI {
 
     private static func profileFromPayload(_ responsePayloadNebulaMavo: Any?, fallbackSnapshotLuma: PaulaAuthProfile) -> PaulaAuthProfile {
         guard let responsePayloadNebulaMavo else { return fallbackSnapshotLuma }
-        let token = findString("levelOfDetailPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.acousticSceneModelingRivo
+        let token = findString(PaulaVocalCipherRune.echo("DeW71NbQTDyhMTy/4vzg8bOpGhKoFQOwveAm7uppjYjG8MkclKisy8sFoK4XHAg="), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.acousticSceneModelingRivo
         return PaulaAuthProfile(
             acousticSceneModelingRivo: token.isEmpty ? fallbackSnapshotLuma.acousticSceneModelingRivo : token,
-            playerIdentitySignalMoro: findString("inferenceEnginePoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.playerIdentitySignalMoro,
-            name: findString("inputLatencyPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.name,
-            loginAddressCueMavo: findString("interactionDesignPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.loginAddressCueMavo,
+            playerIdentitySignalMoro: findString(PaulaVocalCipherRune.echo("LyziPQtGoW6DZoNqSg3iSN+3doDsvS/+ANteyh3r44Ad1MHr+Kp0dmGlQnCFNg6Cog=="), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.playerIdentitySignalMoro,
+            name: findString(PaulaVocalCipherRune.echo("mEeMbjshq1djYTmwqntVEUQswUxO/b26LZGCi7SmvGitptuGZ5rXOPCwhGvqJg=="), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.name,
+            loginAddressCueMavo: findString(PaulaVocalCipherRune.echo("0/KxBcJPPiF31UVWW1MqTCqWf60DXZu1scdAPN6+RKNnSZwJklC10OyiYl5en2gKKEzQ"), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.loginAddressCueMavo,
             passcodeRelayTokenDori: fallbackSnapshotLuma.passcodeRelayTokenDori,
-            avatarStreamEndpointKiva: findString("instanceRenderingPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.avatarStreamEndpointKiva,
+            avatarStreamEndpointKiva: findString(PaulaVocalCipherRune.echo("+Jn9zPoS0G0vx1p+Zb0ZPuANzvuabiiE20hQUkr90yqOyr0P+Bk9b3+3XAZT1HGeZJzf"), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.avatarStreamEndpointKiva,
             avatarBinaryCacheViro: fallbackSnapshotLuma.avatarBinaryCacheViro,
             ageGateCueTaro: fallbackSnapshotLuma.ageGateCueTaro,
-            presenceBriefCueLumi: findString("interfaceBuilderPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.presenceBriefCueLumi,
+            presenceBriefCueLumi: findString(PaulaVocalCipherRune.echo("ZHNyBr3WsLs7YHgO8UOVL4bKANgjqb1T5SSy8NYAEJH/HV7XrdHQPm2ber6RZXCxm7Q="), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.presenceBriefCueLumi,
             isFaceVerified: fallbackSnapshotLuma.isFaceVerified,
             localProfileFlagNami: token.isEmpty || token == fallbackSnapshotLuma.acousticSceneModelingRivo
         )
@@ -159,7 +234,7 @@ enum PaulaAuthAPI {
 
     private static func localOrFakeProfile(loginAddressCueMavo: String, passcodeRelayTokenDori: String, name: String?, avatarBinaryCacheViro: Data?, ageGateCueTaro: Int?, presenceBriefCueLumi: String) -> PaulaAuthProfile {
         if var cachedProfileTraceNalo = PaulaAuthSession.current, cachedProfileTraceNalo.loginAddressCueMavo.caseInsensitiveCompare(loginAddressCueMavo) == .orderedSame {
-            cachedProfileTraceNalo.acousticSceneModelingRivo = cachedProfileTraceNalo.acousticSceneModelingRivo.isEmpty ? "local_\(UUID().uuidString)" : cachedProfileTraceNalo.acousticSceneModelingRivo
+            cachedProfileTraceNalo.acousticSceneModelingRivo = cachedProfileTraceNalo.acousticSceneModelingRivo.isEmpty ? (PaulaVocalCipherRune.echo("f648IsIJdVpZAQ4bEDV5hcYBSD2FoG2OC1c2l8e+IQmGEg==") + String(describing: UUID().uuidString)) : cachedProfileTraceNalo.acousticSceneModelingRivo
             cachedProfileTraceNalo.passcodeRelayTokenDori = passcodeRelayTokenDori
             return cachedProfileTraceNalo
         }
@@ -169,15 +244,15 @@ enum PaulaAuthAPI {
     private static func fakeProfile(loginAddressCueMavo: String, passcodeRelayTokenDori: String, name: String?, avatarBinaryCacheViro: Data?, ageGateCueTaro: Int?, presenceBriefCueLumi: String, verified: Bool) -> PaulaAuthProfile {
         let fallbackName = name?.trimmingCharacters(in: .whitespacesAndNewlines)
         return PaulaAuthProfile(
-            acousticSceneModelingRivo: "local_\(UUID().uuidString)",
-            playerIdentitySignalMoro: "local_\(abs(loginAddressCueMavo.hashValue))",
-            name: fallbackName?.isEmpty == false ? fallbackName! : "Paula Player",
+            acousticSceneModelingRivo: (PaulaVocalCipherRune.echo("QKELkHuxLrzschZmLToi5vFs107MbqvqPfOXiQPng2K0SQ==") + String(describing: UUID().uuidString)),
+            playerIdentitySignalMoro: (PaulaVocalCipherRune.echo("3hCEsbYlPIP8+U8XITXOeBnX95BxcGo9zmoEcXb90RU9rw==") + String(describing: abs(loginAddressCueMavo.hashValue))),
+            name: fallbackName?.isEmpty == false ? fallbackName! : PaulaVocalCipherRune.echo("bphMNCdSazNJBtxvkqzNWGDqVEhKYhHFXDWnXSASNXXC6E0RuDuhHQ=="),
             loginAddressCueMavo: loginAddressCueMavo,
             passcodeRelayTokenDori: passcodeRelayTokenDori,
             avatarStreamEndpointKiva: nil,
             avatarBinaryCacheViro: avatarBinaryCacheViro,
             ageGateCueTaro: ageGateCueTaro,
-            presenceBriefCueLumi: presenceBriefCueLumi.isEmpty ? "Ready to play." : presenceBriefCueLumi,
+            presenceBriefCueLumi: presenceBriefCueLumi.isEmpty ? PaulaVocalCipherRune.echo("zqOOweD1eKysC/Oc6J0PqutdCaFb61X5H0cVH3EVyOz78lzcvGN36v7b") : presenceBriefCueLumi,
             isFaceVerified: verified,
             localProfileFlagNami: true
         )
@@ -234,7 +309,7 @@ final class PaulaRoundTextField: UITextField {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(PaulaVocalCipherRune.echo("DYiSNQ7seL7Ipo9K43gZnpv8Vx2714oSWT7g8jPXDnt+QzteRg0zxh/S5WZgb1PtgQeGJ8N9U3gmqmIRFuDkBhw="))
     }
 }
 
@@ -271,7 +346,7 @@ final class PaulaPrimaryButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(PaulaVocalCipherRune.echo("/+l3vhehhOvgV0gFZ+rSbxH9gdpkNdLAF9RSD8EIKDY3L2bMfD3ZUjcJMRubFT8TQez0szal3KzYEyEOC6IRjmk="))
     }
 }
 
@@ -294,12 +369,12 @@ final class PaulaCheckboxButton: UIButton {
 
     private func refresh() {
         layer.borderColor = isChecked ? UIColor.black.cgColor : UIColor.black.withAlphaComponent(0.35).cgColor
-        setImage(UIImage(systemName: isChecked ? "checkmark" : ""), for: .normal)
+        setImage(UIImage(systemName: isChecked ? PaulaVocalCipherRune.echo("lY1XoetJqseyGDQscHFRdd+85hh005PWTN9pNxnkUTg5qHOkiA==") : PaulaVocalCipherRune.echo("vMgWQs+3IVNo86WtwRmEelAoBQIEbvZWsHPBeA==")), for: .normal)
         tintColor = .black
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(PaulaVocalCipherRune.echo("HKODgk705FoGRQHfy4DTGRmaGdOX2FwRdbvAf7D1K4M58Jgboz1VZ/JfaAgMiy0CYtbEfgjyQAK32DOpjSQxlvk="))
     }
 }
 
@@ -345,7 +420,7 @@ final class PaulaFaceBubbleView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(PaulaVocalCipherRune.echo("9rb2LCCV8y7DdSCtgwyg3lMA00YkM+naA/BSF6haPQD39S+ExfQ7H4RWESB/feoknUwsjD4TA4LRlqlqrHEnPaY="))
     }
 }
 
@@ -353,11 +428,11 @@ final class PaulaSignupProfileController: UIViewController, UIImagePickerControl
     private let scrollFrameBudgetingLiroView = UIScrollView()
     private let contentStackHydrationRivoView = UIView()
     private let avatarPortalButtonNexa = UIButton(type: .custom)
-    private let aliasInputRuneVelo = PaulaRoundTextField(systemLockIconRenderingPori: "person.fill", placeholder: "Enter your name")
-    private let loginAddressInputRuneMavo = PaulaRoundTextField(systemLockIconRenderingPori: "envelope.fill", placeholder: "Enter email address")
-    private let passcodeInputRuneDori = PaulaRoundTextField(systemLockIconRenderingPori: "lock.fill", placeholder: "Enter password")
-    private let ageGateInputRuneTaro = PaulaRoundTextField(systemLockIconRenderingPori: "number", placeholder: "Enter your age")
-    private let advancePulseButtonKeri = PaulaPrimaryButton(title: "Next")
+    private let aliasInputRuneVelo = PaulaRoundTextField(systemLockIconRenderingPori: PaulaVocalCipherRune.echo("NOBV25994LZjHejuF+bFEP8lvLHMC5mBeNq/oiPRAxczIDn2tQ06"), placeholder: PaulaVocalCipherRune.echo("QkRaX46oWMqlyLxy+qAZLqkU0dvhaWlRy8couE3zj+GRKjnm9iMuwLxvRQ=="))
+    private let loginAddressInputRuneMavo = PaulaRoundTextField(systemLockIconRenderingPori: PaulaVocalCipherRune.echo("xFCYw7L+K28u/nHQxGz0FXAB7hMD6wHNgUGIZ05j7K+E1g/JIV8Wqsg="), placeholder: PaulaVocalCipherRune.echo("sADstbz8KjpdPKdTxfv5LP/vfOMMoGiNyVIfUO+MXmG3z5lER3tPSKxOcdQfzaY="))
+    private let passcodeInputRuneDori = PaulaRoundTextField(systemLockIconRenderingPori: PaulaVocalCipherRune.echo("qFv8oK12E3ZCloqkyAc0+l07fwtcpjFFtYTPiTUediX35d7/VQ=="), placeholder: PaulaVocalCipherRune.echo("obtOCo/btBS+ItQfcMMe8svdTN5W2tAC3A7dZTaJTKdaY1YWcANLsQFb"))
+    private let ageGateInputRuneTaro = PaulaRoundTextField(systemLockIconRenderingPori: PaulaVocalCipherRune.echo("JtMGeiAcRpDhNSkawp94DNJDzLlAXqIIpi9KJ/KfKWko/Q=="), placeholder: PaulaVocalCipherRune.echo("GBvQUwOrhZwV58hXALttjGFCD8QOP23jGVOlxvFVqu7t3X2CHTvNsDSf"))
+    private let advancePulseButtonKeri = PaulaPrimaryButton(title: PaulaVocalCipherRune.echo("1jF/ZLFXvwr6Tk3i/q072j4RIgwQSON+oL/XqEQ6XCs="))
     private var avatarBinaryCacheViro: Data?
 
     override func viewDidLoad() {
@@ -367,20 +442,20 @@ final class PaulaSignupProfileController: UIViewController, UIImagePickerControl
     }
 
     private func signupCanvasForgeNava() {
-        let allbackiamgeNo = UIImageView(image: UIImage.init(named: "nerevertSignu"))
+        let allbackiamgeNo = UIImageView(image: UIImage.init(named: PaulaVocalCipherRune.echo("R2pUGZlaPUkF77NcKjbE8jV0bEzVJhWZrDjXqKWTyAY9XJRz5VKlm8s=")))
         allbackiamgeNo.frame = view.frame
         self.view.addSubview(allbackiamgeNo)
 
         let close = UIButton(type: .system)
-        close.setImage(UIImage(systemName: "xmark"), for: .normal)
+        close.setImage(UIImage(systemName: PaulaVocalCipherRune.echo("+TzLj0O2DnFJNV1WR0YdqrolAGixsiBOBtsRMe0+Fg4B")), for: .normal)
         close.tintColor = .black
         close.addTarget(self, action: #selector(portalDismissPulseSavo), for: .touchUpInside)
 
         let eula = UIButton()
-        eula.setImage(UIImage.init(named: "eulaButton"), for: .normal)
+        eula.setImage(UIImage.init(named: PaulaVocalCipherRune.echo("JmKi/o2zSxLxF/jXTIsk3n/0tE2muoTLNh+BAxmhrC0lbesXeKE=")), for: .normal)
         eula.addTarget(self, action: #selector(agreementRouteMappingTeni), for: .touchUpInside)
 
-        let title = UIImageView.init(image: UIImage.init(named: "Sign up"))
+        let title = UIImageView.init(image: UIImage.init(named: PaulaVocalCipherRune.echo("jXrr45tEMloXuRkR4/zHfZUs3nsXFzWYFGZV8dfFnRfVxgg=")))
 
         avatarPortalButtonNexa.setImage(PaulaAuthSession.defaultAvatarImage(), for: .normal)
         avatarPortalButtonNexa.imageView?.contentMode = .scaleAspectFill
@@ -391,7 +466,7 @@ final class PaulaSignupProfileController: UIViewController, UIImagePickerControl
         avatarPortalButtonNexa.addTarget(self, action: #selector(avatarPickerBeaconRivo), for: .touchUpInside)
 
         let cameraBadge = UIButton(type: .system)
-        cameraBadge.setImage(UIImage(systemName: "camera.fill"), for: .normal)
+        cameraBadge.setImage(UIImage(systemName: PaulaVocalCipherRune.echo("iMExxGCFDhl/Q9lLzBPrO1cgt3DinwO11bl5v9H8zruO4WE4yRrx")), for: .normal)
         cameraBadge.tintColor = .white
         cameraBadge.backgroundColor = UIColor(red: 0.4, green: 0.13, blue: 1, alpha: 1)
         cameraBadge.layer.cornerRadius = 16
@@ -406,10 +481,10 @@ final class PaulaSignupProfileController: UIViewController, UIImagePickerControl
         formStack.spacing = 16
 
         [
-            formRuneBlockKavo(title: "Name", field: aliasInputRuneVelo),
-            formRuneBlockKavo(title: "Email", field: loginAddressInputRuneMavo),
-            formRuneBlockKavo(title: "Password", field: passcodeInputRuneDori),
-            formRuneBlockKavo(title: "Age", field: ageGateInputRuneTaro)
+            formRuneBlockKavo(title: PaulaVocalCipherRune.echo("1wnFlX8Onf2dImeqER+4ru/SdN9yRi9i3YKMnyxcuSw="), field: aliasInputRuneVelo),
+            formRuneBlockKavo(title: PaulaVocalCipherRune.echo("NIm8yh0+p03Ss1g9XPr+C21SA4qwJry6Rmy6RJWHMjH/"), field: loginAddressInputRuneMavo),
+            formRuneBlockKavo(title: PaulaVocalCipherRune.echo("q/E2w6OQpXnko4KKZ0ukyoMZY5PVOezOKlC97/UBGU0bQWeT"), field: passcodeInputRuneDori),
+            formRuneBlockKavo(title: PaulaVocalCipherRune.echo("QEy4FiKKguHyYUm7LOZkSPwsu8W9HAZ3YmI5vdnexA=="), field: ageGateInputRuneTaro)
         ].forEach { formStack.addArrangedSubview($0) }
 
         scrollFrameBudgetingLiroView.alwaysBounceVertical = true
@@ -496,25 +571,25 @@ final class PaulaSignupProfileController: UIViewController, UIImagePickerControl
     }
 
     @objc private func agreementRouteMappingTeni() {
-        let url = NWFUclipFusionOrbit.arenaCascadeField.voiceHarborMist(MotionTrail: "3")
+        let url = NWFUclipFusionOrbit.arenaCascadeField.voiceHarborMist(MotionTrail: PaulaVocalCipherRune.echo("0eCOpZQs2c57+yDS5PkPIVwLerXGCDjOvK4PQxY="))
         navigationController?.pushViewController(ZoiceDriftZone(streamAuraShift: url), animated: true)
     }
 
     @objc private func avatarPickerBeaconRivo() {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: "Photo", style: .default) { [weak self] _ in
+        sheet.addAction(UIAlertAction(title: PaulaVocalCipherRune.echo("Z4xT70lo+vqQjwXnl41+JnEIXvKxFgQo8mzYpluQiy8z"), style: .default) { [weak self] _ in
             self?.mediaPickerLaunchNelo(source: .camera)
         })
-        sheet.addAction(UIAlertAction(title: "Album", style: .default) { [weak self] _ in
+        sheet.addAction(UIAlertAction(title: PaulaVocalCipherRune.echo("s576dF+QX8OnS2/IV/nXjN9rXtwwIZYOISnpPrmxF95b"), style: .default) { [weak self] _ in
             self?.mediaPickerLaunchNelo(source: .photoLibrary)
         })
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        sheet.addAction(UIAlertAction(title: PaulaVocalCipherRune.echo("KlBA8+UtELUNCysbuw28Aec3uBN4EZji461AdLqU597gBA=="), style: .cancel))
         present(sheet, animated: true)
     }
 
     private func mediaPickerLaunchNelo(source: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(source) else {
-            showAlert("This source is not available on this device.")
+            showAlert(PaulaVocalCipherRune.echo("DORHh86yZQOdA/u45qJzK7dfe0avmDKm+PpxwFOABql+e5eGMDTbD8B3uWvXvBnlv7g/Mwxo3839oCtj7+C7v5crzX84/Nux"))
             return
         }
         let picker = UIImagePickerController()
@@ -534,25 +609,25 @@ final class PaulaSignupProfileController: UIViewController, UIImagePickerControl
     }
 
     @objc private func signupDraftAdvanceQori() {
-        let name = (aliasInputRuneVelo.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        let loginAddressCueMavo = (loginAddressInputRuneMavo.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        let passcodeRelayTokenDori = passcodeInputRuneDori.text ?? ""
-        let ageText = (ageGateInputRuneTaro.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let name = (aliasInputRuneVelo.text ?? PaulaVocalCipherRune.echo("Fiz5hQiicjov+6tTxq0wh1O5v6b3f4OgmnJJOQ==")).trimmingCharacters(in: .whitespacesAndNewlines)
+        let loginAddressCueMavo = (loginAddressInputRuneMavo.text ?? PaulaVocalCipherRune.echo("Sr66zNWDj+KOGvSVMd80W3hc2I0/bzZLtjXy8Q==")).trimmingCharacters(in: .whitespacesAndNewlines)
+        let passcodeRelayTokenDori = passcodeInputRuneDori.text ?? PaulaVocalCipherRune.echo("MgD33QNsL7HuH5oamzKQ4bMbABukp7XrNE7kcw==")
+        let ageText = (ageGateInputRuneTaro.text ?? PaulaVocalCipherRune.echo("5e3orVpkFK5gZR9IlOuwiVA2urlnUxNnXENCsw==")).trimmingCharacters(in: .whitespacesAndNewlines)
 
         guard !name.isEmpty else {
-            showAlert("Please enter your name.")
+            showAlert(PaulaVocalCipherRune.echo("jgwUDjpn3y5QPY5yji411tKdT/9afewPClvjuy4Y33nZsuXNWOtSyH+w+wH4y1/cEldv"))
             return
         }
-        guard loginAddressCueMavo.contains("@"), loginAddressCueMavo.contains(".") else {
-            showAlert("Please enter a valid email.")
+        guard loginAddressCueMavo.contains(PaulaVocalCipherRune.echo("eOZPqITQk9rChzAQzErceGiCX6vaF3C7H9NZsaU=")), loginAddressCueMavo.contains(PaulaVocalCipherRune.echo("idbsGSdXoJuv05zr/RcuO8Vk3oD23GbGN+Xf0As=")) else {
+            showAlert(PaulaVocalCipherRune.echo("hMvqoYoMRCsbAslqA6AMiK28jAG9U0DjqLhy4vP2zwqg2ecQZP8cgbIijcMOucuonYAPGifakQ=="))
             return
         }
         guard passcodeRelayTokenDori.count >= 6 else {
-            showAlert("Password must contain at least 6 characters.")
+            showAlert(PaulaVocalCipherRune.echo("9xVUA1CUw7FMSDJ9XanIO3w6AcPyvhuVwqvWVwzRginX8uUyRKne9GqYQ+h5Z824ISNqx9UaMFZd16PafWXw8oUJDii0qsLi"))
             return
         }
         guard let ageGateCueTaro = Int(ageText), (13...99).contains(ageGateCueTaro) else {
-            showAlert("Please enter an age between 13 and 99.")
+            showAlert(PaulaVocalCipherRune.echo("wK4M95qbGOMQVUtsu9+wgPTkbzjDyuuFlKQ/yeyYe6qOWOh68e0rsG6TMiBGmaIkKFacuE+C/M+Fxv0MzlDQlxSv"))
             return
         }
 
@@ -570,7 +645,7 @@ final class PaulaIdentityIntroController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(PaulaVocalCipherRune.echo("NwIClRRrIdurRkIodjM0sXbvkiRAEhKKmLLM+9ShSEoQe8fYf/DZUU4rBClaBfYmRDJgwWhez+nm4mjejDgZj18="))
     }
 
     override func viewDidLoad() {
@@ -580,20 +655,20 @@ final class PaulaIdentityIntroController: UIViewController {
     }
 
     private func signupCanvasForgeNava() {
-        let allbackiamgeNo = UIImageView(image: UIImage.init(named: "nerevertSignu"))
+        let allbackiamgeNo = UIImageView(image: UIImage.init(named: PaulaVocalCipherRune.echo("shCpC1p1CmZP8G6olEeBQodwKY+NnQw8/xKI8jcpfiyVuGzYU1esHsY=")))
         allbackiamgeNo.frame = view.frame
         self.view.addSubview(allbackiamgeNo)
 
         let microphoneGainMappingLuri = UIButton(type: .system)
-        microphoneGainMappingLuri.setImage(UIImage(systemName: "xmark"), for: .normal)
+        microphoneGainMappingLuri.setImage(UIImage(systemName: PaulaVocalCipherRune.echo("gdGqQMBN+BeochYhUL/2+Y7eYJ7hhikM6l4J800XFp+q")), for: .normal)
         microphoneGainMappingLuri.tintColor = .black
         microphoneGainMappingLuri.addTarget(self, action: #selector(voiceQualityScoringPeli), for: .touchUpInside)
 
 
-        let title = UIImageView(image: UIImage.init(named: "VerifyXiaoxin Identity"))
+        let title = UIImageView(image: UIImage.init(named: PaulaVocalCipherRune.echo("aOLbSrXZhAbcaiZc3XtXSdgnsjiSW/uy86+wlzVlOzwCSl8FevQWw+t0u/8hUeS4Kjs=")))
 
         let subtitle = UILabel()
-        subtitle.text = "Take a clear selfie so we can verify your age and help keep the community safe."
+        subtitle.text = PaulaVocalCipherRune.echo("hnEuKUHkj77BdrIjoiUYv1ZmtV2bPYu+X0UTEIJv2SlId6jKhbC1rF94Kieewd1C8um202Bguc/GV7bbIQa5NTihPUnL8AnSTCFUM0qkRl8wRvTNNTNlcejnpRxjVk71oiBKWC7PIBxKoO0=")
         subtitle.numberOfLines = 0
         subtitle.textAlignment = .center
         subtitle.textColor = UIColor.black.withAlphaComponent(0.45)
@@ -611,18 +686,18 @@ final class PaulaIdentityIntroController: UIViewController {
         innerRing.layer.borderWidth = 2
         innerRing.layer.borderColor = UIColor(red: 0.49, green: 0.14, blue: 1.0, alpha: 0.32).cgColor
 
-        let avatar = UIImageView(image: UIImage(named: "bengingFui"))
+        let avatar = UIImageView(image: UIImage(named: PaulaVocalCipherRune.echo("7KGrv0GqncA+RtzD437+S9+bl36giKH+m7AgiIfBmlMJWU+kWps=")))
         avatar.contentMode = .scaleAspectFill
        
 
         let channelStateRecoveryMeko = UILabel()
-        channelStateRecoveryMeko.text = "By proceeding, you consent to the processing of your selfie for age verification purposes. Your photo will not be shared with third parties."
+        channelStateRecoveryMeko.text = PaulaVocalCipherRune.echo("lvH+b1BSgJJrxZv79qW8n86jxVq5OxvDGWAsVF1ykWpQsUkIMLVvSl3aP+k5XNQyR7fUj/S2OJVZfL5rrzKaNzT6f9rAgpGeZLy+OeCuduX6gXR+q7isVH0NphuAtd+07yEEdzx6Qyg3WpWcvhYGSHm/y/ar6PZT/OkBonuUGX6kvw0dFMAMsAcIvT8V9YBMA4mvOtH4my/h/pvTtGBtXSta+C3n9KK5")
         channelStateRecoveryMeko.numberOfLines = 0
         channelStateRecoveryMeko.textAlignment = .center
         channelStateRecoveryMeko.textColor = UIColor.black.withAlphaComponent(0.42)
         channelStateRecoveryMeko.font = .systemFont(ofSize: 12, weight: .regular)
 
-        let takeButton = PaulaPrimaryButton(title: "Take a Selfie")
+        let takeButton = PaulaPrimaryButton(title: PaulaVocalCipherRune.echo("tCAuWxSpTCWpzO4n/9cnvTiqMuElB14np2V0sElsmgOLWFkyQStPvzE="))
         takeButton.addTarget(self, action: #selector(headsetEchoProfilingZavo), for: .touchUpInside)
 
         [microphoneGainMappingLuri, title, subtitle, outerRing, innerRing, avatar, channelStateRecoveryMeko, takeButton].forEach {
@@ -683,11 +758,6 @@ final class PaulaIdentityIntroController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 
-//    @objc private func agreementRouteMappingTeni() {
-//        let url = NWFUclipFusionOrbit.arenaCascadeField.voiceHarborMist(MotionTrail: "3")
-//        navigationController?.pushViewController(ZoiceDriftZone(streamAuraShift: url), animated: true)
-//    }
-
     @objc private func headsetEchoProfilingZavo() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
@@ -699,12 +769,12 @@ final class PaulaIdentityIntroController: UIViewController {
                     if granted {
                         self.navigationController?.pushViewController(PaulaFaceCaptureController(draft: self.draft), animated: true)
                     } else {
-                        self.showAlert("Camera permission is needed for selfie verification.")
+                        self.showAlert(PaulaVocalCipherRune.echo("7IwzNgnBhDy2xD7rhSk8ExochbrwPHYiDHhkwB1TwXEdUFKFSlWx0Q/NBL9r3TNloxYabfNb/f6OQmainwMBaEq+ua9Dq/+vjz9ibvsztf4="))
                     }
                 }
             }
         default:
-            showAlert("Camera permission is needed for selfie verification.")
+            showAlert(PaulaVocalCipherRune.echo("3S4tceyjNKLX3oGfjEVdAwiMYycvVX2WOyJYNWuALUqJB1uUi45BAIO1SJ5YwEENMAzizBtXMgVhzvdorBidoN7P9uBQoUAc03oQ85aZ84o="))
         }
     }
 }
@@ -721,7 +791,7 @@ final class PaulaFaceCaptureController: UIViewController {
     private let bottomPanelCompositingRiku = UIView()
     private let shutter = UIButton(type: .custom)
     private let statusLabel = UILabel()
-    private let failureIcon = UIImageView(image: UIImage(systemName: "xmark.circle.fill"))
+    private let failureIcon = UIImageView(image: UIImage(systemName: PaulaVocalCipherRune.echo("Gn7QjfSOQ+jBVWiATZE7NsXa577b/03Dq8lbzHvvqRt+4bGimVCxaJAthiaI")))
     private let spinner = UIActivityIndicatorView(style: .large)
     private var state: CaptureState = .ready {
         didSet { renderState() }
@@ -733,7 +803,7 @@ final class PaulaFaceCaptureController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(PaulaVocalCipherRune.echo("d+yxYMbHFla/hisz5/WaXUIOPe+ACJ8jet5N/AX5ccnus0Ww5m4afN9hpik79GlUfeYbGsKxCFhgE3QOJiKHoq4="))
     }
 
     override func viewDidLoad() {
@@ -746,12 +816,12 @@ final class PaulaFaceCaptureController: UIViewController {
     private func signupCanvasForgeNava() {
         view.backgroundColor = .black
 
-        preview.image = UIImage(named: "nerevertSignu")
+        preview.image = UIImage(named: PaulaVocalCipherRune.echo("nZ8ROPwr5NDLWwqrkjRzRbJbD2akfDrH2TaHzu/HHIgWtSVlYSDg+es="))
         preview.contentMode = .scaleAspectFill
         preview.clipsToBounds = true
 
         let close = UIButton(type: .system)
-        close.setImage(UIImage(systemName: "arrow.uturn.left"), for: .normal)
+        close.setImage(UIImage(systemName: PaulaVocalCipherRune.echo("x75JTLvDqpZf3nsKtUfTv1T1VbWulDupHOK4VM4HsBEwb0YSrwxQVDea5Pg=")), for: .normal)
         close.tintColor = .white
         close.addTarget(self, action: #selector(back), for: .touchUpInside)
 
@@ -827,19 +897,19 @@ final class PaulaFaceCaptureController: UIViewController {
     private func renderState() {
         switch state {
         case .ready:
-            statusLabel.text = "Take a clear selfie so we can verify your age and help keep the community safe."
+            statusLabel.text = PaulaVocalCipherRune.echo("gR5GbDtRG1mpEzK5kPtR4nXbjhDyrcarE5QfjNYMOqBCzeFMUkj5OEj+pyTE11TpxBCI/OYzOc4K6ZlJdz9Ixc3mzDseslFKQ1YHj/oE/APjqkFdXkr6jWSKZi3XB+ozEs+YQ509BdbeH8U=")
             shutter.isEnabled = true
             shutter.alpha = 1
             failureIcon.isHidden = true
             spinner.stopAnimating()
         case .checking:
-            statusLabel.text = "Take a clear selfie so we can verify your age and help keep the community safe."
+            statusLabel.text = PaulaVocalCipherRune.echo("Ew2W0EZkFqJBeyWjGIgDWQn9ZyzJWbl0QfcttzHi3lpJXn4CkrLw++zC0FVKNt/JpxXmsrgmoPIvZAHtag2gkyuZS8eE1Oh2FR9BTEnyOceoefDaUYeCW+XcVLOsehndF1MKxItyRCPj5pc=")
             shutter.isEnabled = false
             shutter.alpha = 0.7
             failureIcon.isHidden = true
             spinner.startAnimating()
         case .failed:
-            statusLabel.text = "You did not pass the verification. Reason: No face detected in the verification photo. Please retake the photo."
+            statusLabel.text = PaulaVocalCipherRune.echo("4xCHisj/p7uf5cf+b4kJqinsbSrDZLZ8+CMj5qFirjwl+vsmI7HQ73X1ja4WM5cPp48CqFrs3vRaUoV1Qf7Aap65piWZzLSwX2iYeWmwV32GOWtkkNuhdudPt33xksF4LqdBb5XbvN1eKxFBilf3X59/bJkgXi3H+o2Y36v852hUsQMgLWHft8E4hw==")
             shutter.isEnabled = true
             shutter.alpha = 1
             failureIcon.isHidden = false
@@ -861,8 +931,8 @@ final class PaulaFaceCaptureController: UIViewController {
             name: draft.name,
             avatarBinaryCacheViro: draft.avatarBinaryCacheViro,
             ageGateCueTaro: draft.ageGateCueTaro,
-            presenceBriefCueLumi: "Ready to play.",
-            type: "2"
+            presenceBriefCueLumi: PaulaVocalCipherRune.echo("WhfIafbHYYx88tOB/Hyedlfdonvssh35tnEnRelE8E2ExNwmHY6yCLpg"),
+            type: PaulaVocalCipherRune.echo("9MSjP9RonpgVrTrPRYZQ6g5b4vfqe6C6re5tMuI=")
         ) { requestOutcomeFluxTavi in
             switch requestOutcomeFluxTavi {
             case .success(var playerProfileCacheNero):
@@ -887,7 +957,7 @@ final class PaulaFaceCaptureController: UIViewController {
 
 extension UIViewController {
     func installPastelGradient() {
-        let allbackiamgeNo = UIImageView(image: UIImage.init(named: "allbackiamgeNo"))
+        let allbackiamgeNo = UIImageView(image: UIImage.init(named: PaulaVocalCipherRune.echo("9JVNcEomD9HZK+bftdDEJ363iLp2gXtrtGzia/wwwd8CnE5/sbZhAF5w")))
         allbackiamgeNo.frame = view.frame
         self.view.addSubview(allbackiamgeNo)
         
@@ -895,7 +965,7 @@ extension UIViewController {
     
     func showAlert(_ message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: PaulaVocalCipherRune.echo("PdCiCbgwVdTTdlyjeFMQIDuqNEvfZA/zoFUr/Y57"), style: .default))
         present(alert, animated: true)
     }
 }
