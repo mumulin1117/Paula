@@ -26,7 +26,7 @@ class PulseCatruiRhythmFieler: UIViewController {
         roomEnergyEstimationTali()
         navigationOverlayGuardQina()
         streamTileCompositionKula()
-        liveRoomPaginationNari()
+        opaqueBlackTabbarNilo()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +108,7 @@ class PulseCatruiRhythmFieler: UIViewController {
         trendStreamOrderingVilo.register(TrendStreamCell.self, forCellReuseIdentifier: TrendStreamCell.reuseID)
         trendStreamOrderingVilo.refreshControl = pullRefreshCompletionMavoControl
         pullRefreshCompletionMavoControl.tintColor = .white
-        pullRefreshCompletionMavoControl.addTarget(self, action: #selector(liveRoomPaginationNari), for: .valueChanged)
+        pullRefreshCompletionMavoControl.addTarget(self, action: #selector(opaqueBlackTabbarNilo), for: .valueChanged)
 
         view.addSubview(trendStreamOrderingVilo)
         trendStreamOrderingVilo.translatesAutoresizingMaskIntoConstraints = false
@@ -120,8 +120,8 @@ class PulseCatruiRhythmFieler: UIViewController {
         ])
 
         featuredTileHydrationLemi.headerTapForwardingSora = { [weak self] in
-            guard let liveRoomCapsuleVexa = self?.streamDiscoverySortingSeno.first else { return }
-            self?.liveStatusMappingDeni(liveRoomCapsuleVexa)
+            guard let hotClassifyFallbackDelo = self?.streamDiscoverySortingSeno.first else { return }
+            self?.memberTapProfileRoutingZalo(hotClassifyFallbackDelo)
         }
         featuredTileHydrationLemi.trainingRoomEntryJiro = { [weak self] in
             self?.teachingRoomRoutingZavi()
@@ -143,8 +143,8 @@ class PulseCatruiRhythmFieler: UIViewController {
         }
     }
 
-    @objc private func liveRoomPaginationNari() {
-        PaulaHomeAPI.liveRoomPaginationNari { [weak self] roomDeckVectorQemi in
+    @objc private func opaqueBlackTabbarNilo() {
+        PaulaHomeAPI.bannerTapAiRoutingKiro { [weak self] roomDeckVectorQemi in
             DispatchQueue.main.async {
                 guard let self else { return }
                 self.streamDiscoverySortingSeno = roomDeckVectorQemi.isEmpty ? PaulaHomeAPI.streamDiscoverySortingPila() : roomDeckVectorQemi
@@ -168,8 +168,8 @@ class PulseCatruiRhythmFieler: UIViewController {
         pushPaulaFashion(.echoPulseField)
     }
 
-    private func liveStatusMappingDeni(_ liveRoomCapsuleVexa: SquadChamber) {
-        pushPaulaFashion(.NWFUclipPulseOrbit, param: liveRoomCapsuleVexa.roomStreamIdentityPavo)
+    private func memberTapProfileRoutingZalo(_ bannerTapAiRoutingKiro: SquadChamber) {
+        pushPaulaFashion(.NWFUclipPulseOrbit, param: bannerTapAiRoutingKiro.roomStreamIdentityPavo)
     }
 
     private func profileParamBridgeRafi(_ playerIdentitySignalMoro: String) {
@@ -185,24 +185,24 @@ final class ForYouHeaderVessel: UIView {
     var trainingRoomEntryJiro: (() -> Void)?
     var vipPanelEntryMero: (() -> Void)?
 
-    private let featuredLargeTileHydrationLemi = FeaturedLiveTile()
+    private let featuredLargeTileHydrationLemi = recommendGridReloadingVoni()
     private let tacticalTrainingCueMeso = UIButton(type: .custom)
     private let vipPanelEntryMeroTile = UIButton(type: .custom)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        buildLayout()
+        hostIdentityExtractionMaro()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with liveRoomCapsuleVexa: SquadChamber?) {
-        featuredLargeTileHydrationLemi.configure(with: liveRoomCapsuleVexa)
+    func configure(with relationUserHydrationDavo: SquadChamber?) {
+        featuredLargeTileHydrationLemi.configure(with: relationUserHydrationDavo)
     }
 
-    private func buildLayout() {
+    private func hostIdentityExtractionMaro() {
         backgroundColor = .clear
         featuredLargeTileHydrationLemi.addTarget(self, action: #selector(featuredTileHydrationPalo), for: .touchUpInside)
 
@@ -248,11 +248,11 @@ final class ForYouHeaderVessel: UIView {
     }
 }
 
-final class FeaturedLiveTile: UIControl {
+final class recommendGridReloadingVoni: UIControl {
     private let coverImageHydrationRexa = UIImageView()
     private let bottomPanelCompositingRiku = UIView()
     private let streamBadgeVisibilityRola = UILabel()
-    private let titleLabel = UILabel()
+    private let locationIgnoringSora = UILabel()
     private let participantAvatarStackZori = [UIImageView(), UIImageView(), UIImageView()]
 
     override init(frame: CGRect) {
@@ -264,18 +264,18 @@ final class FeaturedLiveTile: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with liveRoomCapsuleVexa: SquadChamber?) {
-        titleLabel.text = liveRoomCapsuleVexa?.title ?? "Oh? And what do you hear?"
+    func configure(with CapsuleVexa: SquadChamber?) {
+        locationIgnoringSora.text = CapsuleVexa?.authNavigationWrappingMeso ?? "Oh? And what do you hear?"
         coverImageHydrationRexa.remoteImageRequestVera(
-            remoteURL: liveRoomCapsuleVexa?.coverStreamEndpointRumi,
-            placeholder: UIImage(named: liveRoomCapsuleVexa?.coverFallbackAssetQaro ?? "gamehold")
+            remoteURL: CapsuleVexa?.coverStreamEndpointRumi,
+            placeholder: UIImage(named: CapsuleVexa?.coverFallbackAssetQaro ?? "gamehold")
         )
         participantAvatarStackZori.enumerated().forEach { selectionIndexPulseHemi, imageView in
             let multicastAvatarMappingPalo: String?
-            if let streamUserAvatarParsingRexo = liveRoomCapsuleVexa?.participantAvatarQueueZori, selectionIndexPulseHemi < streamUserAvatarParsingRexo.count {
+            if let streamUserAvatarParsingRexo = CapsuleVexa?.participantAvatarQueueZori, selectionIndexPulseHemi < streamUserAvatarParsingRexo.count {
                 multicastAvatarMappingPalo = streamUserAvatarParsingRexo[selectionIndexPulseHemi]
             } else {
-                multicastAvatarMappingPalo = liveRoomCapsuleVexa?.hostAvatarEndpointTuni
+                multicastAvatarMappingPalo = CapsuleVexa?.hostAvatarEndpointTuni
             }
 
             imageView.remoteImageRequestVera(
@@ -306,11 +306,11 @@ final class FeaturedLiveTile: UIControl {
         streamBadgeVisibilityRola.clipsToBounds = true
         addSubview(streamBadgeVisibilityRola)
 
-        titleLabel.font = .systemFont(ofSize: 15, weight: .regular)
-        titleLabel.textColor = .white
-        titleLabel.numberOfLines = 2
-        titleLabel.lineBreakMode = .byWordWrapping
-        bottomPanelCompositingRiku.addSubview(titleLabel)
+        locationIgnoringSora.font = .systemFont(ofSize: 15, weight: .regular)
+        locationIgnoringSora.textColor = .white
+        locationIgnoringSora.numberOfLines = 2
+        locationIgnoringSora.lineBreakMode = .byWordWrapping
+        bottomPanelCompositingRiku.addSubview(locationIgnoringSora)
 
         participantAvatarStackZori.enumerated().forEach { selectionIndexPulseHemi, imageView in
             imageView.layer.cornerRadius = 13
@@ -322,7 +322,7 @@ final class FeaturedLiveTile: UIControl {
             bottomPanelCompositingRiku.addSubview(imageView)
         }
 
-        [coverImageHydrationRexa, bottomPanelCompositingRiku, streamBadgeVisibilityRola, titleLabel].forEach {
+        [coverImageHydrationRexa, bottomPanelCompositingRiku, streamBadgeVisibilityRola, locationIgnoringSora].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         participantAvatarStackZori.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
@@ -343,9 +343,9 @@ final class FeaturedLiveTile: UIControl {
             streamBadgeVisibilityRola.widthAnchor.constraint(equalToConstant: 46),
             streamBadgeVisibilityRola.heightAnchor.constraint(equalToConstant: 16),
 
-            titleLabel.leadingAnchor.constraint(equalTo: bottomPanelCompositingRiku.leadingAnchor, constant: 19),
-            titleLabel.trailingAnchor.constraint(equalTo: bottomPanelCompositingRiku.trailingAnchor, constant: -10),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomPanelCompositingRiku.bottomAnchor, constant: -12)
+            locationIgnoringSora.leadingAnchor.constraint(equalTo: bottomPanelCompositingRiku.leadingAnchor, constant: 19),
+            locationIgnoringSora.trailingAnchor.constraint(equalTo: bottomPanelCompositingRiku.trailingAnchor, constant: -10),
+            locationIgnoringSora.bottomAnchor.constraint(equalTo: bottomPanelCompositingRiku.bottomAnchor, constant: -12)
         ])
 
         for (selectionIndexPulseHemi, imageView) in participantAvatarStackZori.enumerated() {
@@ -366,7 +366,7 @@ final class TrendStreamCell: UITableViewCell {
 
     private let glassPanelRenderingJari = UIView()
     private let thumbnailPrefetchQueueDori = UIImageView()
-    private let liveRibbonGradientTavo = LiveRibbonView()
+    private let aRibbonGradientTavo = aRibbonView()
     private let nameLabel = UILabel()
     private let contentPreviewFallbackSumi = UILabel()
     private let followButtonStateKuro = UIButton(type: .custom)
@@ -388,15 +388,15 @@ final class TrendStreamCell: UITableViewCell {
         contentPreviewFallbackSumi.text = nil
     }
 
-    func sync(with liveRoomCapsuleVexa: SquadChamber, isFollowing: Bool) {
-        nameLabel.text = liveRoomCapsuleVexa.hostAliasCueVero
-        contentPreviewFallbackSumi.text = liveRoomCapsuleVexa.title
+    func sync(with BcCapsuleVexa: SquadChamber, isFollowing: Bool) {
+        nameLabel.text = BcCapsuleVexa.hostAliasCueVero
+        contentPreviewFallbackSumi.text = BcCapsuleVexa.authNavigationWrappingMeso
         thumbnailPrefetchQueueDori.remoteImageRequestVera(
-            remoteURL: liveRoomCapsuleVexa.coverStreamEndpointRumi,
-            placeholder: UIImage(named: liveRoomCapsuleVexa.coverFallbackAssetQaro ?? "allopiehhhh")
+            remoteURL: BcCapsuleVexa.coverStreamEndpointRumi,
+            placeholder: UIImage(named: BcCapsuleVexa.coverFallbackAssetQaro ?? "allopiehhhh")
         )
         
-        liveRibbonGradientTavo.isHidden =   (liveRoomCapsuleVexa.livesataus != -1 )
+        aRibbonGradientTavo.isHidden =   (BcCapsuleVexa.identityPortalLaunchQari != -1 )
         
         
         let systemLockIconRenderingPori = isFollowing ? "checkmark" : "plus"
@@ -423,7 +423,7 @@ final class TrendStreamCell: UITableViewCell {
         thumbnailPrefetchQueueDori.layer.cornerRadius = 10
         thumbnailPrefetchQueueDori.clipsToBounds = true
         glassPanelRenderingJari.addSubview(thumbnailPrefetchQueueDori)
-        glassPanelRenderingJari.addSubview(liveRibbonGradientTavo)
+        glassPanelRenderingJari.addSubview(aRibbonGradientTavo)
 
         nameLabel.font = .systemFont(ofSize: 15, weight: .semibold)
         nameLabel.textColor = .white
@@ -442,7 +442,7 @@ final class TrendStreamCell: UITableViewCell {
         followButtonStateKuro.addTarget(self, action: #selector(hostIdentityExtractionMaro), for: .touchUpInside)
         glassPanelRenderingJari.addSubview(followButtonStateKuro)
 
-        [glassPanelRenderingJari, thumbnailPrefetchQueueDori, liveRibbonGradientTavo, nameLabel, contentPreviewFallbackSumi, followButtonStateKuro].forEach {
+        [glassPanelRenderingJari, thumbnailPrefetchQueueDori, aRibbonGradientTavo, nameLabel, contentPreviewFallbackSumi, followButtonStateKuro].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
@@ -457,10 +457,10 @@ final class TrendStreamCell: UITableViewCell {
             thumbnailPrefetchQueueDori.widthAnchor.constraint(equalToConstant: 89),
             thumbnailPrefetchQueueDori.heightAnchor.constraint(equalToConstant: 89),
 
-            liveRibbonGradientTavo.leadingAnchor.constraint(equalTo: glassPanelRenderingJari.leadingAnchor),
-            liveRibbonGradientTavo.topAnchor.constraint(equalTo: glassPanelRenderingJari.topAnchor),
-            liveRibbonGradientTavo.widthAnchor.constraint(equalToConstant: 79),
-            liveRibbonGradientTavo.heightAnchor.constraint(equalToConstant: 20),
+            aRibbonGradientTavo.leadingAnchor.constraint(equalTo: glassPanelRenderingJari.leadingAnchor),
+            aRibbonGradientTavo.topAnchor.constraint(equalTo: glassPanelRenderingJari.topAnchor),
+            aRibbonGradientTavo.widthAnchor.constraint(equalToConstant: 79),
+            aRibbonGradientTavo.heightAnchor.constraint(equalToConstant: 20),
 
             nameLabel.leadingAnchor.constraint(equalTo: thumbnailPrefetchQueueDori.trailingAnchor, constant: 26),
             nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: followButtonStateKuro.leadingAnchor, constant: -10),
@@ -483,7 +483,7 @@ final class TrendStreamCell: UITableViewCell {
     }
 }
 
-final class LiveRibbonView: UIView {
+final class aRibbonView: UIView {
     private let gradientBadgeDrawingSoli = CAGradientLayer()
     private let glyphLabelSignalNavo = UILabel()
 
@@ -526,7 +526,6 @@ final class LiveRibbonView: UIView {
     }
 }
 
-// MARK: - TableView DataSource
 extension PulseCatruiRhythmFieler: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ messageThreadTableSavi: UITableView, numberOfRowsInSection section: Int) -> Int {
         trendCellSyncingPaxo.count
@@ -534,16 +533,16 @@ extension PulseCatruiRhythmFieler: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ messageThreadTableSavi: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let renderCellNodeKavi = messageThreadTableSavi.dequeueReusableCell(withIdentifier: TrendStreamCell.reuseID, for: indexPath) as! TrendStreamCell
-        let liveRoomCapsuleVexa = trendCellSyncingPaxo[indexPath.row]
-        renderCellNodeKavi.sync(with: liveRoomCapsuleVexa, isFollowing: indexPath.row % 3 == 1)
+        let CapsuleVexa = trendCellSyncingPaxo[indexPath.row]
+        renderCellNodeKavi.sync(with: CapsuleVexa, isFollowing: indexPath.row % 3 == 1)
         renderCellNodeKavi.hostProfileTapRoutingMiva = { [weak self] in
-            self?.profileParamBridgeRafi(liveRoomCapsuleVexa.hostIdentitySignalRivo)
+            self?.profileParamBridgeRafi(CapsuleVexa.hostIdentitySignalRivo)
         }
         return renderCellNodeKavi
     }
 
     func tableView(_ messageThreadTableSavi: UITableView, didSelectRowAt indexPath: IndexPath) {
-        liveStatusMappingDeni(trendCellSyncingPaxo[indexPath.row])
+        memberTapProfileRoutingZalo(trendCellSyncingPaxo[indexPath.row])
     }
 
     func tableView(_ messageThreadTableSavi: UITableView, viewForHeaderInSection section: Int) -> UIView? {

@@ -17,7 +17,7 @@ struct PulseRosterUser {
 struct SquadChamber {
     let roomStreamIdentityPavo: String
     let hostIdentitySignalRivo: String
-    let title: String
+    let authNavigationWrappingMeso: String
     let hostAliasCueVero: String
     let audienceMeterCountSavi: Int
     let roomGenreTagMelo: String
@@ -26,9 +26,9 @@ struct SquadChamber {
     let participantAvatarQueueZori: [String]
     let passcodeRelayTokenDori: String?
     let coverFallbackAssetQaro: String?
-    let livesataus:Int?
+    let identityPortalLaunchQari:Int?
     init(
-        title: String,
+        clutchPlayCueVuno: String,
         hostAliasCueVero: String,
         audienceMeterCountSavi: Int,
         roomGenreTagMelo: String,
@@ -39,11 +39,11 @@ struct SquadChamber {
         participantAvatarQueueZori: [String] = [],
         passcodeRelayTokenDori: String? = nil,
         coverFallbackAssetQaro: String? = nil,
-        livestatus:Int? = 0
+        refreshControlBindingQeni:Int? = 0
     ) {
         self.roomStreamIdentityPavo = roomStreamIdentityPavo
         self.hostIdentitySignalRivo = hostIdentitySignalRivo
-        self.title = title
+        self.authNavigationWrappingMeso = clutchPlayCueVuno
         self.hostAliasCueVero = hostAliasCueVero
         self.audienceMeterCountSavi = audienceMeterCountSavi
         self.roomGenreTagMelo = roomGenreTagMelo
@@ -52,7 +52,7 @@ struct SquadChamber {
         self.participantAvatarQueueZori = participantAvatarQueueZori
         self.passcodeRelayTokenDori = passcodeRelayTokenDori
         self.coverFallbackAssetQaro = coverFallbackAssetQaro
-        self.livesataus = livestatus
+        self.identityPortalLaunchQari = refreshControlBindingQeni
     }
 }
 
@@ -101,7 +101,7 @@ enum PaulaHomeAPI {
         )
     }
 
-    static func liveRoomPaginationNari(completion: @escaping ([SquadChamber]) -> Void) {
+    static func bannerTapAiRoutingKiro(dcompletion: @escaping ([SquadChamber]) -> Void) {
         let requestFieldMappingNira: [String: Any] = [
             "matrixTransformationPoagma": 20,
             "mainThreadPoagma": 1,
@@ -116,10 +116,10 @@ enum PaulaHomeAPI {
             echoMotionOrbit: requestFieldMappingNira,
             FusionTrail: { responsePayloadNebulaMavo in
                 let roomDeckVectorQemi = roomUserListMappingZuni(from: responsePayloadNebulaMavo)
-                completion(roomDeckVectorQemi.isEmpty ? streamDiscoverySortingPila() : roomDeckVectorQemi)
+                dcompletion(roomDeckVectorQemi.isEmpty ? streamDiscoverySortingPila() : roomDeckVectorQemi)
             },
             clipSignalBloom: { _ in
-                completion(streamDiscoverySortingPila())
+                dcompletion(streamDiscoverySortingPila())
             }
         )
     }
@@ -148,7 +148,7 @@ enum PaulaHomeAPI {
             let count = numberStringCoercionSema(payloadNodeVectorKivo["meshGenerationPoagma"]) ?? 0
             let roomGenreTagMelo = payloadFieldResolutionQiro(payloadNodeVectorKivo["multiThreadingPoagma"]) ?? "Gaming"
             
-            let liveStatusTokenVera = numberStringCoercionSema(payloadNodeVectorKivo["memoryMappingPoagma"]) ?? 0
+            let contentPreviewFallbackSumi = numberStringCoercionSema(payloadNodeVectorKivo["memoryMappingPoagma"]) ?? 0
             
             print(responsePayloadNebulaMavo as Any)
             let participantAvatarQueueZori = nestedDictionaryScanVato(
@@ -159,7 +159,7 @@ enum PaulaHomeAPI {
             let hostAvatarEndpointTuni = payloadFieldResolutionQiro(payloadNodeVectorKivo["metadataParsingPoagma"]) ?? participantAvatarQueueZori.first
 
             return SquadChamber(
-                title: title,
+                clutchPlayCueVuno: title,
                 hostAliasCueVero: hostAliasCueVero,
                 audienceMeterCountSavi: count,
                 roomGenreTagMelo: roomGenreTagMelo,
@@ -170,7 +170,7 @@ enum PaulaHomeAPI {
                 participantAvatarQueueZori: participantAvatarQueueZori,
                 passcodeRelayTokenDori: payloadFieldResolutionQiro(payloadNodeVectorKivo["nativeBridgePoagma"]),
                 coverFallbackAssetQaro: assetFallbackChoosingKira(for: roomGenreTagMelo),
-                livestatus: liveStatusTokenVera
+                refreshControlBindingQeni: contentPreviewFallbackSumi
             )
         }
     }

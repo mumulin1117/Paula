@@ -92,7 +92,7 @@ class CatruiIdentityAuthPortal: UIViewController {
         ])
 
         [
-//            closeButtonOverlayMavi,
+
             eulaButton,
          
             titleLabel,
@@ -114,25 +114,12 @@ class CatruiIdentityAuthPortal: UIViewController {
         view.addSubview(loadingStateRenderingQavi)
 
         NSLayoutConstraint.activate([
-//            closeButtonOverlayMavi.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 24),
-//            closeButtonOverlayMavi.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: 24),
-//            closeButtonOverlayMavi.widthAnchor.constraint(equalToConstant: 34),
-//            closeButtonOverlayMavi.heightAnchor.constraint(equalToConstant: 34),
 
             eulaButton.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 22),
             eulaButton.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -30),
             eulaButton.widthAnchor.constraint(equalToConstant: 82),
             eulaButton.heightAnchor.constraint(equalToConstant: 44),
 
-//            blueEmoji.topAnchor.constraint(equalTo: contentStackHydrationRivoView.topAnchor, constant: -56),
-//            blueEmoji.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: 64),
-//            blueEmoji.widthAnchor.constraint(equalToConstant: 236),
-//            blueEmoji.heightAnchor.constraint(equalToConstant: 236),
-//
-//            pinkEmoji.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 114),
-//            pinkEmoji.leadingAnchor.constraint(equalTo: contentStackHydrationRivoView.leadingAnchor, constant: -96),
-//            pinkEmoji.widthAnchor.constraint(equalToConstant: 250),
-//            pinkEmoji.heightAnchor.constraint(equalToConstant: 250),
 
             titleLabel.topAnchor.constraint(equalTo: contentStackHydrationRivoView.safeAreaLayoutGuide.topAnchor, constant: 270),
             titleLabel.trailingAnchor.constraint(equalTo: contentStackHydrationRivoView.trailingAnchor, constant: -46),

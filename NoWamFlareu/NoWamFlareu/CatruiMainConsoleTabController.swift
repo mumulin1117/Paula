@@ -71,17 +71,16 @@ class CatruiMainConsoleTabController: UITabBarController {
         let arenaDiscoveryFeedJumi = PaulaMainNavigationController(rootViewController: BionaNovaRise())
         arenaDiscoveryFeedJumi.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "protocolStackPoagma0")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "protocolStackPoagmasel0")?.withRenderingMode(.alwaysOriginal))
 
-        let forYouFeedRankingPano = PaulaMainNavigationController(rootViewController: PulseCatruiRhythmFieler())
-        forYouFeedRankingPano.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "protocolStackPoagma1")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "protocolStackPoagmasel1")?.withRenderingMode(.alwaysOriginal))
+        let FeedRankingPano = PaulaMainNavigationController(rootViewController: PulseCatruiRhythmFieler())
+        FeedRankingPano.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "protocolStackPoagma1")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "protocolStackPoagmasel1")?.withRenderingMode(.alwaysOriginal))
 
-        let messageThreadParsingLavo = PaulaMainNavigationController(rootViewController: EchoFusionRise())
-        messageThreadParsingLavo.view.backgroundColor = .black
-        messageThreadParsingLavo.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "protocolStackPoagma2")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "protocolStackPoagmasel2")?.withRenderingMode(.alwaysOriginal))
+        let ThreadParsingLavo = PaulaMainNavigationController(rootViewController: EchoFusionRise())
+        ThreadParsingLavo.view.backgroundColor = .black
+        ThreadParsingLavo.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "protocolStackPoagma2")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "protocolStackPoagmasel2")?.withRenderingMode(.alwaysOriginal))
 
-        // 4. 个人中心 (Me Profile)
-        let profileSnapshotApplyMira = PaulaMainNavigationController(rootViewController: PulseMePartyQueueFlux())
-        profileSnapshotApplyMira.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "protocolStackPoagma3")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "protocolStackPoagmasel3")?.withRenderingMode(.alwaysOriginal))
+        let SnapshotApplyMira = PaulaMainNavigationController(rootViewController: PulseMePartyQueueFlux())
+        SnapshotApplyMira.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "protocolStackPoagma3")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "protocolStackPoagmasel3")?.withRenderingMode(.alwaysOriginal))
 
-        viewControllers = [arenaDiscoveryFeedJumi, forYouFeedRankingPano, messageThreadParsingLavo, profileSnapshotApplyMira]
+        viewControllers = [arenaDiscoveryFeedJumi, FeedRankingPano, ThreadParsingLavo, SnapshotApplyMira]
     }
 }

@@ -9,7 +9,7 @@ import AVFoundation
 import UIKit
 
 struct PaulaAuthProfile: Codable {
-    var token: String
+    var acousticSceneModelingRivo: String
     var playerIdentitySignalMoro: String
     var name: String
     var loginAddressCueMavo: String
@@ -22,7 +22,7 @@ struct PaulaAuthProfile: Codable {
     var localProfileFlagNami: Bool
 
     enum CodingKeys: String, CodingKey {
-        case token
+        case acousticSceneModelingRivo
         case playerIdentitySignalMoro = "userId"
         case name
         case loginAddressCueMavo = "email"
@@ -56,7 +56,7 @@ enum PaulaAuthSession {
         if let data = try? JSONEncoder().encode(playerProfileCacheNero) {
             UserDefaults.standard.set(data, forKey: profileKey)
         }
-        NWFUclipFusionOrbit.clipFusionHarbor = playerProfileCacheNero.token
+        NWFUclipFusionOrbit.clipFusionHarbor = playerProfileCacheNero.acousticSceneModelingRivo
         UserDefaults.standard.set(playerProfileCacheNero.playerIdentitySignalMoro, forKey: "wigCreator")
         UserDefaults.standard.set(playerProfileCacheNero.loginAddressCueMavo, forKey: "wigPioneer")
     }
@@ -141,9 +141,9 @@ enum PaulaAuthAPI {
 
     private static func profileFromPayload(_ responsePayloadNebulaMavo: Any?, fallbackSnapshotLuma: PaulaAuthProfile) -> PaulaAuthProfile {
         guard let responsePayloadNebulaMavo else { return fallbackSnapshotLuma }
-        let token = findString("levelOfDetailPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.token
+        let token = findString("levelOfDetailPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.acousticSceneModelingRivo
         return PaulaAuthProfile(
-            token: token.isEmpty ? fallbackSnapshotLuma.token : token,
+            acousticSceneModelingRivo: token.isEmpty ? fallbackSnapshotLuma.acousticSceneModelingRivo : token,
             playerIdentitySignalMoro: findString("inferenceEnginePoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.playerIdentitySignalMoro,
             name: findString("inputLatencyPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.name,
             loginAddressCueMavo: findString("interactionDesignPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.loginAddressCueMavo,
@@ -153,13 +153,13 @@ enum PaulaAuthAPI {
             ageGateCueTaro: fallbackSnapshotLuma.ageGateCueTaro,
             presenceBriefCueLumi: findString("interfaceBuilderPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.presenceBriefCueLumi,
             isFaceVerified: fallbackSnapshotLuma.isFaceVerified,
-            localProfileFlagNami: token.isEmpty || token == fallbackSnapshotLuma.token
+            localProfileFlagNami: token.isEmpty || token == fallbackSnapshotLuma.acousticSceneModelingRivo
         )
     }
 
     private static func localOrFakeProfile(loginAddressCueMavo: String, passcodeRelayTokenDori: String, name: String?, avatarBinaryCacheViro: Data?, ageGateCueTaro: Int?, presenceBriefCueLumi: String) -> PaulaAuthProfile {
         if var cachedProfileTraceNalo = PaulaAuthSession.current, cachedProfileTraceNalo.loginAddressCueMavo.caseInsensitiveCompare(loginAddressCueMavo) == .orderedSame {
-            cachedProfileTraceNalo.token = cachedProfileTraceNalo.token.isEmpty ? "local_\(UUID().uuidString)" : cachedProfileTraceNalo.token
+            cachedProfileTraceNalo.acousticSceneModelingRivo = cachedProfileTraceNalo.acousticSceneModelingRivo.isEmpty ? "local_\(UUID().uuidString)" : cachedProfileTraceNalo.acousticSceneModelingRivo
             cachedProfileTraceNalo.passcodeRelayTokenDori = passcodeRelayTokenDori
             return cachedProfileTraceNalo
         }
@@ -169,7 +169,7 @@ enum PaulaAuthAPI {
     private static func fakeProfile(loginAddressCueMavo: String, passcodeRelayTokenDori: String, name: String?, avatarBinaryCacheViro: Data?, ageGateCueTaro: Int?, presenceBriefCueLumi: String, verified: Bool) -> PaulaAuthProfile {
         let fallbackName = name?.trimmingCharacters(in: .whitespacesAndNewlines)
         return PaulaAuthProfile(
-            token: "local_\(UUID().uuidString)",
+            acousticSceneModelingRivo: "local_\(UUID().uuidString)",
             playerIdentitySignalMoro: "local_\(abs(loginAddressCueMavo.hashValue))",
             name: fallbackName?.isEmpty == false ? fallbackName! : "Paula Player",
             loginAddressCueMavo: loginAddressCueMavo,
@@ -584,14 +584,11 @@ final class PaulaIdentityIntroController: UIViewController {
         allbackiamgeNo.frame = view.frame
         self.view.addSubview(allbackiamgeNo)
 
-        let close = UIButton(type: .system)
-        close.setImage(UIImage(systemName: "xmark"), for: .normal)
-        close.tintColor = .black
-        close.addTarget(self, action: #selector(back), for: .touchUpInside)
+        let microphoneGainMappingLuri = UIButton(type: .system)
+        microphoneGainMappingLuri.setImage(UIImage(systemName: "xmark"), for: .normal)
+        microphoneGainMappingLuri.tintColor = .black
+        microphoneGainMappingLuri.addTarget(self, action: #selector(voiceQualityScoringPeli), for: .touchUpInside)
 
-//        let eula = UIButton()
-//        eula.setImage(UIImage.init(named: "eulaButton"), for: .normal)
-//        eula.addTarget(self, action: #selector(agreementRouteMappingTeni), for: .touchUpInside)
 
         let title = UIImageView(image: UIImage.init(named: "VerifyXiaoxin Identity"))
 
@@ -618,29 +615,29 @@ final class PaulaIdentityIntroController: UIViewController {
         avatar.contentMode = .scaleAspectFill
        
 
-        let privacy = UILabel()
-        privacy.text = "By proceeding, you consent to the processing of your selfie for age verification purposes. Your photo will not be shared with third parties."
-        privacy.numberOfLines = 0
-        privacy.textAlignment = .center
-        privacy.textColor = UIColor.black.withAlphaComponent(0.42)
-        privacy.font = .systemFont(ofSize: 12, weight: .regular)
+        let channelStateRecoveryMeko = UILabel()
+        channelStateRecoveryMeko.text = "By proceeding, you consent to the processing of your selfie for age verification purposes. Your photo will not be shared with third parties."
+        channelStateRecoveryMeko.numberOfLines = 0
+        channelStateRecoveryMeko.textAlignment = .center
+        channelStateRecoveryMeko.textColor = UIColor.black.withAlphaComponent(0.42)
+        channelStateRecoveryMeko.font = .systemFont(ofSize: 12, weight: .regular)
 
         let takeButton = PaulaPrimaryButton(title: "Take a Selfie")
-        takeButton.addTarget(self, action: #selector(takeSelfie), for: .touchUpInside)
+        takeButton.addTarget(self, action: #selector(headsetEchoProfilingZavo), for: .touchUpInside)
 
-        [close, title, subtitle, outerRing, innerRing, avatar, privacy, takeButton].forEach {
+        [microphoneGainMappingLuri, title, subtitle, outerRing, innerRing, avatar, channelStateRecoveryMeko, takeButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
 
         NSLayoutConstraint.activate([
-            close.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
-            close.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            close.widthAnchor.constraint(equalToConstant: 34),
-            close.heightAnchor.constraint(equalToConstant: 34),
+            microphoneGainMappingLuri.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            microphoneGainMappingLuri.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            microphoneGainMappingLuri.widthAnchor.constraint(equalToConstant: 34),
+            microphoneGainMappingLuri.heightAnchor.constraint(equalToConstant: 34),
 
          
-            title.topAnchor.constraint(equalTo: close.bottomAnchor, constant: 44),
+            title.topAnchor.constraint(equalTo: microphoneGainMappingLuri.bottomAnchor, constant: 44),
             title.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             title.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 24),
             title.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -24),
@@ -664,9 +661,9 @@ final class PaulaIdentityIntroController: UIViewController {
             avatar.widthAnchor.constraint(equalToConstant: 120),
             avatar.heightAnchor.constraint(equalToConstant: 120),
 
-            privacy.topAnchor.constraint(equalTo: outerRing.bottomAnchor, constant: 28),
-            privacy.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 44),
-            privacy.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -44),
+            channelStateRecoveryMeko.topAnchor.constraint(equalTo: outerRing.bottomAnchor, constant: 28),
+            channelStateRecoveryMeko.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 44),
+            channelStateRecoveryMeko.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -44),
 
             takeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             takeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
@@ -682,7 +679,7 @@ final class PaulaIdentityIntroController: UIViewController {
         return PaulaAuthSession.defaultAvatarImage()
     }
 
-    @objc private func back() {
+    @objc private func voiceQualityScoringPeli() {
         navigationController?.popViewController(animated: true)
     }
 
@@ -691,7 +688,7 @@ final class PaulaIdentityIntroController: UIViewController {
 //        navigationController?.pushViewController(ZoiceDriftZone(streamAuraShift: url), animated: true)
 //    }
 
-    @objc private func takeSelfie() {
+    @objc private func headsetEchoProfilingZavo() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             navigationController?.pushViewController(PaulaFaceCaptureController(draft: draft), animated: true)

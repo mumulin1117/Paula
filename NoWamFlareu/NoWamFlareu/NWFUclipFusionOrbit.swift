@@ -35,9 +35,9 @@ enum NWFUclipFusionOrbit: String {
     
     var rawValue: String {
         switch self {
-        case .NWFUclipPulseOrbit:   return Self.decryptoNebulaSequence("70616765732f4c697665526f6f6d2f696e6465783f6c69766549643d") // "pages/LiveRoom/index?liveId="
-        case .NWFUMotionBloom:      return Self.decryptoNebulaSequence("70616765732f7465616368696e67526f6f6d2f696e6465783f6c69766549643d") // "pages/teachingRoom/index?liveId="
-        case .NWEUCascadeRise:      return Self.decryptoNebulaSequence("70616765732f566f69636543686174526f6f6d2f696e6465783f6c69766549643d") // "pages/VoiceChatRoom/index?liveId="
+        case .NWFUclipPulseOrbit:   return Self.decryptoNebulaSequence("70616765732f4c697665526f6f6d2f696e6465783f6c69766549643d") //
+        case .NWFUMotionBloom:      return Self.decryptoNebulaSequence("70616765732f7465616368696e67526f6f6d2f696e6465783f6c69766549643d") //
+        case .NWEUCascadeRise:      return Self.decryptoNebulaSequence("70616765732f566f69636543686174526f6f6d2f696e6465783f6c69766549643d") 
         case .NWEUSignalBloom:      return Self.decryptoNebulaSequence("70616765732f6e6f74696669636174696f6e2f696e6465783f")
         
         case .arenaWaveDrift:       return Self.decryptoNebulaSequence("70616765732f437265617465526f6f6d2f696e6465783f")
@@ -191,15 +191,7 @@ extension NWFUclipFusionOrbit{
         }
 }
 
-//extension UIViewController {
-//    func pushPaulaFashion(_ AlleRelayKora: NWFUclipFusionOrbit, param: String = "", animated: Bool = true) {
-//        let streamOUY = AlleRelayKora.voiceHarborMist(MotionTrail: param)
-//        let webController = ZoiceDriftZone(streamAuraShift: streamOUY)
-//        webController.hidesBottomBarWhenPushed = true
-//        navigationController?.setNavigationBarHidden(true, animated: false)
-//        navigationController?.pushViewController(webController, animated: animated)
-//    }
-//}
+
 extension UIViewController {
     func pushPaulaFashion(_ AlleRelayKora: NWFUclipFusionOrbit, param: String = "", animated: Bool = true) {
         

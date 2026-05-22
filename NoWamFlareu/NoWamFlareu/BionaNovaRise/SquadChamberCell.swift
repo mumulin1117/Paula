@@ -7,21 +7,18 @@
 
 import UIKit
 
-// MARK: - 竞技场房间单元格 V2 - 极致还原设计 (Anti-4.3 差异化命名)
+
 class SquadChamberCell: UICollectionViewCell {
     
-    // 1. 底层视觉传送门 (The entire backdropCanvasSero cover)
     private let portalMasterImageView = UIImageView()
-    
-    // 2. 玻璃拟态信息带 (Bottom Info Vessel with Blur)
+   
     private let infoVesselBlur = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
-    private let titleVessel = UIView() // 容纳标题、用户条、热度的透明层
+    private let titleVessel = UIView()
     
-    // 3. 悬浮的房主头像区域 (Floating Host Orbit)
+    
     private let hostAvatarVessel = UIImageView()
     private let hostIndicatorLabel = UILabel()
-    
-    // 4. 内容子组件 (Children Nodes)
+  
     private let statusTagVessel = UIView()
     private let statusTagLabel = UILabel()
     private let chamberTitleLabel = UILabel()
@@ -30,7 +27,7 @@ class SquadChamberCell: UICollectionViewCell {
     private let passwordBadge = UIView()
     private let passwordIconView = UIImageView()
     
-    // MARK: - 初始化
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         constructArenaHierarchy()
@@ -100,7 +97,7 @@ class SquadChamberCell: UICollectionViewCell {
         spectatorsVisualMeter.tintColor = .systemYellow
         spectatorsVisualMeter.contentMode = .scaleAspectFit
         
-        // 层级 5: 悬浮房主头像 (核心对齐：悬浮在底部信息带顶部边界上)
+    
         hostAvatarVessel.layer.cornerRadius = 24
         hostAvatarVessel.clipsToBounds = true
         hostAvatarVessel.layer.borderWidth = 1.5
@@ -151,7 +148,7 @@ class SquadChamberCell: UICollectionViewCell {
             infoVesselBlur.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             infoVesselBlur.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             infoVesselBlur.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            infoVesselBlur.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.35), // 高度约占 Cell 的 1/3
+            infoVesselBlur.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.35),
 
            
             titleVessel.topAnchor.constraint(equalTo: infoVesselBlur.topAnchor),
@@ -159,9 +156,8 @@ class SquadChamberCell: UICollectionViewCell {
             titleVessel.trailingAnchor.constraint(equalTo: infoVesselBlur.trailingAnchor),
             titleVessel.bottomAnchor.constraint(equalTo: infoVesselBlur.bottomAnchor),
 
-            // 5. 极致还原的悬浮 Host 头像 (关键)
             hostAvatarVessel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            hostAvatarVessel.centerYAnchor.constraint(equalTo: infoVesselBlur.topAnchor), // 核心：头像垂直居中在模糊带的顶部边界
+            hostAvatarVessel.centerYAnchor.constraint(equalTo: infoVesselBlur.topAnchor),
             hostAvatarVessel.widthAnchor.constraint(equalToConstant: 48),
             hostAvatarVessel.heightAnchor.constraint(equalToConstant: 48),
             
@@ -177,10 +173,10 @@ class SquadChamberCell: UICollectionViewCell {
             chamberTitleLabel.bottomAnchor.constraint(equalTo: titleVessel.bottomAnchor, constant: -12),
             
             spectatorsVessel.trailingAnchor.constraint(equalTo: titleVessel.trailingAnchor, constant: -12),
-            spectatorsVessel.centerYAnchor.constraint(equalTo: spectatorsVisualMeter.centerYAnchor,constant: 10), // 模拟热度位置
+            spectatorsVessel.centerYAnchor.constraint(equalTo: spectatorsVisualMeter.centerYAnchor,constant: 10),
 
             spectatorsVisualMeter.trailingAnchor.constraint(equalTo: spectatorsVessel.leadingAnchor, constant: -4),
-            spectatorsVisualMeter.centerYAnchor.constraint(equalTo: hostAvatarVessel.centerYAnchor, constant: 10), // 对齐Host头像高度
+            spectatorsVisualMeter.centerYAnchor.constraint(equalTo: hostAvatarVessel.centerYAnchor, constant: 10), 
             spectatorsVisualMeter.widthAnchor.constraint(equalToConstant: 12),
             spectatorsVisualMeter.heightAnchor.constraint(equalToConstant: 12),
         ])
@@ -188,7 +184,7 @@ class SquadChamberCell: UICollectionViewCell {
 
   
     func synchronize(with model: SquadChamber) {
-        chamberTitleLabel.text = model.title
+        chamberTitleLabel.text = model.authNavigationWrappingMeso
         statusTagLabel.text = normalizedCategory(model.roomGenreTagMelo)
         spectatorsVessel.text = "\(model.audienceMeterCountSavi)"
         portalMasterImageView.remoteImageRequestVera(

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//首页
 
 class BionaNovaRise: UIViewController {
 
@@ -129,15 +128,15 @@ class BionaNovaRise: UIViewController {
         pushPaulaFashion(.arenaSignalRise, param: playerIdentitySignalMoro)
     }
 
-    private func voiceRoomParamBridgeTeno(_ liveRoomCapsuleVexa: SquadChamber) {
-        pushPaulaFashion(.NWEUCascadeRise, param: liveRoomCapsuleVexa.roomStreamIdentityPavo)
+    private func voiceRoomParamBridgeTeno(_ watchTogetherCueLiva: SquadChamber) {
+        pushPaulaFashion(.NWEUCascadeRise, param: watchTogetherCueLiva.roomStreamIdentityPavo)
     }
 
-    private func voiceRoomPasswordGatePeli(for liveRoomCapsuleVexa: SquadChamber) {
+    private func voiceRoomPasswordGatePeli(for watchTogetherCueLiva: SquadChamber) {
         passwordPromptPanelTuni?.removeFromSuperview()
         let promptView = RoomPasswordPromptView()
         promptView.entryFlowContinuationKuno = { [weak self] in
-            self?.voiceRoomParamBridgeTeno(liveRoomCapsuleVexa)
+            self?.voiceRoomParamBridgeTeno(watchTogetherCueLiva)
         }
         passwordPromptPanelTuni = promptView
         promptView.present(in: tabBarController?.view ?? navigationController?.view ?? view)
@@ -197,8 +196,8 @@ extension BionaNovaRise: UICollectionViewDataSource, UICollectionViewDelegateFlo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let liveRoomCapsuleVexa = voiceRoomCompositionNori[indexPath.item]
-        voiceRoomPasswordGatePeli(for: liveRoomCapsuleVexa)
+        let CapsuleVexa = voiceRoomCompositionNori[indexPath.item]
+        voiceRoomPasswordGatePeli(for: CapsuleVexa)
     }
 }
 

@@ -182,37 +182,7 @@ class EchoFusionRise: UIViewController {
             self.pullRefreshCompletionMavoControl.endRefreshing()
         }
     }
-    
-//    @objc private func pullRefreshCompletionMavo() {
-//        let group = DispatchGroup()
-//        var latestUsers: [PulseRosterUser]?
-//        var latestRooms: [SquadChamber]?
-//
-//        group.enter()
-//        PaulaHomeAPI.userRosterHydrationMavo { playerRosterDeckVani in
-//            latestUsers = playerRosterDeckVani
-//            group.leave()
-//        }
-//
-//        group.enter()
-//        PaulaHomeAPI.voiceRoomRoutingNima { roomDeckVectorQemi in
-//            latestRooms = roomDeckVectorQemi
-//            group.leave()
-//        }
-//
-//        group.notify(queue: .main) { [weak self] in
-//            guard let self else { return }
-//            if let latestUsers {
-//                self.memberStripHydrationQaro.rosterPulseRefreshVami(latestUsers)
-//            }
-//            if let latestRooms, !latestRooms.isEmpty {
-//                self.voiceRoomCompositionNori = latestRooms
-//                self.roomHeightConstraintTavi?.constant = self.twoColumnRoomLayoutVilo(for: latestRooms.count)
-//                self.recommendGridReloadingVoni.reloadData()
-//            }
-//            self.pullRefreshCompletionMavoControl.endRefreshing()
-//        }
-//    }
+ 
 
     @objc private func notificationRouteOpeningQeli() {
         pushPaulaFashion(.NWEUSignalBloom)
