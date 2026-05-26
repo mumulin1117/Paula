@@ -43,71 +43,18 @@ struct PaulaAuthProfile: Codable {
     var isFaceVerified: Bool
     var localProfileFlagNami: Bool
 
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         case acousticSceneModelingRivo
-        case playerIdentitySignalMoro
+        case playerIdentitySignalMoro = "userId"
         case name
-        case loginAddressCueMavo
-        case passcodeRelayTokenDori
-        case avatarStreamEndpointKiva
-        case avatarBinaryCacheViro
-        case ageGateCueTaro
-        case presenceBriefCueLumi
+        case loginAddressCueMavo = "email"
+        case passcodeRelayTokenDori = "password"
+        case avatarStreamEndpointKiva = "avatarURL"
+        case avatarBinaryCacheViro = "avatarData"
+        case ageGateCueTaro = "age"
+        case presenceBriefCueLumi = "brief"
         case isFaceVerified
-        case localProfileFlagNami
-
-        var stringValue: String {
-            switch self {
-            case .acousticSceneModelingRivo:
-                return PaulaVocalCipherRune.echo("fT0fyJ8P5bstQoenS7Uax+uHA3wSSJFkwfzCZpR7vwh3")
-            case .playerIdentitySignalMoro:
-                return PaulaVocalCipherRune.echo("SQLt+FxJlBN2IpylhKn/V01Tgjh058rP50bExjncConLRA==")
-            case .name:
-                return PaulaVocalCipherRune.echo("amCYyYcz8aGlETJsQkJrFfXpfC8limaIRj5mP2eOlvs=")
-            case .loginAddressCueMavo:
-                return PaulaVocalCipherRune.echo("EzR+3DwlS58x8NW0OU03dUmdxA0Ki2pRWErIenWJtFZY")
-            case .passcodeRelayTokenDori:
-                return PaulaVocalCipherRune.echo("O4jri8AYVLlrvVGq635nQi2MC2rRJoz5tzcJZsv8hbXxRx2l")
-            case .avatarStreamEndpointKiva:
-                return PaulaVocalCipherRune.echo("CTUe3HmEcDxHj43iwu+34u2BfrLnsmgmALBAmqAnDXsHx857LA==")
-            case .avatarBinaryCacheViro:
-                return PaulaVocalCipherRune.echo("kJvfUulcE/aQHQtW9fqWa0623sX45ennVH4fTwr0nuRCY/jUO6Y=")
-            case .ageGateCueTaro:
-                return PaulaVocalCipherRune.echo("tRfjoav9z8oOuFGs02+ZcN4Y41/Zl7RFrEW9c0qzYQ==")
-            case .presenceBriefCueLumi:
-                return PaulaVocalCipherRune.echo("yJtvPLqwScNoOeAm1D3kbZbBjx69qTo0KzmkfswvRDSP")
-            case .isFaceVerified:
-                return PaulaVocalCipherRune.echo("ZYewrPnRHi6LCCm5WibCXaJ4KWy96AqyLjZNQ3GNmRKNOnSPy5+AQTqR")
-            case .localProfileFlagNami:
-                return PaulaVocalCipherRune.echo("m0aBZnXx21gf1aPC4TxrWzX59rFN2Cm89JK1aucjjChTyrAIGq3l")
-            }
-        }
-
-        init?(stringValue: String) {
-            let allKeys: [CodingKeys] = [
-                .acousticSceneModelingRivo,
-                .playerIdentitySignalMoro,
-                .name,
-                .loginAddressCueMavo,
-                .passcodeRelayTokenDori,
-                .avatarStreamEndpointKiva,
-                .avatarBinaryCacheViro,
-                .ageGateCueTaro,
-                .presenceBriefCueLumi,
-                .isFaceVerified,
-                .localProfileFlagNami
-            ]
-            guard let matchedKey = allKeys.first(where: { $0.stringValue == stringValue }) else {
-                return nil
-            }
-            self = matchedKey
-        }
-
-        var intValue: Int? { nil }
-
-        init?(intValue: Int) {
-            return nil
-        }
+        case localProfileFlagNami = "isLocalOnly"
     }
 }
 
@@ -183,17 +130,17 @@ enum PaulaAuthAPI {
         completion: @escaping (Result<PaulaAuthProfile, Error>) -> Void
     ) {
         let requestFieldMappingNira: [String: Any] = [
-            PaulaVocalCipherRune.echo("ldyasseui2tG9/tf0lY6V5CAqqkmKSl6Yjw7lPaiSlI6W+VCG1jXVLsKJpzY"): type,
-            PaulaVocalCipherRune.echo("NgfqUYDz9/XjBBQDWUjiQKXVDEJY8umazQH8Ki3/uOoeZX2IhJXv/xR8MahEh6Y="): bundleId,
-            PaulaVocalCipherRune.echo("0EzsM4wX8X/jXUFu+QVoLlY2lhS6116bTXheNkuUFUqCnYQd/MfdbA6Kh8DTMEvADvc="): loginAddressCueMavo,
-            PaulaVocalCipherRune.echo("wCj+tNpZ60zP6YrSUYs21vrdF8xb025jDBMnIj1kthIZKCPIZVDf6bheh+s67bY="): passcodeRelayTokenDori,
-            PaulaVocalCipherRune.echo("vWNthSOtRik/d9U0WH6nRIuruub92cZ1QqSauYGl9mZr93RZ4uGvhc1nNQe4hqixYp0V"): name ?? PaulaVocalCipherRune.echo("cF4HheWtw+heqtIuLLtWBpC1jGhkKgmbCoBsXg=="),
-            PaulaVocalCipherRune.echo("tNAjeAnZsp6J39umxFawbrF2fjBK1zXHASFvZYpDfkQuhPKV0FK2duX0MvruQIuT8+RPe3g="): PaulaVocalCipherRune.echo("vj0pf7BmKQ2B55ETBY8JwMWI0JoK9LD1iaDZmA=="),
-            PaulaVocalCipherRune.echo("nOvVQvLcwp81REsdokxSOvGK4qjBYX1aB2JNOE4s5r8Fk7IGCP4FwPJ6lcQhwQ=="): presenceBriefCueLumi
+            "localBufferPoagma": type,
+            "loadBalancingPoagma": bundleId,
+            "liveBroadcastingPoagma": loginAddressCueMavo,
+            "liveStreamingPoagma": passcodeRelayTokenDori,
+            "localNotificationPoagma": name ?? "",
+            "losslessCompressionPoagma": "",
+            "localStoragePoagma": presenceBriefCueLumi
         ]
 
         NWFUclipFusionOrbit.arenaPulsePeak(
-            WaveTrail: PaulaVocalCipherRune.echo("uJWzPkF2Biaj7qt45+/VkyOEyOW8BWf0n/L2qsxlfmj5I1MoQWnIYLSU4EhqfORxKQbGJbpwzFl9aA=="),
+            WaveTrail: "/nrcwdjwhkoxfaz/edtossaskpzdgb",
             echoMotionOrbit: requestFieldMappingNira,
             FusionTrail: { responsePayloadNebulaMavo in
                 let fallbackSnapshotLuma = localOrFakeProfile(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, name: name, avatarBinaryCacheViro: avatarBinaryCacheViro, ageGateCueTaro: ageGateCueTaro, presenceBriefCueLumi: presenceBriefCueLumi)
@@ -205,7 +152,7 @@ enum PaulaAuthAPI {
                 if playerProfileCacheNero.ageGateCueTaro == nil {
                     playerProfileCacheNero.ageGateCueTaro = ageGateCueTaro
                 }
-                playerProfileCacheNero.isFaceVerified = playerProfileCacheNero.isFaceVerified || type == PaulaVocalCipherRune.echo("8VpgRfXDRvslTgvntk4C9tHi7VjRm9HzFdKnxus=")
+                playerProfileCacheNero.isFaceVerified = playerProfileCacheNero.isFaceVerified || type == "2"
                 completion(.success(playerProfileCacheNero))
             },
             clipSignalBloom: { _ in
@@ -240,24 +187,23 @@ enum PaulaAuthAPI {
         }
         return fakeProfile(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, name: name, avatarBinaryCacheViro: avatarBinaryCacheViro, ageGateCueTaro: ageGateCueTaro, presenceBriefCueLumi: presenceBriefCueLumi, verified: false)
     }
-
     private static func fakeProfile(loginAddressCueMavo: String, passcodeRelayTokenDori: String, name: String?, avatarBinaryCacheViro: Data?, ageGateCueTaro: Int?, presenceBriefCueLumi: String, verified: Bool) -> PaulaAuthProfile {
         let fallbackName = name?.trimmingCharacters(in: .whitespacesAndNewlines)
         return PaulaAuthProfile(
-            acousticSceneModelingRivo: (PaulaVocalCipherRune.echo("QKELkHuxLrzschZmLToi5vFs107MbqvqPfOXiQPng2K0SQ==") + String(describing: UUID().uuidString)),
-            playerIdentitySignalMoro: (PaulaVocalCipherRune.echo("3hCEsbYlPIP8+U8XITXOeBnX95BxcGo9zmoEcXb90RU9rw==") + String(describing: abs(loginAddressCueMavo.hashValue))),
-            name: fallbackName?.isEmpty == false ? fallbackName! : PaulaVocalCipherRune.echo("bphMNCdSazNJBtxvkqzNWGDqVEhKYhHFXDWnXSASNXXC6E0RuDuhHQ=="),
+            acousticSceneModelingRivo: "local_\(UUID().uuidString)",
+            playerIdentitySignalMoro: "local_\(abs(loginAddressCueMavo.hashValue))",
+            name: fallbackName?.isEmpty == false ? fallbackName! : "Paula Player",
             loginAddressCueMavo: loginAddressCueMavo,
             passcodeRelayTokenDori: passcodeRelayTokenDori,
             avatarStreamEndpointKiva: nil,
             avatarBinaryCacheViro: avatarBinaryCacheViro,
             ageGateCueTaro: ageGateCueTaro,
-            presenceBriefCueLumi: presenceBriefCueLumi.isEmpty ? PaulaVocalCipherRune.echo("zqOOweD1eKysC/Oc6J0PqutdCaFb61X5H0cVH3EVyOz78lzcvGN36v7b") : presenceBriefCueLumi,
+            presenceBriefCueLumi: presenceBriefCueLumi.isEmpty ? "Ready to play." : presenceBriefCueLumi,
             isFaceVerified: verified,
             localProfileFlagNami: true
         )
     }
-
+   
     private static func findString(_ key: String, in responsePayloadNebulaMavo: Any) -> String? {
         if let payloadDictionaryDriftSuni = responsePayloadNebulaMavo as? [String: Any] {
             if let signalValueShardPelo = payloadDictionaryDriftSuni[key] as? String {
