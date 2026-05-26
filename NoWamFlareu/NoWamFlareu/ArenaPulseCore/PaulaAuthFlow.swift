@@ -132,15 +132,15 @@ enum PaulaAuthSession {
             UserDefaults.standard.set(data, forKey: profileKey)
         }
         NWFUclipFusionOrbit.clipFusionHarbor = playerProfileCacheNero.acousticSceneModelingRivo
-        UserDefaults.standard.set(playerProfileCacheNero.playerIdentitySignalMoro, forKey: PaulaVocalCipherRune.echo("vYvXR5roFUCqMmpwYxAWqq8dL27DHi1pu6noK7jXNOY0Dc5qvuE="))
-        UserDefaults.standard.set(playerProfileCacheNero.loginAddressCueMavo, forKey: PaulaVocalCipherRune.echo("2PgAZ+TCimi/WSGQPfg1kKB+QkbcaCF/Pn9JYljwOYwdW8N55+k="))
+        UserDefaults.standard.set(playerProfileCacheNero.playerIdentitySignalMoro, forKey: "wigCreator")
+        UserDefaults.standard.set(playerProfileCacheNero.loginAddressCueMavo, forKey: "wigPioneer")
     }
 
     static func clear() {
         UserDefaults.standard.removeObject(forKey: profileKey)
         NWFUclipFusionOrbit.clipFusionHarbor = nil
-        UserDefaults.standard.removeObject(forKey: PaulaVocalCipherRune.echo("vgtpsQoiK8iMwybLtLiQus6YN2uMmtPIb5GQe+0co8Chne8UjqY="))
-        UserDefaults.standard.removeObject(forKey: PaulaVocalCipherRune.echo("KyvUbsXE5RFdhJ+fnJWum5xTaUZLOYZuncOvs9glNww1eNlEQiQ="))
+        UserDefaults.standard.removeObject(forKey: "wigCreator")
+        UserDefaults.standard.removeObject(forKey: "wigPioneer")
     }
 
     static func avatarImage(for playerProfileCacheNero: PaulaAuthProfile?) -> UIImage {
@@ -216,17 +216,17 @@ enum PaulaAuthAPI {
 
     private static func profileFromPayload(_ responsePayloadNebulaMavo: Any?, fallbackSnapshotLuma: PaulaAuthProfile) -> PaulaAuthProfile {
         guard let responsePayloadNebulaMavo else { return fallbackSnapshotLuma }
-        let token = findString(PaulaVocalCipherRune.echo("DeW71NbQTDyhMTy/4vzg8bOpGhKoFQOwveAm7uppjYjG8MkclKisy8sFoK4XHAg="), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.acousticSceneModelingRivo
+        let token = findString("levelOfDetailPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.acousticSceneModelingRivo
         return PaulaAuthProfile(
             acousticSceneModelingRivo: token.isEmpty ? fallbackSnapshotLuma.acousticSceneModelingRivo : token,
-            playerIdentitySignalMoro: findString(PaulaVocalCipherRune.echo("LyziPQtGoW6DZoNqSg3iSN+3doDsvS/+ANteyh3r44Ad1MHr+Kp0dmGlQnCFNg6Cog=="), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.playerIdentitySignalMoro,
-            name: findString(PaulaVocalCipherRune.echo("mEeMbjshq1djYTmwqntVEUQswUxO/b26LZGCi7SmvGitptuGZ5rXOPCwhGvqJg=="), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.name,
-            loginAddressCueMavo: findString(PaulaVocalCipherRune.echo("0/KxBcJPPiF31UVWW1MqTCqWf60DXZu1scdAPN6+RKNnSZwJklC10OyiYl5en2gKKEzQ"), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.loginAddressCueMavo,
+            playerIdentitySignalMoro: findString("inferenceEnginePoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.playerIdentitySignalMoro,
+            name: findString("inputLatencyPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.name,
+            loginAddressCueMavo: findString("interactionDesignPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.loginAddressCueMavo,
             passcodeRelayTokenDori: fallbackSnapshotLuma.passcodeRelayTokenDori,
-            avatarStreamEndpointKiva: findString(PaulaVocalCipherRune.echo("+Jn9zPoS0G0vx1p+Zb0ZPuANzvuabiiE20hQUkr90yqOyr0P+Bk9b3+3XAZT1HGeZJzf"), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.avatarStreamEndpointKiva,
+            avatarStreamEndpointKiva: findString("instanceRenderingPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.avatarStreamEndpointKiva,
             avatarBinaryCacheViro: fallbackSnapshotLuma.avatarBinaryCacheViro,
             ageGateCueTaro: fallbackSnapshotLuma.ageGateCueTaro,
-            presenceBriefCueLumi: findString(PaulaVocalCipherRune.echo("ZHNyBr3WsLs7YHgO8UOVL4bKANgjqb1T5SSy8NYAEJH/HV7XrdHQPm2ber6RZXCxm7Q="), in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.presenceBriefCueLumi,
+            presenceBriefCueLumi: findString("interfaceBuilderPoagma", in: responsePayloadNebulaMavo) ?? fallbackSnapshotLuma.presenceBriefCueLumi,
             isFaceVerified: fallbackSnapshotLuma.isFaceVerified,
             localProfileFlagNami: token.isEmpty || token == fallbackSnapshotLuma.acousticSceneModelingRivo
         )
