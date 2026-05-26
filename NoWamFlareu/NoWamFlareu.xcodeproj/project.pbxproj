@@ -147,6 +147,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NoWamFlareu/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Paula;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Paula uses the camera for avatar photos and selfie verification.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Paula uses the microphone for live voice rooms and real-time chat.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Paula uses photo library access so you can choose an avatar.";
@@ -161,7 +162,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.communityDinner.Dimeet.NoWamFlareu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nealiegm.paula;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -186,6 +187,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NoWamFlareu/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Paula;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Paula uses the camera for avatar photos and selfie verification.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Paula uses the microphone for live voice rooms and real-time chat.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Paula uses photo library access so you can choose an avatar.";
@@ -200,7 +202,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.communityDinner.Dimeet.NoWamFlareu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nealiegm.paula;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
