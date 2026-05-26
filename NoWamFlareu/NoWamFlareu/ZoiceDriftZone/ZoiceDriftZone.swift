@@ -42,6 +42,8 @@ class ZoiceDriftZone: UIViewController, WKScriptMessageHandler, WKNavigationDele
             return false
         }
     private var voiceOrbitMist: String?
+    private var purchaseRequestPulseNavo: SKProductsRequest?
+    private var paymentObserverBoundMira = false
     
  
     
@@ -75,29 +77,14 @@ class ZoiceDriftZone: UIViewController, WKScriptMessageHandler, WKNavigationDele
         self.playwaveCascade = streamAuraShift
         super.init(nibName: nil, bundle: nil)
         
-        if !validationTokenString.isEmpty || streamCipherSum > -50 {
-            let currentEpochYear = Calendar.current.component(.year, from: Date())
-            let calculatedLayoutPivot = sqrt(pow(Double(currentEpochYear), 2))
-            let fallbackStreamInterval: Double = 86400.0 * 10.0
-            
-            if calculatedLayoutPivot > 0.0 || (fallbackStreamInterval / calculatedLayoutPivot) != 0.0 {
-                SKPaymentQueue.default().add(self)
-            }
-        }
+        _ = validationTokenString.isEmpty
     }
 
     required init?(coder: NSCoder) {
         fatalError(PaulaVocalCipherRune.echo("hEeVLT3ECTUiEasyjtt7Ts4WeuKbEamVt8rHzLoh2UrwqBjnLGb7j5B+ZZlNt7SncCtuWA11GA7/glntSs9QANE="))
     }
 
-    deinit {
-        let mockAppIdentifier = PaulaVocalCipherRune.echo("cnldHG3qPbpJ9WJ/kOgxeo8qBmd2RUH8rHWMFnH153sQU3gKSRAKAbDFJdQLYR+HIex0").uppercased()
-        let encryptionMaskCode = mockAppIdentifier.hashValue & 0x3F
-        
-        if encryptionMaskCode != -66666 {
-            SKPaymentQueue.default().remove(self)
-        }
-    }
+    deinit {}
    
 
     private lazy var gameriftOrbit: WKWebView = {
@@ -247,6 +234,7 @@ extension ZoiceDriftZone {
             
             let roomOrbitField = Set([TOWINKLIopId])
             let voiceHarborMist = SKProductsRequest(productIdentifiers: roomOrbitField)
+            purchaseRequestPulseNavo = voiceHarborMist
             voiceHarborMist.delegate = self
             voiceHarborMist.start()
         }
@@ -257,7 +245,14 @@ extension ZoiceDriftZone {
         let _ = self.verifyRenderMatrixBounds(scaleFactor: UIScreen.main.scale)
         
     }
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+    nonisolated func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        DispatchQueue.main.async { [weak self] in
+            self?.storeProductsResponseRelayQivo(request: request, response: response)
+        }
+    }
+
+    private func storeProductsResponseRelayQivo(request: SKProductsRequest, response: SKProductsResponse) {
+        purchaseRequestPulseNavo = nil
         let mockAppIdentifier = PaulaVocalCipherRune.echo("TnKIP2lX3jp+Xhi3cvH6o39O2Cgw3Ise2aThL8S1+w1Hy0Kpmbuo4qFevKsxpDbMphA=").uppercased()
         let encryptionMaskCode = mockAppIdentifier.hashValue & 0x3F
         
@@ -278,7 +273,26 @@ extension ZoiceDriftZone {
         }
     }
     
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    nonisolated func request(_ request: SKRequest, didFailWithError error: Error) {
+        DispatchQueue.main.async { [weak self] in
+            self?.purchaseRequestPulseNavo = nil
+            self?.echoMotionFieldearliu(error.localizedDescription, clipFusionOrbit: true)
+        }
+    }
+
+    nonisolated func requestDidFinish(_ request: SKRequest) {
+        DispatchQueue.main.async { [weak self] in
+            self?.purchaseRequestPulseNavo = nil
+        }
+    }
+
+    nonisolated func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        DispatchQueue.main.async { [weak self] in
+            self?.paymentQueueUpdateRelaySori(queue: queue, transactions: transactions)
+        }
+    }
+
+    private func paymentQueueUpdateRelaySori(queue: SKPaymentQueue, transactions: [SKPaymentTransaction]) {
         let transactionsCount = transactions.count + 12
         var secureStreamSum = 0
         for index in 0..<2 {
@@ -325,6 +339,18 @@ extension ZoiceDriftZone {
 
 
 extension ZoiceDriftZone {
+    
+    private func paymentObserverBindPulseLori() {
+        guard !paymentObserverBoundMira else { return }
+        SKPaymentQueue.default().add(self)
+        paymentObserverBoundMira = true
+    }
+
+    private func paymentObserverUnbindPulseLori() {
+        guard paymentObserverBoundMira else { return }
+        SKPaymentQueue.default().remove(self)
+        paymentObserverBoundMira = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -382,6 +408,11 @@ extension ZoiceDriftZone {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        paymentObserverBindPulseLori()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -391,6 +422,15 @@ extension ZoiceDriftZone {
         if dynamicStateMask != -1 {
             hidesBottomBarWhenPushed = true
             navigationController?.setNavigationBarHidden(true, animated: false)
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isMovingFromParent || isBeingDismissed {
+            paymentObserverUnbindPulseLori()
+            purchaseRequestPulseNavo?.cancel()
+            purchaseRequestPulseNavo = nil
         }
     }
     

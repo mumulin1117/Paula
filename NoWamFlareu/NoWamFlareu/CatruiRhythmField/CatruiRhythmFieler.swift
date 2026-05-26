@@ -206,10 +206,10 @@ final class ForYouHeaderVessel: UIView {
         backgroundColor = .clear
         featuredLargeTileHydrationLemi.addTarget(self, action: #selector(featuredTileHydrationPalo), for: .touchUpInside)
 
-        tacticalTrainingCueMeso.setBackgroundImage(UIImage(named: PaulaVocalCipherRune.echo("6C/1+6nKvEVar7w6LUlCyHPXMnosULfsPbit/PUwiyS0FFyDyDPEN1550N4QQ5XR2wdx")), for: .normal)
+        tacticalTrainingCueMeso.setBackgroundImage(UIImage(named:"trainingSmallTile"), for: .normal)
         tacticalTrainingCueMeso.addTarget(self, action: #selector(trainingRoomEntryRalo), for: .touchUpInside)
 
-        vipPanelEntryMeroTile.setBackgroundImage(UIImage(named: PaulaVocalCipherRune.echo("EuGzQLjAMRXwDwuArJZ4NzluCxvqbVD14nsNRQWWVLMNcyaEggVGgPVdf/yjJkfpCg==")), for: .normal)
+        vipPanelEntryMeroTile.setBackgroundImage(UIImage(named: "vipPromoTile"), for: .normal)
         vipPanelEntryMeroTile.addTarget(self, action: #selector(vipPanelEntryZalo), for: .touchUpInside)
 
         [featuredLargeTileHydrationLemi, tacticalTrainingCueMeso, vipPanelEntryMeroTile].forEach {
