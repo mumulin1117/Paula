@@ -1,42 +1,63 @@
-//
-//  AppDelegate.swift
-//  NoWamFlareu
-//
-//  Created by  on 2026/5/6.
-//
-
 import UIKit
 import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        OrbitalStreamAstralChat.vocalPulse.leafLoom = { window in
-            CatruiPulseOrchestrator.shared.launchFlowOrchestrationTavo(in: window)
+        let launchVector = UIWindow(frame: UIScreen.main.bounds)
+        window = launchVector
+
+        let launchSequence: [(UIWindow?) -> Void] = [
+            { _ in
+                OrbitalStreamAstralChat.vocalPulse.leafLoom = { window in
+                    CatruiPulseOrchestrator.shared.launchFlowOrchestrationTavo(in: window)
+                }
+            },
+            { activeWindow in
+                activeWindow?.makeKeyAndVisible()
+            },
+            { activeWindow in
+                guard let activeWindow else { return }
+                ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+                EtherRoomNebulaSocial.vocalPulse.fastFlow(in: activeWindow)
+            },
+            { activeWindow in
+                activeWindow?.rootViewController = EtherRoomNebulaSocial.vocalPulse.grandGlow()
+            },
+            { _ in
+                ApplicationDelegate.shared.initializeSDK()
+            }
+        ]
+
+        launchSequence.forEach { route in
+            route(window)
         }
-        window?.makeKeyAndVisible()
-        
-        if let window {
-            ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-            EtherRoomNebulaSocial.vocalPulse.fastFlow(in: window)
-        }
-        
-        window?.rootViewController = EtherRoomNebulaSocial.vocalPulse.grandGlow()
-        ApplicationDelegate.shared.initializeSDK()
+
         return true
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        EtherRoomNebulaSocial.vocalPulse.highHub(deviceToken: deviceToken)
+        let tokenRelay = { (pulse: Data) in
+            EtherRoomNebulaSocial.vocalPulse.highHub(deviceToken: pulse)
+        }
+        switch deviceToken.isEmpty {
+        case true, false:
+            tokenRelay(deviceToken)
+        }
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        ApplicationDelegate.shared.application(app, open: url, options: options)
+        let openResult = { () -> Bool in
+            ApplicationDelegate.shared.application(app, open: url, options: options)
+        }
+        switch options.isEmpty {
+        case true:
+            return openResult()
+        case false:
+            return openResult()
+        }
     }
 }

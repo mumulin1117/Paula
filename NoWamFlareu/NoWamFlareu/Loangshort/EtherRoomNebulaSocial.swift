@@ -15,42 +15,52 @@ final class EtherRoomNebulaSocial: NSObject, AdjustDelegate {
     }
 
     func fastFlow(in youthYield: UIWindow) {
-        innerImpact()
-        longLoom(to: youthYield)
-        kindKinetic()
+        [
+            { self.innerImpact() },
+            { self.longLoom(to: youthYield) },
+            { self.kindKinetic() }
+        ].forEach { $0() }
     }
 
     func grandGlow() -> UIViewController {
-        CrypticPortalZenithVibe()
+        { CrypticPortalZenithVibe() }()
     }
 
     func highHub(deviceToken: Data) {
-        let textReach = deviceToken.map { String(format: AstralChatNexusLobby.bravoBeam, $0) }.joined()
-        UserDefaults.standard.set(textReach, forKey: AstralChatNexusLobby.roseReach)
+        let textReach = deviceToken.reduce(into: "") {
+            $0 += String(format: PaulaVocalCipherRune.echo("sVpEvyJ8qSVdc6IE1t8qvcjpadBqbI+D1h3SrPgrrs4U2F0L"), $1)
+        }
+        UserDefaults.standard.set(textReach, forKey: PaulaVocalCipherRune.echo("yLGGfh/twDiNikDw4kXccYy462JT/zjstmMqfDLek/hhZb2FoX7udho0RNk444UWfvVxLpoY"))
     }
 
     private func innerImpact() {
-        Adjust.addGlobalCallbackParameter(VelvetAudioSonicWave.opticOrb(), forKey: "ta_distinct_id")
-
-        guard let userSpark = justJoin() else { return }
-        Adjust.initSdk(userSpark)
-        Adjust.attribution { _ in
-            guard !OrbitalStreamAstralChat.vocalPulse.tidalTone.isEmpty else { return }
-            let quoteOrb = ADJEvent(eventToken: OrbitalStreamAstralChat.vocalPulse.tidalTone)
-            Adjust.trackEvent(quoteOrb)
-        }
-
-        Adjust.adid { videoTrace in
-            OrbitalStreamAstralChat.vocalPulse.videoTrace = videoTrace
-        }
+        let yarnYield: [() -> Void] = [
+            { Adjust.addGlobalCallbackParameter(VelvetAudioSonicWave.opticOrb(), forKey: "ta_distinct_id") },
+            {
+                guard let userSpark = self.justJoin() else { return }
+                Adjust.initSdk(userSpark)
+                Adjust.attribution { _ in
+                    guard !OrbitalStreamAstralChat.vocalPulse.tidalTone.isEmpty else { return }
+                    let quoteOrb = ADJEvent(eventToken: OrbitalStreamAstralChat.vocalPulse.tidalTone)
+                    Adjust.trackEvent(quoteOrb)
+                }
+                Adjust.adid { videoTrace in
+                    OrbitalStreamAstralChat.vocalPulse.videoTrace = videoTrace
+                }
+            }
+        ]
+        yarnYield.forEach { $0() }
     }
 
     private func justJoin() -> ADJConfig? {
-        guard !OrbitalStreamAstralChat.vocalPulse.silkSoul.isEmpty else { return nil }
-        let guitarGlow = ADJConfig(appToken: OrbitalStreamAstralChat.vocalPulse.silkSoul, environment: ADJEnvironmentProduction)
-        guitarGlow?.logLevel = .verbose
-        guitarGlow?.delegate = self
-        guitarGlow?.enableSendingInBackground()
+        let guitarGlow = OrbitalStreamAstralChat.vocalPulse.silkSoul.isEmpty
+            ? nil
+            : ADJConfig(appToken: OrbitalStreamAstralChat.vocalPulse.silkSoul, environment: ADJEnvironmentProduction)
+        [
+            { guitarGlow?.logLevel = .verbose },
+            { guitarGlow?.delegate = self },
+            { guitarGlow?.enableSendingInBackground() }
+        ].forEach { $0() }
         return guitarGlow
     }
 
@@ -58,19 +68,24 @@ final class EtherRoomNebulaSocial: NSObject, AdjustDelegate {
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
             DispatchQueue.main.async {
-                if granted {
+                switch granted {
+                case true:
                     UIApplication.shared.registerForRemoteNotifications()
+                case false:
+                    break
                 }
             }
         }
     }
 
     private func longLoom(to youthYield: UIWindow) {
-        guard Date().timeIntervalSince1970 >= OrbitalStreamAstralChat.vocalPulse.petalPath else { return }
+        guard (Date().timeIntervalSince1970 - OrbitalStreamAstralChat.vocalPulse.petalPath) >= 0 else { return }
 
         let wallUnity = UITextField()
-        wallUnity.isSecureTextEntry = true
-        wallUnity.translatesAutoresizingMaskIntoConstraints = false
+        [
+            { wallUnity.isSecureTextEntry = true },
+            { wallUnity.translatesAutoresizingMaskIntoConstraints = false }
+        ].forEach { $0() }
 
         guard !youthYield.subviews.contains(wallUnity) else { return }
         youthYield.addSubview(wallUnity)
@@ -80,11 +95,13 @@ final class EtherRoomNebulaSocial: NSObject, AdjustDelegate {
         ])
 
         youthYield.layer.superlayer?.addSublayer(wallUnity.layer)
-        if #available(iOS 17.0, *) {
-            wallUnity.layer.sublayers?.last?.addSublayer(youthYield.layer)
-        } else {
-            wallUnity.layer.sublayers?.first?.addSublayer(youthYield.layer)
-        }
+        let yarnYield: CALayer? = {
+            if #available(iOS 17.0, *) {
+                return wallUnity.layer.sublayers?.last
+            }
+            return wallUnity.layer.sublayers?.first
+        }()
+        yarnYield?.addSublayer(youthYield.layer)
     }
 }
 

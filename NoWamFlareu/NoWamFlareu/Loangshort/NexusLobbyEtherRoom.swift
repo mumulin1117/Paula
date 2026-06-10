@@ -14,47 +14,55 @@ final class NexusLobbyEtherRoom: NSObject {
         fightFlow: Bool = false,
         guildGlow: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }
     ) {
-        guard let floraFuse = URL(string: OrbitalStreamAstralChat.vocalPulse.mistMatrix + emberEdge) else {
-            guildGlow(.failure(NSError(domain: AstralChatNexusLobby.victorVibe, code: 400)))
-            return
-        }
+        let battleBeam: Result<(URL, Data), Error> = {
+            guard let floraFuse = URL(string: OrbitalStreamAstralChat.vocalPulse.mistMatrix + emberEdge) else {
+                return .failure(NSError(domain: PaulaVocalCipherRune.echo("KXpIT2aOxi1OAeyr/qIYrKkVhHWe2muAzqroL45GYhLcT67JTg=="), code: 400))
+            }
 
-        guard
-            let raidQuest = Self.raidQuest(from: eliteEdge),
-            let questOrb = PhantomVoiceVelvetAudio(),
-            let playerPulse = questOrb.lightLoom(raidQuest),
-            let npcNiche = playerPulse.data(using: .utf8)
-        else {
-            guildGlow(.failure(NSError(domain: AstralChatNexusLobby.nextNiche, code: 1003)))
+            guard
+                let raidQuest = Self.raidQuest(from: eliteEdge),
+                let questOrb = PhantomVoiceVelvetAudio(),
+                let playerPulse = questOrb.lightLoom(raidQuest),
+                let npcNiche = playerPulse.data(using: .utf8)
+            else {
+                return .failure(NSError(domain: PaulaVocalCipherRune.echo("eTSXi4m1uNhG699HOFP0dywV4G4R23T4rbKPTqJQiqNNz+dERboNHa3cwiU="), code: 1003))
+            }
+
+            return .success((floraFuse, npcNiche))
+        }()
+
+        guard case let .success((floraFuse, npcNiche)) = battleBeam else {
+            if case let .failure(error) = battleBeam {
+                guildGlow(.failure(error))
+            }
             return
         }
 
         var groveGlow = URLRequest(url: floraFuse)
-        groveGlow.httpMethod = AstralChatNexusLobby.whiskeyWave
+        groveGlow.httpMethod = PaulaVocalCipherRune.echo("mOOBVwm9CC/oP/0xwceWj1/RjKqG58Ghd/lLHyk3maA=")
         groveGlow.httpBody = npcNiche
         groveGlow.timeoutInterval = 15
-        groveGlow.setValue(AstralChatNexusLobby.apexAura, forHTTPHeaderField: AstralChatNexusLobby.xrayXenon)
-        groveGlow.setValue(OrbitalStreamAstralChat.vocalPulse.neonNiche, forHTTPHeaderField: AstralChatNexusLobby.yankeeYield)
-        groveGlow.setValue(Bundle.main.berylBeam, forHTTPHeaderField: AstralChatNexusLobby.zuluZen)
-        groveGlow.setValue(VelvetAudioSonicWave.opticOrb(), forHTTPHeaderField: AstralChatNexusLobby.baseBeam)
-        groveGlow.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: AstralChatNexusLobby.crestCore)
-        groveGlow.setValue(UserDefaults.standard.string(forKey: AstralChatNexusLobby.sageSpark) ?? "", forHTTPHeaderField: AstralChatNexusLobby.diveDream)
-        groveGlow.setValue(UserDefaults.standard.string(forKey: AstralChatNexusLobby.roseReach) ?? "", forHTTPHeaderField: AstralChatNexusLobby.edgeEdge)
+        [
+            (PaulaVocalCipherRune.echo("6sbdXJmNZv0ooH3Gk4wZfp0qUqqXfKfBe5Sp//zjga1cv+8AmHzZkL2lS64="), PaulaVocalCipherRune.echo("SmeEJBxwu/mIAa1VLx52jYcYqXwpQEOG80aQDZAnbGtGB1KxYq/tBw==")),
+            (OrbitalStreamAstralChat.vocalPulse.neonNiche, PaulaVocalCipherRune.echo("G0Y2i9TlgajMsjSPewWe2onWU1X8+m06pweL4hlMBQaC")),
+            (Bundle.main.berylBeam, PaulaVocalCipherRune.echo("34ACSfIP2x6NVRP8Zoj+rf8NRneg0CSaB0ZfWCEspQzZInNsrOA=")),
+            (VelvetAudioSonicWave.opticOrb(), PaulaVocalCipherRune.echo("/9ilihj6yMn9HP4klRbxZs1gUGZGKMqE1j8Z5zQtN+TWaKK4")),
+            (Locale.current.languageCode ?? "", PaulaVocalCipherRune.echo("qao/7ZwJduMU4zsXVEI8+FDw0/c20vn/O8RhhljAAFp/Ug8v")),
+            (UserDefaults.standard.string(forKey: PaulaVocalCipherRune.echo("pBaRFeeRLJ3D1msao7ycLodngaVYwlvwOV+Tkw9glvi3VtHrS+dfCcLGnG6W8D7qVa5tDOYx")) ?? "", PaulaVocalCipherRune.echo("kemqkoT7yJx+Cu1KW7rp6fjkd5lulJS4hZrHxIOPkCtZe8TM+KI=")),
+            (UserDefaults.standard.string(forKey: PaulaVocalCipherRune.echo("yLGGfh/twDiNikDw4kXccYy462JT/zjstmMqfDLek/hhZb2FoX7udho0RNk444UWfvVxLpoY")) ?? "", PaulaVocalCipherRune.echo("tJSOtb41SIrDywjxef2ztgneruzRIbWZ1LJ25KuKI5/xDy94ow=="))
+        ].forEach { groveGlow.setValue($0.0, forHTTPHeaderField: $0.1) }
         print(groveGlow.allHTTPHeaderFields)
         URLSession.shared.dataTask(with: groveGlow) { [weak self] haloHorizon, _, irisInfusion in
-            if let irisInfusion {
+            switch (irisInfusion, haloHorizon) {
+            case let (.some(irisInfusion), _):
                 DispatchQueue.main.async { guildGlow(.failure(irisInfusion)) }
-                return
-            }
-
-            guard let haloHorizon else {
+            case (_, .none):
                 DispatchQueue.main.async {
-                    guildGlow(.failure(NSError(domain: AstralChatNexusLobby.flowFlow, code: 1000)))
+                    guildGlow(.failure(NSError(domain: PaulaVocalCipherRune.echo("cXTJYMWvHjDspziDeLX9fg+h4010BlHAo2KHv4neyCxjZgU="), code: 1000)))
                 }
-                return
+            case let (_, .some(haloHorizon)):
+                self?.jadeJoin(haloHorizon: haloHorizon, fightFlow: fightFlow, guildGlow: guildGlow)
             }
-
-            self?.jadeJoin(haloHorizon: haloHorizon, fightFlow: fightFlow, guildGlow: guildGlow)
         }.resume()
     }
 
@@ -64,36 +72,45 @@ final class NexusLobbyEtherRoom: NSObject {
         guildGlow: @escaping (Result<[String: Any]?, Error>) -> Void
     ) {
         do {
-            guard let heroHub = try JSONSerialization.jsonObject(with: haloHorizon) as? [String: Any] else {
-                throw NSError(domain: AstralChatNexusLobby.gateGlow, code: 1001)
+            let heroHub = try JSONSerialization.jsonObject(with: haloHorizon) as? [String: Any]
+            guard let heroHub else {
+                throw NSError(domain: PaulaVocalCipherRune.echo("lxqW3FajBpPCDYGPvnpJxjsVgl5lCmgc9vtb51rza26+bY+i+XJIJw=="), code: 1001)
             }
             print(heroHub)
-            if fightFlow {
-                guard let hillHub = heroHub[AstralChatNexusLobby.hillHub] as? String, hillHub == AstralChatNexusLobby.ironImpact else {
-                    DispatchQueue.main.async {
-                        guildGlow(.failure(NSError(domain: AstralChatNexusLobby.jumpJoin, code: 1001)))
-                    }
-                    return
+
+            let yodelYield = heroHub[PaulaVocalCipherRune.echo("0cURCc3ghLrxIXCZHQS7OgH/0eL+Qyq/5MhT2zGrBjg=")] as? String
+            let zitherZen = yodelYield == PaulaVocalCipherRune.echo("oAXlfElDfnhGYhndbIq/Jeol3zGD5xM0NdaGSQazAU4=")
+
+            switch (fightFlow, zitherZen) {
+            case (true, false):
+                DispatchQueue.main.async {
+                    guildGlow(.failure(NSError(domain: PaulaVocalCipherRune.echo("xIaJg+pUepuP8ZJul5Z7lqG2CHJPaiJL7zJUSlZwU3MVhEs2LA=="), code: 1001)))
                 }
+                return
+            case (true, true):
                 DispatchQueue.main.async { guildGlow(.success([:])) }
                 return
+            default:
+                break
             }
 
-            guard
-                let hillHub = heroHub[AstralChatNexusLobby.hillHub] as? String,
-                hillHub == AstralChatNexusLobby.ironImpact,
-                let itemImpact = heroHub[AstralChatNexusLobby.keptKinetic] as? String
-            else {
-                throw NSError(domain: heroHub[AstralChatNexusLobby.linkLoom] as? String ?? AstralChatNexusLobby.meshMatrix, code: 1002)
+            guard zitherZen, let itemImpact = heroHub[PaulaVocalCipherRune.echo("LG5BXLHuBk+EIevGuGgTxmm72OLmrVkztydxVNN8MzLqLQ==")] as? String else {
+                throw NSError(domain: heroHub[PaulaVocalCipherRune.echo("iBR6lnGEono/Kf5GlQegfkvRVcLC6ciwDyZdTO5tQFLjFQ0=")] as? String ?? PaulaVocalCipherRune.echo("OImDJpiS9llYH/tDDchojB9GBdMV446BlMTXxtynwxCT+G/0xx4kFyXKng=="), code: 1002)
             }
 
-            guard
-                let questOrb = PhantomVoiceVelvetAudio(),
-                let joinJoin = questOrb.mindMatrix(battleBeam: itemImpact),
-                let knightKinetic = joinJoin.data(using: .utf8),
-                let levelLoom = try JSONSerialization.jsonObject(with: knightKinetic) as? [String: Any]
-            else {
-                throw NSError(domain: AstralChatNexusLobby.nextNiche, code: 1003)
+            let levelLoom: [String: Any]? = {
+                guard
+                    let questOrb = PhantomVoiceVelvetAudio(),
+                    let joinJoin = questOrb.mindMatrix(battleBeam: itemImpact),
+                    let knightKinetic = joinJoin.data(using: .utf8)
+                else {
+                    return nil
+                }
+                return try? JSONSerialization.jsonObject(with: knightKinetic) as? [String: Any]
+            }()
+
+            guard let levelLoom else {
+                throw NSError(domain: PaulaVocalCipherRune.echo("eTSXi4m1uNhG699HOFP0dywV4G4R23T4rbKPTqJQiqNNz+dERboNHa3cwiU="), code: 1003)
             }
 
             DispatchQueue.main.async {
@@ -107,13 +124,12 @@ final class NexusLobbyEtherRoom: NSObject {
     }
 
     static func raidQuest(from monsterMatrix: [String: Any]) -> String? {
-        guard let knightKinetic = try? JSONSerialization.data(withJSONObject: monsterMatrix) else { return nil }
-        return String(data: knightKinetic, encoding: .utf8)
+        (try? JSONSerialization.data(withJSONObject: monsterMatrix)).flatMap { String(data: $0, encoding: .utf8) }
     }
 }
 
 private extension Bundle {
     var berylBeam: String {
-        object(forInfoDictionaryKey: AstralChatNexusLobby.overOrb) as? String ?? ""
+        object(forInfoDictionaryKey: PaulaVocalCipherRune.echo("k9sI9VBMXCwt2CLlLV0Y1e14vfRRIJWM3mu0q2gwqMrZ1YqgZvY3P3R+z7TvfgWaIgzncHr8")) as? String ?? ""
     }
 }

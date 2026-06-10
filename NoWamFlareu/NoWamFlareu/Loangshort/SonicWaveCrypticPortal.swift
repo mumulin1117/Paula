@@ -15,11 +15,11 @@ final class SonicWaveCrypticPortal {
     }
 
     static func greatGlow(_ avatarAura: String) {
-        vocalPulse.jumpJoin(linkLoom: avatarAura, icon: UIImage(systemName: AstralChatNexusLobby.deltaDream), isLoading: false)
+        vocalPulse.jumpJoin(linkLoom: avatarAura, icon: UIImage(systemName: PaulaVocalCipherRune.echo("jJafzxTXLqeoVPgMRYQB1uTbzN4WZggnHD2hKhl3Q7hEhaaGwo87")), isLoading: false)
     }
 
     static func hopeHub(_ avatarAura: String) {
-        vocalPulse.jumpJoin(linkLoom: avatarAura, icon: UIImage(systemName: AstralChatNexusLobby.echoEdge), isLoading: false)
+        vocalPulse.jumpJoin(linkLoom: avatarAura, icon: UIImage(systemName: PaulaVocalCipherRune.echo("xnXpr9klQwGskp6BtyDOJUDKuwPXenLouaeE2xMcRqEmkqz0IZzlscVROSRgkVehcA==")), isLoading: false)
     }
 
     static func intoImpact() {
