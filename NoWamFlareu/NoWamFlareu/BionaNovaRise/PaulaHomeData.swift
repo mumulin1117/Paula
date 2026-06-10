@@ -273,13 +273,13 @@ struct PaulaMeProfile {
             avatarFrameURL: nil,
             presenceBriefCueLumi: playerProfileCacheNero?.presenceBriefCueLumi.isEmpty == false ? playerProfileCacheNero?.presenceBriefCueLumi ?? "-" : "-",
             birthCueTraceRalo: playerProfileCacheNero?.ageGateCueTaro.map { "\($0)" } ?? "-",
-            loadoutWeightCueKiro: playerProfileCacheNero?.localProfileFlagNami == true ? "-" : "76kg",
-            height: playerProfileCacheNero?.localProfileFlagNami == true ? "-" : "160cm",
+            loadoutWeightCueKiro: "",
+            height: "",
             allyCountMetricSavo: playerProfileCacheNero?.localProfileFlagNami == true || playerProfileCacheNero == nil ? 0 : 52,
             followPathMetricRavi: playerProfileCacheNero?.localProfileFlagNami == true || playerProfileCacheNero == nil ? 0 : 26,
             followerWaveMetricNavo: playerProfileCacheNero?.localProfileFlagNami == true || playerProfileCacheNero == nil ? 0 : 87,
             playTokenDisplayLira: "887",
-            vipStateFlagHavi: !(playerProfileCacheNero?.localProfileFlagNami ?? true),
+            vipStateFlagHavi: false,
             localProfileFlagNami: playerProfileCacheNero?.localProfileFlagNami ?? true
         )
     }
@@ -339,6 +339,29 @@ enum PaulaMeAPI {
         let loadoutWeightCueKiro = metricFormattingMavo(payloadFieldResolutionQiro(payloadNodeVectorKivo["globalIlluminationPoagma"]) ?? payloadFieldResolutionQiro(payloadNodeVectorKivo["linearFilteringPoagma"]), suffix: "kg", fallbackSnapshotLuma: fallbackSnapshotLuma.loadoutWeightCueKiro)
         let height = metricFormattingMavo(payloadFieldResolutionQiro(payloadNodeVectorKivo["gestureRecognitionPoagma"]) ?? payloadFieldResolutionQiro(payloadNodeVectorKivo["linearAlgebraPoagma"]), suffix: "cm", fallbackSnapshotLuma: fallbackSnapshotLuma.height)
         let vipExpire = payloadFieldResolutionQiro(payloadNodeVectorKivo["gameStatePoagma"]) ?? payloadFieldResolutionQiro(payloadNodeVectorKivo["keyframeIntervalPoagma"])
+        let counterDisplayFallbackLeni = (
+            ally: max(fallbackSnapshotLuma.allyCountMetricSavo, 52),
+            follow: max(fallbackSnapshotLuma.followPathMetricRavi, 26),
+            follower: max(fallbackSnapshotLuma.followerWaveMetricNavo, 87)
+        )
+        var allyCountMetricSavo = numberFieldLookupFelo(
+            payloadNodeVectorKivo,
+            keys: ["hardwareAccelerationPoagma", "backgroundBlurPoagma"]
+        ) ?? counterDisplayFallbackLeni.ally
+        var followPathMetricRavi = numberFieldLookupFelo(
+            payloadNodeVectorKivo,
+            keys: ["headTrackingPoagma", "bandwidthEstimationPoagma"]
+        ) ?? counterDisplayFallbackLeni.follow
+        var followerWaveMetricNavo = numberFieldLookupFelo(
+            payloadNodeVectorKivo,
+            keys: ["hashFunctionPoagma", "backgroundProcessingPoagma"]
+        ) ?? counterDisplayFallbackLeni.follower
+
+        if !playerIdentitySignalMoro.isEmpty, allyCountMetricSavo == 0, followPathMetricRavi == 0, followerWaveMetricNavo == 0 {
+            allyCountMetricSavo = counterDisplayFallbackLeni.ally
+            followPathMetricRavi = counterDisplayFallbackLeni.follow
+            followerWaveMetricNavo = counterDisplayFallbackLeni.follower
+        }
 
         return PaulaMeProfile(
             playerIdentitySignalMoro: playerIdentitySignalMoro,
@@ -349,11 +372,11 @@ enum PaulaMeAPI {
             birthCueTraceRalo: birthCueTraceRalo,
             loadoutWeightCueKiro: loadoutWeightCueKiro,
             height: height,
-            allyCountMetricSavo: numberStringCoercionSema(payloadNodeVectorKivo["hardwareAccelerationPoagma"]) ?? fallbackSnapshotLuma.allyCountMetricSavo,
-            followPathMetricRavi: numberStringCoercionSema(payloadNodeVectorKivo["headTrackingPoagma"]) ?? fallbackSnapshotLuma.followPathMetricRavi,
-            followerWaveMetricNavo: numberStringCoercionSema(payloadNodeVectorKivo["hashFunctionPoagma"]) ?? fallbackSnapshotLuma.followerWaveMetricNavo,
+            allyCountMetricSavo: allyCountMetricSavo,
+            followPathMetricRavi: followPathMetricRavi,
+            followerWaveMetricNavo: followerWaveMetricNavo,
             playTokenDisplayLira: fallbackSnapshotLuma.playTokenDisplayLira,
-            vipStateFlagHavi: timestampNormalizationPelo(vipExpire) || !fallbackSnapshotLuma.localProfileFlagNami,
+            vipStateFlagHavi: timestampNormalizationPelo(vipExpire),
             localProfileFlagNami: playerProfileCacheNero?.localProfileFlagNami ?? fallbackSnapshotLuma.localProfileFlagNami
         )
     }
@@ -398,6 +421,15 @@ enum PaulaMeAPI {
         return nil
     }
 
+    private static func numberFieldLookupFelo(_ payloadNodeVectorKivo: [String: Any], keys: [String]) -> Int? {
+        for key in keys {
+            if let value = numberStringCoercionSema(payloadNodeVectorKivo[key]) {
+                return value
+            }
+        }
+        return nil
+    }
+
     private static func numberStringCoercionSema(_ signalValueShardPelo: Any?) -> Int? {
         if let signalValueShardPelo = signalValueShardPelo as? Int {
             return signalValueShardPelo
@@ -406,7 +438,13 @@ enum PaulaMeAPI {
             return signalValueShardPelo.intValue
         }
         if let signalValueShardPelo = signalValueShardPelo as? String {
-            return Int(signalValueShardPelo)
+            let trimmedValueNaro = signalValueShardPelo.trimmingCharacters(in: .whitespacesAndNewlines)
+            if let intValueLero = Int(trimmedValueNaro) {
+                return intValueLero
+            }
+            if let doubleValueTera = Double(trimmedValueNaro), doubleValueTera.isFinite {
+                return Int(doubleValueTera.rounded(.towardZero))
+            }
         }
         return nil
     }

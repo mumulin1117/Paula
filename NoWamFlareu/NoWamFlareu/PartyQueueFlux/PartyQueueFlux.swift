@@ -67,6 +67,13 @@ class PulseMePartyQueueFlux: UIViewController {
         shadowGlowRenderingQavi()
     }
 
+    private func vipBadgeRenderingMoro(vipAccessFlagTelo: Bool) {
+        vipExpireDetectionHaviBadge.isHidden = false
+        vipExpireDetectionHaviBadge.backgroundColor = vipAccessFlagTelo
+            ? UIColor(red: 250 / 255, green: 99 / 255, blue: 147 / 255, alpha: 1)
+            : UIColor(red: 124 / 255, green: 124 / 255, blue: 124 / 255, alpha: 1)
+    }
+
     private func navigationOverlayGuardQina() {
         let mainConsoleLaunchViro = UILabel()
         mainConsoleLaunchViro.text = PaulaVocalCipherRune.echo("6FDwVRYjuyFFUy4ygnguKMlEzauwQrHZMBRV7shx")
@@ -78,7 +85,7 @@ class PulseMePartyQueueFlux: UIViewController {
         mainConsoleLaunchViro.layer.shadowOffset = .zero
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: mainConsoleLaunchViro)
 
-        buttonHitTargetingPori(goldlessRewardNamingVeroButton, title: playerProfileCacheNero.playTokenDisplayLira, imageName: PaulaVocalCipherRune.echo("sJU4CqcKKDeWaPMORzA48nZZ7oIaKiEYe3PRbfU5IL2A4MCcAANJfF9pZ/nnyHva4bR2"))
+        buttonHitTargetingPori(goldlessRewardNamingVeroButton, title: "Coin", imageName: "coinTopButton")
         goldlessRewardNamingVeroButton.addTarget(self, action: #selector(goldlessRewardNamingVero), for: .touchUpInside)
 
         buttonHitTargetingPori(settingsRouteDispatchKivoButton, title: PaulaVocalCipherRune.echo("9i+T8/67a4FSWTcAaa51MRvUAwCiK9o72hNwvQVmOHcSXbbg"), imageName: PaulaVocalCipherRune.echo("3Iy3+u3eQyqcVJqDCB+98sspquWofAjCBBC7yqOi2KUbwzboFw=="))
@@ -106,8 +113,12 @@ class PulseMePartyQueueFlux: UIViewController {
         titleAttributes.font = UIFont.systemFont(ofSize: 15, weight: .medium)
 
         var imageDecodeCompletionSari = UIButton.Configuration.plain()
-        imageDecodeCompletionSari.attributedTitle = AttributedString((PaulaVocalCipherRune.echo("zBWE5l39UhuMx935m1UtPoTVcq+yWVbEGV+FCxM=") + String(describing: title)), attributes: titleAttributes)
-        imageDecodeCompletionSari.image = UIImage(systemName: imageName)
+        imageDecodeCompletionSari.attributedTitle = AttributedString(title, attributes: titleAttributes)
+        if let localIcon = UIImage(named: imageName) {
+            imageDecodeCompletionSari.image = localIcon.withRenderingMode(.alwaysOriginal)
+        } else {
+            imageDecodeCompletionSari.image = UIImage(systemName: imageName)
+        }
         imageDecodeCompletionSari.baseForegroundColor = .white
         imageDecodeCompletionSari.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 10, bottom: 4, trailing: 10)
         actionButtonPulseReno.configuration = imageDecodeCompletionSari
@@ -116,7 +127,8 @@ class PulseMePartyQueueFlux: UIViewController {
         actionButtonPulseReno.layer.cornerRadius = 14
         actionButtonPulseReno.layer.borderWidth = 1
         actionButtonPulseReno.layer.borderColor = UIColor(red: 53 / 255, green: 105 / 255, blue: 200 / 255, alpha: 1).cgColor
-        actionButtonPulseReno.frame = CGRect(x: 0, y: 0, width: title == PaulaVocalCipherRune.echo("DX52qTzrNZBy3TrE+e6C3looOkmgSglhKYwPPYbroyRgGPMT") ? 104 : 72, height: 29)
+        let buttonWidth: CGFloat = actionButtonPulseReno === settingsRouteDispatchKivoButton ? 104 : 88
+        actionButtonPulseReno.frame = CGRect(x: 0, y: 0, width: buttonWidth, height: 29)
     }
 
     private func shadowGlowRenderingQavi() {
@@ -199,6 +211,7 @@ class PulseMePartyQueueFlux: UIViewController {
         vipExpireDetectionHaviBadge.clipsToBounds = true
         vipExpireDetectionHaviBadge.isUserInteractionEnabled = true
         vipExpireDetectionHaviBadge.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(vipInfoRouteMappingDora)))
+        vipBadgeRenderingMoro(vipAccessFlagTelo: playerProfileCacheNero.vipStateFlagHavi)
         profileSnapshotApplyMiraHeader.addSubview(vipExpireDetectionHaviBadge)
 
         profileEditRoutingRaloButton.setImage(UIImage(systemName: PaulaVocalCipherRune.echo("Hgk4zYGFHuoGFGpl73pw29F3FMFCMRwLbFvwsBeYyi6+ClUjasMFE7ScrJNSKw==")), for: .normal)
@@ -323,11 +336,11 @@ class PulseMePartyQueueFlux: UIViewController {
         avatarRingFrameLoadingKexo.avatarRingFrameLoadingKexo(playerProfileCacheNero.avatarFrameURL)
         nameLabel.text = playerProfileCacheNero.name
         briefTextFallbackVeraLabel.text = playerProfileCacheNero.presenceBriefCueLumi
-        vipExpireDetectionHaviBadge.isHidden = !playerProfileCacheNero.vipStateFlagHavi
+        vipBadgeRenderingMoro(vipAccessFlagTelo: playerProfileCacheNero.vipStateFlagHavi)
         followersCountMappingNexaLabels[safe: 0]?.text = (String(describing: playerProfileCacheNero.allyCountMetricSavo))
         followersCountMappingNexaLabels[safe: 1]?.text = (String(describing: playerProfileCacheNero.followPathMetricRavi))
         followersCountMappingNexaLabels[safe: 2]?.text = (String(describing: playerProfileCacheNero.followerWaveMetricNavo))
-        buttonHitTargetingPori(goldlessRewardNamingVeroButton, title: playerProfileCacheNero.playTokenDisplayLira, imageName: PaulaVocalCipherRune.echo("2vSpDh348/NvmLAuDE2hdsXInIEbyMH9dtXVwWQAGb+2Okmld7SC1xSC57/pMww+Fava"))
+        buttonHitTargetingPori(goldlessRewardNamingVeroButton, title: "Coin", imageName: "coinTopButton")
     }
 
     @objc private func settingsRouteDispatchKivo() {

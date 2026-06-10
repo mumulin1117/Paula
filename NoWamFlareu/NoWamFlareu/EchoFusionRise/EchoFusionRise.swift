@@ -190,7 +190,7 @@ class EchoFusionRise: UIViewController {
 
     private func messageThreadRoutingNilo(playerIdentitySignalMoro: String) {
         guard !playerIdentitySignalMoro.isEmpty else { return }
-        pushPaulaFashion(.clipRhythmTrail, param: playerIdentitySignalMoro)
+        pushPaulaFashion(.arenaSignalRise, param: playerIdentitySignalMoro)
     }
 }
 

@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7D1A63534BEC45FECE42A40C /* Pods_NoWamFlareu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 254C255FC8D785D064292468 /* Pods_NoWamFlareu.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		044ED1BC2FAB145E00241814 /* NoWamFlareu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoWamFlareu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		254C255FC8D785D064292468 /* Pods_NoWamFlareu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoWamFlareu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0D7636E6DD7E35E71D257C5 /* Pods-NoWamFlareu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoWamFlareu.release.xcconfig"; path = "Target Support Files/Pods-NoWamFlareu/Pods-NoWamFlareu.release.xcconfig"; sourceTree = "<group>"; };
+		FA003E2FF8CE886FF6775601 /* Pods-NoWamFlareu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoWamFlareu.debug.xcconfig"; path = "Target Support Files/Pods-NoWamFlareu/Pods-NoWamFlareu.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D1A63534BEC45FECE42A40C /* Pods_NoWamFlareu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +55,8 @@
 			children = (
 				044ED1BE2FAB145E00241814 /* NoWamFlareu */,
 				044ED1BD2FAB145E00241814 /* Products */,
+				6BC6F569363D489A4F6D31ED /* Pods */,
+				B3DC060FA2BEDD81CC43DACD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +68,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6BC6F569363D489A4F6D31ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FA003E2FF8CE886FF6775601 /* Pods-NoWamFlareu.debug.xcconfig */,
+				A0D7636E6DD7E35E71D257C5 /* Pods-NoWamFlareu.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B3DC060FA2BEDD81CC43DACD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				254C255FC8D785D064292468 /* Pods_NoWamFlareu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -65,9 +92,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 044ED1CF2FAB146000241814 /* Build configuration list for PBXNativeTarget "NoWamFlareu" */;
 			buildPhases = (
+				3C5E96EEED7D4E5217B6D6A5 /* [CP] Check Pods Manifest.lock */,
 				044ED1B82FAB145E00241814 /* Sources */,
 				044ED1B92FAB145E00241814 /* Frameworks */,
 				044ED1BA2FAB145E00241814 /* Resources */,
+				FF89BCD1EB0CB30B8011FFC3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,8 +106,6 @@
 				044ED1BE2FAB145E00241814 /* NoWamFlareu */,
 			);
 			name = NoWamFlareu;
-			packageProductDependencies = (
-			);
 			productName = NoWamFlareu;
 			productReference = 044ED1BC2FAB145E00241814 /* NoWamFlareu.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +154,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3C5E96EEED7D4E5217B6D6A5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NoWamFlareu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF89BCD1EB0CB30B8011FFC3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NoWamFlareu/Pods-NoWamFlareu-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NoWamFlareu/Pods-NoWamFlareu-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NoWamFlareu/Pods-NoWamFlareu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		044ED1B82FAB145E00241814 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,14 +213,18 @@
 /* Begin XCBuildConfiguration section */
 		044ED1D02FAB146000241814 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA003E2FF8CE886FF6775601 /* Pods-NoWamFlareu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = NoWamFlareu/NoWamFlareu.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NoWamFlareu/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Paula;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Paula uses the camera for avatar photos and selfie verification.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Paula uses the microphone for live voice rooms and real-time chat.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Paula uses photo library access so you can choose an avatar.";
@@ -161,9 +238,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nealiegm.paula;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -180,14 +258,18 @@
 		};
 		044ED1D12FAB146000241814 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0D7636E6DD7E35E71D257C5 /* Pods-NoWamFlareu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = NoWamFlareu/NoWamFlareu.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NoWamFlareu/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Paula;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Paula uses the camera for avatar photos and selfie verification.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Paula uses the microphone for live voice rooms and real-time chat.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Paula uses photo library access so you can choose an avatar.";
@@ -201,9 +283,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nealiegm.paula;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -255,7 +338,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -318,7 +401,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

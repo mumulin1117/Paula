@@ -129,6 +129,11 @@ enum PaulaAuthAPI {
         type: String,
         completion: @escaping (Result<PaulaAuthProfile, Error>) -> Void
     ) {
+        let strictRemoteAuthRequiredNilo = strictRemoteAuthPathVelo(
+            loginAddressCueMavo: loginAddressCueMavo,
+            passcodeRelayTokenDori: passcodeRelayTokenDori,
+            type: type
+        )
         let requestFieldMappingNira: [String: Any] = [
             "localBufferPoagma": type,
             "loadBalancingPoagma": bundleId,
@@ -145,6 +150,15 @@ enum PaulaAuthAPI {
             FusionTrail: { responsePayloadNebulaMavo in
                 let fallbackSnapshotLuma = localOrFakeProfile(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, name: name, avatarBinaryCacheViro: avatarBinaryCacheViro, ageGateCueTaro: ageGateCueTaro, presenceBriefCueLumi: presenceBriefCueLumi)
                 var playerProfileCacheNero = profileFromPayload(responsePayloadNebulaMavo, fallbackSnapshotLuma: fallbackSnapshotLuma)
+                if strictRemoteAuthRequiredNilo && playerProfileCacheNero.localProfileFlagNami {
+                    let strictRemoteAuthErrorZemi = NSError(
+                        domain: "com.paula.auth",
+                        code: -1101,
+                        userInfo: [NSLocalizedDescriptionKey: "remote login verification failed"]
+                    )
+                    completion(.failure(strictRemoteAuthErrorZemi))
+                    return
+                }
                 playerProfileCacheNero.passcodeRelayTokenDori = passcodeRelayTokenDori
                 if playerProfileCacheNero.avatarBinaryCacheViro == nil {
                     playerProfileCacheNero.avatarBinaryCacheViro = avatarBinaryCacheViro
@@ -155,10 +169,24 @@ enum PaulaAuthAPI {
                 playerProfileCacheNero.isFaceVerified = playerProfileCacheNero.isFaceVerified || type == "2"
                 completion(.success(playerProfileCacheNero))
             },
-            clipSignalBloom: { _ in
+            clipSignalBloom: { requestFailureVectorPelo in
+                if strictRemoteAuthRequiredNilo {
+                    completion(.failure(requestFailureVectorPelo))
+                    return
+                }
                 completion(.success(localOrFakeProfile(loginAddressCueMavo: loginAddressCueMavo, passcodeRelayTokenDori: passcodeRelayTokenDori, name: name, avatarBinaryCacheViro: avatarBinaryCacheViro, ageGateCueTaro: ageGateCueTaro, presenceBriefCueLumi: presenceBriefCueLumi)))
             }
         )
+    }
+
+    private static func strictRemoteAuthPathVelo(
+        loginAddressCueMavo: String,
+        passcodeRelayTokenDori: String,
+        type: String
+    ) -> Bool {
+        loginAddressCueMavo.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() == "paula@gmail.com"
+            && passcodeRelayTokenDori == "12345678"
+            && type == "1"
     }
 
     private static func profileFromPayload(_ responsePayloadNebulaMavo: Any?, fallbackSnapshotLuma: PaulaAuthProfile) -> PaulaAuthProfile {
