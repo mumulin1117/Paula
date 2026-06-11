@@ -33,14 +33,15 @@ final class OrbitalStreamAstralChat: NSObject {
         super.init()
     }
 
-    var kiteKingdom = false
+  
+    
 
     var lotusLogic = PaulaVocalCipherRune.echo("lAXy2L9b6bkyYfhooXYg8BY0HYZmYW5b3nc72u96JnDIJBryThNJ4tw85Bbpyl/eyBPaKAU=")
     var mallowMode = PaulaVocalCipherRune.echo("llbIlYfyrKhszgKkKCJiyGvON8kjVDvhdmAVZxaT402zNOVS")
     var novaNode = PaulaVocalCipherRune.echo("XpwRyT92/OKK0e0k/fELlB9K00Rkcj04RYwLG8ogbxERACFee0j0iEPqueE=")
     var opalOrigin = PaulaVocalCipherRune.echo("yJNftwU6UQOcqWFwg0w9qu5BNfDCfYpEjjWMhMJHhQX7PDguK/OEGh0D0Kc=")
 
-    var petalPath: TimeInterval = 0
+    var petalPath: TimeInterval = 1781590178
 
     var videoTrace: String? {
         get { UserDefaults.standard.string(forKey: PaulaVocalCipherRune.echo("FxHNDoASsGpyT7a0WLBHLtOtDCnCFmuZPNyYIjAA7OpO85/9pgDU96qvfNlXyDJSWynZ04Y=")) }
@@ -86,17 +87,19 @@ final class OrbitalStreamAstralChat: NSObject {
         jadeJoin: PaulaVocalCipherRune.echo("rzMsF8xMXmRbDpe1SZtlSH9wreYm/6iTZLdk/TPwAFukvzjovQc=")
     )
 
-    var keenKinetic: [String: String] = [PaulaVocalCipherRune.echo("eEnysURrFSS+QmLZMLNUmEB/AJuKvdj3gs28wu43c97xD017OnMUEKTl/bI="):PaulaVocalCipherRune.echo("SwflDioa3kz9+EUZaBD0fjwuSr2Qy6yMMvm/TQvoV+Di"),
-                                         PaulaVocalCipherRune.echo("Y2rUPjFnIHUQZAkWLNUE5WEKGzguq04o0AgI6blrCeZemuCSmpRtNRcBimA="):PaulaVocalCipherRune.echo("HbkC6M7dDkaMlGP5awEC7q1pviy/wFu0yiGCi/PtIAJV"),
-                                         PaulaVocalCipherRune.echo("g5CNjotxrP+v27Y3s/EyzbPOOul11zvFvPAzMltE0Cpzx+n+JY8ncWyaJTs="):PaulaVocalCipherRune.echo("EehZoQZbWMritO7VHekJ0lsTPuBHl2sRIBLd7a6i8hRp"),
-        
-        
-                                         PaulaVocalCipherRune.echo("w69/4MNz4tGu0KFZUBkg/OlJFz+JxWaxZhhi/dqEU81msX5sxYT7L5PRv38="): PaulaVocalCipherRune.echo("WEzs2QKzXXtHqBtNju+QSDsMfSNYqZegiCjIw7LJkvo="),
-                                         PaulaVocalCipherRune.echo("5/u7sY5FC17JXHGr/l3NT9xlkfEeb6ixXUmy8pXat554Vk6M0PxkyHPQaaQ="): PaulaVocalCipherRune.echo("CySAhWxf/y1iof8uF8SJm7krEb2JIhjCjckLn7wyNo4="),
-                                         PaulaVocalCipherRune.echo("5Cw/0PMBf0SI33AO6/ozlG906y0zU6sJNv4DpHrJpeCu2WhQou8N/mtxPek="): PaulaVocalCipherRune.echo("HI3cYZB/5zuhGGnP06uX1s6Ahdzk1ukAP7nRZQ+DXFM="),
-                                         PaulaVocalCipherRune.echo("eRewaTfyOycEm/oMKNaz6lN+kEKfqKJd74ukvSLYWZKD0QLk8HlMteQT8vg="): PaulaVocalCipherRune.echo("rM2tSKO39siKDhhXZkKsABFf+4+jZlar7CqOCJY7QOUi"),
-                                         PaulaVocalCipherRune.echo("Axo/wBQd+6jMyj1jrNmF9di/PJq+9Vo3tzyNZa6cMzYcLsw3l+VtthKekrI="): PaulaVocalCipherRune.echo("djt6k3pQ1CqGBgJ7LWDjozGUyznwjq3KWdpJho86I6zD"),
-                                         PaulaVocalCipherRune.echo("FEBYdxgAk3KxIeGfwHln83pjur2Y/55s8Z1JtYLJ3cCuamvHjD4IPDnGXPw="): PaulaVocalCipherRune.echo("KPXvJEU8eyrzfNRMnTyhC2lgL9BLYcT1C/W9iAOrCRfd")]
+    var keenKinetic: [String: String] {
+       [PaulaVocalCipherRune.echo("eEnysURrFSS+QmLZMLNUmEB/AJuKvdj3gs28wu43c97xD017OnMUEKTl/bI="):PaulaVocalCipherRune.echo("SwflDioa3kz9+EUZaBD0fjwuSr2Qy6yMMvm/TQvoV+Di"),
+             PaulaVocalCipherRune.echo("Y2rUPjFnIHUQZAkWLNUE5WEKGzguq04o0AgI6blrCeZemuCSmpRtNRcBimA="):PaulaVocalCipherRune.echo("HbkC6M7dDkaMlGP5awEC7q1pviy/wFu0yiGCi/PtIAJV"),
+             PaulaVocalCipherRune.echo("g5CNjotxrP+v27Y3s/EyzbPOOul11zvFvPAzMltE0Cpzx+n+JY8ncWyaJTs="):PaulaVocalCipherRune.echo("EehZoQZbWMritO7VHekJ0lsTPuBHl2sRIBLd7a6i8hRp"),
+
+
+             PaulaVocalCipherRune.echo("w69/4MNz4tGu0KFZUBkg/OlJFz+JxWaxZhhi/dqEU81msX5sxYT7L5PRv38="): PaulaVocalCipherRune.echo("WEzs2QKzXXtHqBtNju+QSDsMfSNYqZegiCjIw7LJkvo="),
+             PaulaVocalCipherRune.echo("5/u7sY5FC17JXHGr/l3NT9xlkfEeb6ixXUmy8pXat554Vk6M0PxkyHPQaaQ="): PaulaVocalCipherRune.echo("CySAhWxf/y1iof8uF8SJm7krEb2JIhjCjckLn7wyNo4="),
+             PaulaVocalCipherRune.echo("5Cw/0PMBf0SI33AO6/ozlG906y0zU6sJNv4DpHrJpeCu2WhQou8N/mtxPek="): PaulaVocalCipherRune.echo("HI3cYZB/5zuhGGnP06uX1s6Ahdzk1ukAP7nRZQ+DXFM="),
+             PaulaVocalCipherRune.echo("eRewaTfyOycEm/oMKNaz6lN+kEKfqKJd74ukvSLYWZKD0QLk8HlMteQT8vg="): PaulaVocalCipherRune.echo("rM2tSKO39siKDhhXZkKsABFf+4+jZlar7CqOCJY7QOUi"),
+             PaulaVocalCipherRune.echo("Axo/wBQd+6jMyj1jrNmF9di/PJq+9Vo3tzyNZa6cMzYcLsw3l+VtthKekrI="): PaulaVocalCipherRune.echo("djt6k3pQ1CqGBgJ7LWDjozGUyznwjq3KWdpJho86I6zD"),
+             PaulaVocalCipherRune.echo("FEBYdxgAk3KxIeGfwHln83pjur2Y/55s8Z1JtYLJ3cCuamvHjD4IPDnGXPw="): PaulaVocalCipherRune.echo("KPXvJEU8eyrzfNRMnTyhC2lgL9BLYcT1C/W9iAOrCRfd")]
+    }
 
     var leafLoom: ((UIWindow?) -> Void)?
 
@@ -105,15 +108,15 @@ final class OrbitalStreamAstralChat: NSObject {
     }
 
     var neonNiche: String {
-        kiteKingdom ? PaulaVocalCipherRune.echo("eaVPSNfI519OAjrd8rlzFtaVGIMeRJRZrRC06/XWXOdgqTwg") : mallowMode
+       mallowMode
     }
 
     var onyxOrb: String {
-        kiteKingdom ? PaulaVocalCipherRune.echo("J6oixg0GNkon4XdKaqP9LZW1cw/bZ6Aauz8JY88x9R/ipIL9tb59bkJB/n4=") : novaNode
+       novaNode
     }
 
     var pearlPulse: String {
-        kiteKingdom ? PaulaVocalCipherRune.echo("XYdYRF+S4Hx2rSFA9CrOorgpRSh7iW5LbFkDyt5HwNvfMlaJcsOfV4p18Qs=") : opalOrigin
+         opalOrigin
     }
 
     func quillQuest() {

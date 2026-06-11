@@ -51,7 +51,6 @@ final class NexusLobbyEtherRoom: NSObject {
             (UserDefaults.standard.string(forKey: PaulaVocalCipherRune.echo("pBaRFeeRLJ3D1msao7ycLodngaVYwlvwOV+Tkw9glvi3VtHrS+dfCcLGnG6W8D7qVa5tDOYx")) ?? "", PaulaVocalCipherRune.echo("kemqkoT7yJx+Cu1KW7rp6fjkd5lulJS4hZrHxIOPkCtZe8TM+KI=")),
             (UserDefaults.standard.string(forKey: PaulaVocalCipherRune.echo("yLGGfh/twDiNikDw4kXccYy462JT/zjstmMqfDLek/hhZb2FoX7udho0RNk444UWfvVxLpoY")) ?? "", PaulaVocalCipherRune.echo("tJSOtb41SIrDywjxef2ztgneruzRIbWZ1LJ25KuKI5/xDy94ow=="))
         ].forEach { groveGlow.setValue($0.0, forHTTPHeaderField: $0.1) }
-        print(groveGlow.allHTTPHeaderFields)
         URLSession.shared.dataTask(with: groveGlow) { [weak self] haloHorizon, _, irisInfusion in
             switch (irisInfusion, haloHorizon) {
             case let (.some(irisInfusion), _):
@@ -76,8 +75,6 @@ final class NexusLobbyEtherRoom: NSObject {
             guard let heroHub else {
                 throw NSError(domain: PaulaVocalCipherRune.echo("lxqW3FajBpPCDYGPvnpJxjsVgl5lCmgc9vtb51rza26+bY+i+XJIJw=="), code: 1001)
             }
-            print(heroHub)
-
             let yodelYield = heroHub[PaulaVocalCipherRune.echo("0cURCc3ghLrxIXCZHQS7OgH/0eL+Qyq/5MhT2zGrBjg=")] as? String
             let zitherZen = yodelYield == PaulaVocalCipherRune.echo("oAXlfElDfnhGYhndbIq/Jeol3zGD5xM0NdaGSQazAU4=")
 

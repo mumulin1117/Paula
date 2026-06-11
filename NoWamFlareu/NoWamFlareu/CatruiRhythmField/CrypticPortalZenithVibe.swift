@@ -76,7 +76,7 @@ final class CrypticPortalZenithVibe: UIViewController {
 
         NexusLobbyEtherRoom.vocalPulse.whiskeyWave(
             dungeonDream: OrbitalStreamAstralChat.vocalPulse.driftDuo,
-            eliteEdge: ["debug": "1"]
+            eliteEdge: [:]
         ) { keptKinetic in
             SonicWaveCrypticPortal.intoImpact()
 

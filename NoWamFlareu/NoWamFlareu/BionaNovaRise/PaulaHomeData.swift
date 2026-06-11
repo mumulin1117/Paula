@@ -92,7 +92,6 @@ enum PaulaHomeAPI {
             echoMotionOrbit: requestFieldMappingNira,
             FusionTrail: { responsePayloadNebulaMavo in
                 let roomDeckVectorQemi = roomUserListMappingZuni(from: responsePayloadNebulaMavo)
-                print(roomDeckVectorQemi)
                 completion(roomDeckVectorQemi.isEmpty ? fallbackRoomFactoryDeni() : roomDeckVectorQemi)
             },
             clipSignalBloom: { _ in
@@ -150,7 +149,6 @@ enum PaulaHomeAPI {
             
             let contentPreviewFallbackSumi = numberStringCoercionSema(payloadNodeVectorKivo["memoryMappingPoagma"]) ?? 0
             
-            print(responsePayloadNebulaMavo as Any)
             let participantAvatarQueueZori = nestedDictionaryScanVato(
                 containingAny: ["multicastStreamPoagma", "motionEstimationPoagma", "multiplayerEnginePoagma"],
                 in: payloadNodeVectorKivo["modelTrainingPoagma"] ?? payloadNodeVectorKivo["userList"]
